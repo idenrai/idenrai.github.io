@@ -1,5 +1,6 @@
 # 初めてのElectron
-## Electronとは
+## Electron
+### Electronとは
 - 旧)Atom Shell
 - Node.jsに基づいた**Desktop Application Flatform**
  - HTML, CSS, JavaScriptで、Cross-Flatformで 動くDesktop Applicationを作れる

@@ -1,13 +1,11 @@
-初めてのElectron
-
-# Electron
+# 初めてのElectron
 ## Electronとは
 - 旧)Atom Shell
 - Node.jsに基づいた**Desktop Application Flatform**
  - HTML, CSS, JavaScriptで、Cross-Flatformで 動くDesktop Applicationを作れる
  - WebPageのGUIとjavascriptで操作する**[Chromium Browser](https://www.chromium.org/Home)**
 - Desktop Application : 似た技術として**[NW.js (node-webkit)](http://nwjs.io/)**が存在
- - 技術的な違いについては、[ここ](http://qiita.com/SFPGMR/items/afe8ac0bfad95e5ed50d)を参考 
+ - 技術的な違いについては、[ここ](http://qiita.com/SFPGMR/items/afe8ac0bfad95e5ed50d)を参考
 - Electronで作られたアプリについては、**[Awesome Electron](https://github.com/sindresorhus/awesome-electron)** 参照
 
 ## 環境構築手順
@@ -38,21 +36,21 @@
  - 簡単なjavascriptコードを入力し、テスト
 
   ![cmdTest.png](https://qiita-image-store.s3.amazonaws.com/0/114660/9538d2ae-2bd3-1729-b39b-362c2baf2213.png)
- 
+
  - jsファイルでのテスト : **app.js** (エンコード：UTF-8)
- 
+
 ```javascript
 var http = require('http');
  http.createServer(function(req,res){
    res.writeHead(200,{'Content-Type':'text/plain'});
    res.end('Hello World\nHello node.js!');
  }).listen(1337,"127.0.0.1");
- 
+
  console.log("Server running at http://127.0.0.1:1337/");
 ```
 
   - Node.jsでapp.jsを実行し、指定したIP ([http://127.0.0.1:1337](http://127.0.0.1:1337))で確認
- 
+
    ![nodeJSTest2.png](https://qiita-image-store.s3.amazonaws.com/0/114660/54f02471-171f-756b-d077-7d29e3460da3.png)
 
 ### Electronのインストール
@@ -75,13 +73,13 @@ your-app/
 - Electronは、実行されるときに「package.json」のmain scriptを呼び出す。
  - **main script**：main processで作動し、GUI Component操作・Web Page生成
 - **npm init**で**package.json**を作成
- - 何を言ってるのか全然理解できなかったら、ただ**Enter**だけ押せばほとんどＯＫ 
+ - 何を言ってるのか全然理解できなかったら、ただ**Enter**だけ押せばほとんどＯＫ
   (ここではプロジェクト名を**electron**に設定する)
  - ただ、**entry point**には必ず「**main.js**」を設定すること！
  - もし**package.json**に**main script**tが設定されてない場合、
    Electronは自動で同じディレクトリーの**index.js**をロードする
- 
- 
+
+
   ![initProject.png](https://qiita-image-store.s3.amazonaws.com/0/114660/94b55d28-f7c0-1732-f0e6-3a8828946064.png)
 
 
@@ -91,7 +89,7 @@ your-app/
 ```javascript
 /**
  * package.json
- **/ 
+ **/
 {
   "name": "electron",
   "version": "1.0.0",
@@ -112,31 +110,31 @@ your-app/
 ```js
 /**
  * main.js
- **/ 
+ **/
 // アプリケーション基盤をコントロールするモジュール
 var app = require('app');
- 
+
 // ブラウザーウィンドーを作るモジュール
 var BrowserWindow = require('browser-window');
- 
+
 // ウィンドーオブジェクトを全域に維持
 var mainWindow = null;
- 
+
 // すべてのウィンドーが閉じられたら呼び出される (アプリケーション終了)
 app.on('window-all-closed', function() {
   if (process.platform != 'darwin') {
     app.quit();
   }
 });
- 
+
 // Electronの初期化が完了し、ブラウザーウィンドーを開く準備ができたら実行
 app.on('ready', function() {
   // 新しいブラウザーウィンドーを生成
   mainWindow = new BrowserWindow({width: 800, height: 600});
- 
+
   // 今のディレクトリーで「 index.html」をロード
   mainWindow.loadUrl('file://' + __dirname + '/index.html');
- 
+
   // ウィンドーが閉じられたら呼び出される  (アプリケーション終了)
   mainWindow.on('closed', function() {
     // ウィンドーオブジェクトの参照を削除
@@ -178,7 +176,7 @@ app.on('ready', function() {
 これも**npm**でもってこればＯＫ
 
   ![packager.png](https://qiita-image-store.s3.amazonaws.com/0/114660/d4f682f7-fba3-3b5c-5bc4-a7709c1bf286.png)
- 
+
  これでダウンロード終わり。
 
 
@@ -188,7 +186,7 @@ app.on('ready', function() {
 
   この通り、electron-win32-ia32とelectron-win32-x64フォルダが生成された。
   書いた内容を説明すると…
- 
+
   platform : all, linux, win32, darwin
   arch : all, ia32, x64
   version : Electronのバージョン (現在0.36.8)
@@ -553,8 +551,8 @@ function loadTxt(){
  - `C:\PROJECT`にて`npm install`
 - **Atom Minify**で**memo.min.js**作成
  -  **atom-minify**の設定で「Minify on save」を設定すると、保存する時に自動でmemo.min.jsを生成
- - この画面が出ればＯＫ。 
-  
+ - この画面が出ればＯＫ。
+
 ![success_minify.png](https://qiita-image-store.s3.amazonaws.com/0/114660/8f5e7196-8a67-4c43-b506-387b6b29733d.png)
 
 
@@ -562,13 +560,13 @@ function loadTxt(){
  - Gruntは勉強用で入れたのがほとんどで、実際この作業で必須なのは**includes**だけ。
  - **link.html**、**memo.html**を**index.html**に含め、**/app/view/index.html**を作成
  - この画面が出ればＯＫ。
-  
+
 ![grunt_success.png](https://qiita-image-store.s3.amazonaws.com/0/114660/948088db-b20f-aca4-4e34-10c76f657e1e.png)
 
 
-- `C:\PROJECT`にて`electron memo/`で動作確認 
+- `C:\PROJECT`にて`electron memo/`で動作確認
  - この画面が出ればＯＫ。
-  
+
 ![run_electron.png](https://qiita-image-store.s3.amazonaws.com/0/114660/630480d2-b2bf-8412-a4a1-84ef57289ace.png)
 
 

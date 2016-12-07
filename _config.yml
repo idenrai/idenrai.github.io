@@ -17,6 +17,7 @@ title: 외국인 노동자의 SE Diary
 email: kyj966@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   일하면서 알게 된 것을 적어두는 블로그입니다.
+  제 티스토리, Qiita의 자료를 여기로 조금씩 옮겨올 예정입니다.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: 

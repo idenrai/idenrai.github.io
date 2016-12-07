@@ -5,8 +5,10 @@
 - Node.jsに基づいた**Desktop Application Flatform**
  - HTML, CSS, JavaScriptで、Cross-Flatformで 動くDesktop Applicationを作れる
  - WebPageのGUIとjavascriptで操作する**[Chromium Browser](https://www.chromium.org/Home)**
+
 - Desktop Application : 似た技術として**[NW.js (node-webkit)](http://nwjs.io/)**が存在
  - 技術的な違いについては、[ここ](http://qiita.com/SFPGMR/items/afe8ac0bfad95e5ed50d)を参考
+
 - Electronで作られたアプリについては、**[Awesome Electron](https://github.com/sindresorhus/awesome-electron)** 参照
 
 ## 環境構築手順

@@ -7,11 +7,11 @@ category: Electron
 ## Electronとは
 * 旧)Atom Shell
 * Node.jsに基づいた**Desktop Application Flatform**
-  * HTML, CSS, JavaScriptで、Cross-Flatformで 動くDesktop Applicationを作れる
-  * WebPageのGUIとjavascriptで操作する**[Chromium Browser](https://www.chromium.org/Home)**
+    * HTML, CSS, JavaScriptで、Cross-Flatformで 動くDesktop Applicationを作れる
+    * WebPageのGUIとjavascriptで操作する**[Chromium Browser](https://www.chromium.org/Home)**
 
 * Desktop Application : 似た技術として**[NW.js (node-webkit)](http://nwjs.io/)**が存在
-  * 技術的な違いについては、[ここ](http://qiita.com/SFPGMR/items/afe8ac0bfad95e5ed50d)を参考
+    * 技術的な違いについては、[ここ](http://qiita.com/SFPGMR/items/afe8ac0bfad95e5ed50d)を参考
 
 * Electronで作られたアプリについては、**[Awesome Electron](https://github.com/sindresorhus/awesome-electron)** 参照
 
@@ -23,24 +23,24 @@ category: Electron
 
 ### 基本設定
 * 装置１スペック
-  * CPU : i3-4000M 2.40GHz
-  * RAM : 4.0GB
-  * OS : Microsoft Windows 8.1 Enterprise K 64Bit
-  * Electron Version： 0.36.8
+    * CPU : i3-4000M 2.40GHz
+    * RAM : 4.0GB
+    * OS : Microsoft Windows 8.1 Enterprise K 64Bit
+    * Electron Version： 0.36.8
 
 * 装置２スペック
-  * CPU : i3-3240 3.40GHz
-  * RAM : 4.0GB
-  * OS : Microsoft Windows 7 Professional SP1 32Bit
-  * Electron Version： 0.36.8
+    * CPU : i3-3240 3.40GHz
+    * RAM : 4.0GB
+    * OS : Microsoft Windows 7 Professional SP1 32Bit
+    * Electron Version： 0.36.8
 
 ### 下準備
 * **[Node.js](https://nodejs.org/en/#download)** : Stable Version (v.5.7.1)
-  *- npmを使うので、**Node.js**の設置は必須！
-  * Windowsのバージョンに合わせて、msiファイルをダウンロードし、設置するだけでＯＫ
+    * npmを使うので、**Node.js**の設置は必須！
+    * Windowsのバージョンに合わせて、msiファイルをダウンロードし、設置するだけでＯＫ
 * **Node.js**の設置確認
-  *- cmd > node
-  *- 簡単なjavascriptコードを入力し、テスト
+    * cmd > node
+    * 簡単なjavascriptコードを入力し、テスト
 
   ![cmdTest.png](https://qiita-image-store.s3.amazonaws.com/0/114660/9538d2ae-2bd3-1729-b39b-362c2baf2213.png)
 
@@ -56,7 +56,7 @@ var http = require('http');
  console.log("Server running at http://127.0.0.1:1337/");
 ```
 
-  - Node.jsでapp.jsを実行し、指定したIP ([http://127.0.0.1:1337](http://127.0.0.1:1337))で確認
+* Node.jsでapp.jsを実行し、指定したIP ([http://127.0.0.1:1337](http://127.0.0.1:1337))で確認
 
    ![nodeJSTest2.png](https://qiita-image-store.s3.amazonaws.com/0/114660/54f02471-171f-756b-d077-7d29e3460da3.png)
 
@@ -78,12 +78,12 @@ your-app/
 
 #### プロジェクト生成
 * Electronは、実行されるときに「package.json」のmain scriptを呼び出す。
-  * **main script**：main processで作動し、GUI Component操作・Web Page生成
+    * **main script**：main processで作動し、GUI Component操作・Web Page生成
 * **npm init**で**package.json**を作成
-  * 何を言ってるのか全然理解できなかったら、ただ**Enter**だけ押せばほとんどＯＫ
-  (ここではプロジェクト名を**electron**に設定する)
-  * ただ、**entry point**には必ず「**main.js**」を設定すること！
-  * もし**package.json**に**main script**tが設定されてない場合、
+    * 何を言ってるのか全然理解できなかったら、ただ**Enter**だけ押せばほとんどＯＫ
+    (ここではプロジェクト名を**electron**に設定する)
+    * ただ、**entry point**には必ず「**main.js**」を設定すること！
+    * もし**package.json**に**main script**tが設定されてない場合、
    Electronは自動で同じディレクトリーの**index.js**をロードする
 
 
@@ -594,18 +594,18 @@ C:\project>
 
 ## まとめ
 すごく簡単！
-- Web Pageを作る感覚で、普通にDesktop Applicationが作れる。
-- 環境設定に時間がかからないのもメリット
- - 以前のHadoopの時を考えたら…
- - 特にWindowsでも簡単にできるのが嬉い。
+* Web Pageを作る感覚で、普通にDesktop Applicationが作れる。
+* 環境設定に時間がかからないのもメリット
+    * 以前のHadoopの時を考えたら…
+    * 特にWindowsでも簡単にできるのが嬉い。
 
-Creatorとしての喜び
-- こうやって簡単にアプリを作れるから、創作意欲が沸く。
-- 自分に必要な物は、自分で作ってみよう！
+*Creatorとしての喜び
+    * こうやって簡単にアプリを作れるから、創作意欲が沸く。
+    * 自分に必要な物は、自分で作ってみよう！
 
 ## 参考
-- [Electron Github](https://github.com/atom/electron)
-- [electronとnw.jsの技術的な違い](http://qiita.com/SFPGMR/items/afe8ac0bfad95e5ed50d)
-- [30分で出来る、JavaScript (Electron) でデスクトップアプリを作って配布するまで](http://qiita.com/nyanchu/items/15d514d9b9f87e5c0a29)
-- [Outsider's Dev Story](http://blog.outsider.ne.kr/1169)
-- [Grunt 가이드](https://github.com/demun/demun.github.com/wiki/01_00_grunt_guide)
+* [Electron Github](https://github.com/atom/electron)
+* [electronとnw.jsの技術的な違い](http://qiita.com/SFPGMR/items/afe8ac0bfad95e5ed50d)
+* [30分で出来る、JavaScript (Electron) でデスクトップアプリを作って配布するまで](http://qiita.com/nyanchu/items/15d514d9b9f87e5c0a29)
+* [Outsider's Dev Story](http://blog.outsider.ne.kr/1169)
+* [Grunt 가이드](https://github.com/demun/demun.github.com/wiki/01_00_grunt_guide)

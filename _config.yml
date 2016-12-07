@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: 외국인 노동자의 SE Diary
-email: kyj966@gmail.com
+email: 
 description: > # this means to ignore newlines until "baseurl:"
   일하면서 알게 된 것을 적어두는 블로그입니다.
   제 티스토리(http://idenrai.tistory.com/), Qiita(http://qiita.com/YoungjaeKwon)의 자료를 여기로 조금씩 옮겨올 예정입니다.

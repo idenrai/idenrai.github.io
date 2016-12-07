@@ -5,34 +5,34 @@ category: Electron
 ---
 
 ## Electronとは
-- 旧)Atom Shell
-- Node.jsに基づいた**Desktop Application Flatform**
- - HTML, CSS, JavaScriptで、Cross-Flatformで 動くDesktop Applicationを作れる
- - WebPageのGUIとjavascriptで操作する**[Chromium Browser](https://www.chromium.org/Home)**
+* 旧)Atom Shell
+* Node.jsに基づいた**Desktop Application Flatform**
+ * HTML, CSS, JavaScriptで、Cross-Flatformで 動くDesktop Applicationを作れる
+ * WebPageのGUIとjavascriptで操作する**[Chromium Browser](https://www.chromium.org/Home)**
 
-- Desktop Application : 似た技術として**[NW.js (node-webkit)](http://nwjs.io/)**が存在
- - 技術的な違いについては、[ここ](http://qiita.com/SFPGMR/items/afe8ac0bfad95e5ed50d)を参考
+* Desktop Application : 似た技術として**[NW.js (node-webkit)](http://nwjs.io/)**が存在
+ * 技術的な違いについては、[ここ](http://qiita.com/SFPGMR/items/afe8ac0bfad95e5ed50d)を参考
 
-- Electronで作られたアプリについては、**[Awesome Electron](https://github.com/sindresorhus/awesome-electron)** 参照
+* Electronで作られたアプリについては、**[Awesome Electron](https://github.com/sindresorhus/awesome-electron)** 参照
 
 ## 環境構築手順
 ### 目標
-- **Windows**での**Electron**開発環境構築
-- Electronで**Hello World**の出力
-- パッケージングでexeファイルを作成、動作確認
+* **Windows**での**Electron**開発環境構築
+* Electronで**Hello World**の出力
+* パッケージングでexeファイルを作成、動作確認
 
 ### 基本設定
-- 装置１スペック
- - CPU : i3-4000M 2.40GHz
- - RAM : 4.0GB
- - OS : Microsoft Windows 8.1 Enterprise K 64Bit
- - Electron Version： 0.36.8
+* 装置１スペック
+ * CPU : i3-4000M 2.40GHz
+ * RAM : 4.0GB
+ * OS : Microsoft Windows 8.1 Enterprise K 64Bit
+ * Electron Version： 0.36.8
 
-- 装置２スペック
- - CPU : i3-3240 3.40GHz
- - RAM : 4.0GB
- - OS : Microsoft Windows 7 Professional SP1 32Bit
- - Electron Version： 0.36.8
+* 装置２スペック
+ * CPU : i3-3240 3.40GHz
+ * RAM : 4.0GB
+ * OS : Microsoft Windows 7 Professional SP1 32Bit
+ * Electron Version： 0.36.8
 
 ### 下準備
 - **[Node.js](https://nodejs.org/en/#download)** : Stable Version (v.5.7.1)

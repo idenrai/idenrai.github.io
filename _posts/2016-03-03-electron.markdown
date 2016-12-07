@@ -17,7 +17,6 @@ category: Electron
 
 ## 環境構築手順
 
-
 ### 目標
 * **Windows**での**Electron**開発環境構築
 * Electronで**Hello World**の出力
@@ -69,6 +68,7 @@ var http = require('http');
   ![inst.png](https://qiita-image-store.s3.amazonaws.com/0/114660/c9623d70-d763-90e2-532c-e40d8f821297.png)
 
 ### Electronの実行
+
 #### Electron Appの構造
 
 ```
@@ -113,8 +113,8 @@ your-app/
 ```
 
 #### Hello, Electron!
-一旦準備が終わったので、いつもの通り**「Hello World」**みたいな物を出力してみよう。
-**init**で**main script**を**「main.js」**で設定したので、**main.js**から作成することに。
+* 一旦準備が終わったので、いつもの通り**「Hello World」**みたいな物を出力してみよう。
+* **init**で**main script**を**「main.js」**で設定したので、**main.js**から作成することに。
 
 ```js
 /**
@@ -152,10 +152,10 @@ app.on('ready', function() {
 });
 ```
 
-**main.js**が**index.html**を呼ぶことにしたので、今度は**index.html**を作成する。
-実際目に見える部分はここで作成する。
+* **main.js**が**index.html**を呼ぶことにしたので、今度は**index.html**を作成する。
+* 実際目に見える部分はここで作成する。
 
-- **index.html**
+* **index.html**
 
 ```html
 <!--
@@ -206,7 +206,7 @@ app.on('ready', function() {
   `electron-packager ./electron electron --platform=win32 --arch=ia32 --version=0.36.8`
   これだけでＯＫ。
 
-- 実行
+* 実行
 
   ![run.png](https://qiita-image-store.s3.amazonaws.com/0/114660/c81c17b5-33ca-f6dd-230b-801dadf8446c.png)
 
@@ -222,6 +222,7 @@ app.on('ready', function() {
 * パッケージングでEXEファイルを作り、動作を確認
 
 ### 2. 準備
+
 #### 2-1. Atom
 * Atom ダウンロード (https://atom.io)
     * Windowsのバージョンに合わせてインストールするだけでＯＫ
@@ -252,6 +253,7 @@ app.on('ready', function() {
     * ここでは2の方法でプロジェクト作成
 
 ### 3. Project作成
+
 #### 3-1. ディレクトリ構成図
 
 ```
@@ -581,6 +583,7 @@ function loadTxt(){
 
 
 ### 4. パッケージング・動作確認
+
 #### 4-1. パッケージング
 **memoフォルダ**を**memoMK2**という名前でパッケージングする。
 
@@ -590,6 +593,7 @@ Packaging app for platform win32 ia32 using electron v0.36.8
 Wrote new app to C:\project\memoMK2-win32-ia32
 C:\project>
 ```
+
 #### 4-2. 作動確認
 
 ![complete.png](https://qiita-image-store.s3.amazonaws.com/0/114660/eed83335-c18b-b816-244c-158be4a3d9c4.png)

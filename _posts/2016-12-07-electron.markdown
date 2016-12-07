@@ -5,6 +5,7 @@ category: Electron
 ---
 
 # Electron
+
 ## Electronとは
 - 旧)Atom Shell
 - Node.jsに基づいた**Desktop Application Flatform**
@@ -17,6 +18,7 @@ category: Electron
 - Electronで作られたアプリについては、**[Awesome Electron](https://github.com/sindresorhus/awesome-electron)** 参照
 
 ## 環境構築手順
+
 ### 目標
 - **Windows**での**Electron**開発環境構築
 - Electronで**Hello World**の出力
@@ -68,6 +70,7 @@ var http = require('http');
   ![inst.png](https://qiita-image-store.s3.amazonaws.com/0/114660/c9623d70-d763-90e2-532c-e40d8f821297.png)
 
 ### Electronの実行
+
 #### Electron Appの構造
 
 ```
@@ -250,6 +253,7 @@ app.on('ready', function() {
  - ここでは2の方法でプロジェクト作成
 
 ### 3. Project作成
+
 #### 3-1. ディレクトリ構成図
 
 ```
@@ -579,6 +583,7 @@ function loadTxt(){
 
 
 ### 4. パッケージング・動作確認
+
 #### 4-1. パッケージング
 - **memoフォルダ**を**memoMK2**という名前でパッケージングする。
 
@@ -594,6 +599,7 @@ C:\project>
 
 
 ## まとめ
+
 ### すごく簡単！
 - Web Pageを作る感覚で、普通にDesktop Applicationが作れる。
 - 環境設定に時間がかからないのもメリット

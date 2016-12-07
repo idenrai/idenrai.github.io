@@ -16,6 +16,8 @@ category: Electron
 * Electronで作られたアプリについては、**[Awesome Electron](https://github.com/sindresorhus/awesome-electron)** 参照
 
 ## 環境構築手順
+
+
 ### 目標
 * **Windows**での**Electron**開発環境構築
 * Electronで**Hello World**の出力
@@ -594,13 +596,13 @@ C:\project>
 
 
 ## まとめ
-すごく簡単！
-* Web Pageを作る感覚で、普通にDesktop Applicationが作れる。
-* 環境設定に時間がかからないのもメリット
-    * 以前のHadoopの時を考えたら…
-    * 特にWindowsでも簡単にできるのが嬉い。
+* すごく簡単！
+    * Web Pageを作る感覚で、普通にDesktop Applicationが作れる。
+    * 環境設定に時間がかからないのもメリット
+        * 以前のHadoopの時を考えたら…
+        * 特にWindowsでも簡単にできるのが嬉い。
 
-*Creatorとしての喜び
+* Creatorとしての喜び
     * こうやって簡単にアプリを作れるから、創作意欲が沸く。
     * 自分に必要な物は、自分で作ってみよう！
 

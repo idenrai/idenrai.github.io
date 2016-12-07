@@ -1,7 +1,6 @@
 ---
 layout: post
 title: 初めてのElectron
-date: "2016-12-07 14:05"
 category: Electron
 ---
 

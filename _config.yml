@@ -30,9 +30,8 @@ encoding: utf-8
 gems:
   - jekyll-feed
   - jekyll-mentions
-  - jemoji
-  - jekyll-redirect-from
   - jekyll-sitemap
+  - jekyll-archives
 exclude:
   - Gemfile
   - Gemfile.lock

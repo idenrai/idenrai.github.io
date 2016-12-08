@@ -43,6 +43,7 @@ category: Electron
     * cmd > node
     * 簡単なjavascriptコードを入力し、テスト
 
+
   ![cmdTest.png](https://qiita-image-store.s3.amazonaws.com/0/114660/9538d2ae-2bd3-1729-b39b-362c2baf2213.png)
 
 * jsファイルでのテスト : **app.js** (エンコード：UTF-8)
@@ -61,11 +62,13 @@ var http = require('http');
 
    ![nodeJSTest2.png](https://qiita-image-store.s3.amazonaws.com/0/114660/54f02471-171f-756b-d077-7d29e3460da3.png)
 
+
 ### Electronのインストール
 * npmを使って、**electron-prebuilt**をダウンロード
 * Globalで設置したので、どこでプロジェクトを作成しても**「electron プロジェクト名/**」で実行できる。
 
   ![inst.png](https://qiita-image-store.s3.amazonaws.com/0/114660/c9623d70-d763-90e2-532c-e40d8f821297.png)
+
 
 ### Electronの実行
 
@@ -78,21 +81,22 @@ your-app/
 └── index.html   : ユーザに見せるページ
 ```
 
+
 #### プロジェクト生成
 * Electronは、実行されるときに「package.json」のmain scriptを呼び出す。
     * **main script**：main processで作動し、GUI Component操作・Web Page生成
 * **npm init**で**package.json**を作成
     * 何を言ってるのか全然理解できなかったら、ただ**Enter**だけ押せばほとんどＯＫ
-    (ここではプロジェクト名を**electron**に設定する)
+        *ここではプロジェクト名を**electron**に設定
     * ただ、**entry point**には必ず「**main.js**」を設定すること！
-    * もし**package.json**に**main script**tが設定されてない場合、
-   Electronは自動で同じディレクトリーの**index.js**をロードする
+        * もし**package.json**に**main script**tが設定されてない場合、
+          Electronは自動で同じディレクトリーの**index.js**をロードする
 
 
-  ![initProject.png](https://qiita-image-store.s3.amazonaws.com/0/114660/94b55d28-f7c0-1732-f0e6-3a8828946064.png)
+    ![initProject.png](https://qiita-image-store.s3.amazonaws.com/0/114660/94b55d28-f7c0-1732-f0e6-3a8828946064.png)
 
 
-- 上の作業で、下のような「package.json」が生成される
+    上の作業で、下のような「package.json」が生成される
 
 
 ```javascript
@@ -112,9 +116,13 @@ your-app/
 }
 ```
 
+
 #### Hello, Electron!
 * 一旦準備が終わったので、いつもの通り**「Hello World」**みたいな物を出力してみよう。
 * **init**で**main script**を**「main.js」**で設定したので、**main.js**から作成することに。
+
+
+**main.js**
 
 ```js
 /**
@@ -153,9 +161,9 @@ app.on('ready', function() {
 ```
 
 * **main.js**が**index.html**を呼ぶことにしたので、今度は**index.html**を作成する。
-* 実際目に見える部分はここで作成する。
+    * 実際目に見える部分はここで作成する。
 
-* **index.html**
+**index.html**
 
 ```html
 <!--
@@ -174,44 +182,48 @@ app.on('ready', function() {
 </body>
 </html>
 ```
-これで準備はＯＫ。
-実行してみよう。
+
+**これで準備はＯＫ。実行してみよう。**
 
   ![sample.png](https://qiita-image-store.s3.amazonaws.com/0/114660/c5622a0e-74ae-93a7-7390-d0e18e238ae2.png)
+
 
 #### Packaging
 * プロジェクトを誰でも使えるように、パッケージ化してみよう。
 * ここでは、**[electron-packager](https://github.com/electron-userland/electron-packager)**を使って作業。
     * これも**npm**でもってこればＯＫ
 
+
     ![packager.png](https://qiita-image-store.s3.amazonaws.com/0/114660/d4f682f7-fba3-3b5c-5bc4-a7709c1bf286.png)
 
-    * これでダウンロード終わり。
 
-
-* 早速使ってみよう
+**早速使ってみよう**
 
     ![packager2.png](https://qiita-image-store.s3.amazonaws.com/0/114660/0886a369-3c43-60d1-0836-bac84197bbd9.png)
 
-  この通り、electron-win32-ia32とelectron-win32-x64フォルダが生成された。
-  書いた内容を説明すると…
 
+この通り、electron-win32-ia32とelectron-win32-x64フォルダが生成された。
+書いた内容を説明すると…
+
+>
   platform : all, linux, win32, darwin
   arch : all, ia32, x64
   version : Electronのバージョン (現在0.36.8)
 
-  ここでallを選んだので、フォルダが32と64の二つができた。
+ここでallを選んだので、フォルダが32と64の二つができた。
 
-  もし32bitWindowsの装置を使ってるとしたら、実は
-  `electron-packager ./electron electron --platform=win32 --arch=ia32 --version=0.36.8`
-  これだけでＯＫ。
+もし32bitWindowsの装置を使ってるとしたら、実は
+`electron-packager ./electron electron --platform=win32 --arch=ia32 --version=0.36.8`
+これだけでＯＫ。
 
-* 実行
 
-  ![run.png](https://qiita-image-store.s3.amazonaws.com/0/114660/c81c17b5-33ca-f6dd-230b-801dadf8446c.png)
+**実行**
 
-  プロジェクト名をElectronにしてしまって、ちょっとわかり辛くなったが…
-  こうやってEXEファイルができ、それを実行したら普通にアプリが動く。
+![run.png](https://qiita-image-store.s3.amazonaws.com/0/114660/c81c17b5-33ca-f6dd-230b-801dadf8446c.png)
+
+プロジェクト名をElectronにしてしまって、ちょっとわかり辛くなったが,
+こうやってEXEファイルができ、それを実行したら普通にアプリが動く。
+
 
 ## Electronでのアプリケーション開発
 
@@ -220,6 +232,7 @@ app.on('ready', function() {
 * WindowsでElectronを使うこと
 * プロジェクト作成には**Atom**と**Grunt**を使ってみること
 * パッケージングでEXEファイルを作り、動作を確認
+
 
 ### 2. 準備
 
@@ -233,6 +246,7 @@ app.on('ready', function() {
     * **atom-minify** : JS, CSSの圧縮化 (ctrl+shift+m or 「Minify on save」設定)
 
 ![package-atom.png](https://qiita-image-store.s3.amazonaws.com/0/114660/7961b67e-3203-7b9e-efbb-8ed7bb134693.png)
+
 
 #### 2-2. Grunt
 * **Grunt**とは？
@@ -251,6 +265,7 @@ app.on('ready', function() {
     * すでにpackage.jsonに記入されているModuleを設置 : `npm install`
     (package.jsonとGruntfile.jsがあれば、どこでも同じgrunt作業が可能！)
     * ここでは2の方法でプロジェクト作成
+
 
 ### 3. Project作成
 
@@ -322,10 +337,15 @@ C:\PROJECT\MEMO
     └─time-grunt                        
 ```
 
-* css・fonts・libフォルダには、[Bootstrap](http://bootstrapk.com/getting-started/#download), [JQuery](http://jquery.com/download/)をダウンロードして入れる。
+css・fonts・libフォルダには、
+[Bootstrap](http://bootstrapk.com/getting-started/#download)、
+[JQuery](http://jquery.com/download/)
+をダウンロードして入れる。
+
 
 #### 3-2. プロジェクトソース
-* **package.json**
+
+**package.json**
 
 ```js
 {
@@ -351,7 +371,8 @@ C:\PROJECT\MEMO
 }
 ```
 
-* **main.js**
+
+**main.js**
 
 ```js
 /**
@@ -376,7 +397,8 @@ app.on('ready', function() {
 });
 ```
 
-* **Gruntfile.js**
+
+**Gruntfile.js**
 
 ```js
 /**
@@ -456,7 +478,8 @@ module.exports = function(grunt) {
 };
 ```
 
-* **index.html**
+
+**index.html**
 
 ```html
 <!--
@@ -478,7 +501,8 @@ module.exports = function(grunt) {
 </html>
 ```
 
-* **link.html**
+
+**link.html**
 
 ```html
 <!--
@@ -491,7 +515,8 @@ module.exports = function(grunt) {
 <script type="text/javascript" src="../js/memo.min.js"></script>
 ```
 
-* **memo.html**
+
+**memo.html**
 
 ```html
 <!--
@@ -527,7 +552,8 @@ module.exports = function(grunt) {
 </table>
 ```
 
-* **memo.js**
+
+**memo.js**
 
 ```js
 /**
@@ -557,6 +583,7 @@ function loadTxt(){
 }
 ```
 
+
 #### 3-3. プロジェクト作成
 * **node_modules** インストール
     * **package.json**に**devDependencies**として定義されているmoduleを全部インストールする。
@@ -565,26 +592,27 @@ function loadTxt(){
     * **atom-minify**の設定で「Minify on save」を設定すると、保存する時に自動でmemo.min.jsを生成
     * この画面が出ればＯＫ。
 
-![success_minify.png](https://qiita-image-store.s3.amazonaws.com/0/114660/8f5e7196-8a67-4c43-b506-387b6b29733d.png)
+    ![success_minify.png](https://qiita-image-store.s3.amazonaws.com/0/114660/8f5e7196-8a67-4c43-b506-387b6b29733d.png)
 
 
 * **Grunt Runner**で**Grunt**を**Default**で動かす
     * Gruntは勉強用で入れたのがほとんどで、実際この作業で必須なのは**includes**だけ。
     * **link.html**、**memo.html**を**index.html**に含め、**/app/view/index.html**を作成
-* この画面が出ればＯＫ。
+    * この画面が出ればＯＫ。
 
-![grunt_success.png](https://qiita-image-store.s3.amazonaws.com/0/114660/948088db-b20f-aca4-4e34-10c76f657e1e.png)
+    ![grunt_success.png](https://qiita-image-store.s3.amazonaws.com/0/114660/948088db-b20f-aca4-4e34-10c76f657e1e.png)
 
 
-- `C:\PROJECT`にて`electron memo/`で動作確認
- - この画面が出ればＯＫ。
+* `C:\PROJECT`にて`electron memo/`で動作確認
+    * この画面が出ればＯＫ。
 
-![run_electron.png](https://qiita-image-store.s3.amazonaws.com/0/114660/630480d2-b2bf-8412-a4a1-84ef57289ace.png)
+    ![run_electron.png](https://qiita-image-store.s3.amazonaws.com/0/114660/630480d2-b2bf-8412-a4a1-84ef57289ace.png)
 
 
 ### 4. パッケージング・動作確認
 
 #### 4-1. パッケージング
+
 **memoフォルダ**を**memoMK2**という名前でパッケージングする。
 
 ```
@@ -594,10 +622,13 @@ Wrote new app to C:\project\memoMK2-win32-ia32
 C:\project>
 ```
 
+
 #### 4-2. 作動確認
 
 ![complete.png](https://qiita-image-store.s3.amazonaws.com/0/114660/eed83335-c18b-b816-244c-158be4a3d9c4.png)
 
+
+* * *
 
 ## まとめ
 * すごく簡単！
@@ -609,6 +640,7 @@ C:\project>
 * Creatorとしての喜び
     * こうやって簡単にアプリを作れるから、創作意欲が沸く。
     * 自分に必要な物は、自分で作ってみよう！
+
 
 ## 参考
 * [Electron Github](https://github.com/atom/electron)

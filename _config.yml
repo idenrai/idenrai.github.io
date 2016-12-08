@@ -1,17 +1,20 @@
 title: 외국인 노동자의 SE Diary
 email:
-description: > # this means to ignore newlines until "baseurl:"
-  일하면서 알게 된 것을 적어두는 블로그입니다.
-  제 티스토리, Qiita의 자료를 조금씩 옮겨올 예정입니다.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username:
-github_username:
+
+author:
+  name:           'Youngjae Kwon'
+  url:            ""
+  # gravatar:       https://en.gravatar.com/yourname
+  # photo:          http://2.gravatar.com/avatar/00000000000000000000000000000000?size=350
+  introduction:   '일하면서 알게 된 것을 적어두는 블로그입니다. 제 티스토리, Qiita의 자료를 조금씩 옮겨올 예정입니다.'
 
 # Build settings
 markdown: kramdown
 kramdown:
   input: GFM
+
+paginate:         5
+paginate_path:    '/blog/page:num'
 
 theme: minima
 encoding: utf-8

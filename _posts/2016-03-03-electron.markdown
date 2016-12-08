@@ -7,11 +7,11 @@ category: Electron
 ## Electronとは
 * 旧)Atom Shell
 * Node.jsに基づいた**Desktop Application Flatform**
-    * HTML, CSS, JavaScriptで、Cross-Flatformで 動くDesktop Applicationを作れる
-    * WebPageのGUIとjavascriptで操作する**[Chromium Browser](https://www.chromium.org/Home)**
+  * HTML, CSS, JavaScriptで、Cross-Flatformで 動くDesktop Applicationを作れる
+  * WebPageのGUIとjavascriptで操作する**[Chromium Browser](https://www.chromium.org/Home)**
 
 * Desktop Application : 似た技術として**[NW.js (node-webkit)](http://nwjs.io/)**が存在
-    * 技術的な違いについては、[ここ](http://qiita.com/SFPGMR/items/afe8ac0bfad95e5ed50d)を参考
+  * 技術的な違いについては、[ここ](http://qiita.com/SFPGMR/items/afe8ac0bfad95e5ed50d)を参考
 
 * Electronで作られたアプリについては、**[Awesome Electron](https://github.com/sindresorhus/awesome-electron)** 参照
 
@@ -24,24 +24,24 @@ category: Electron
 
 ### 基本設定
 * 装置１スペック
-    * CPU : i3-4000M 2.40GHz
-    * RAM : 4.0GB
-    * OS : Microsoft Windows 8.1 Enterprise K 64Bit
-    * Electron Version： 0.36.8
+  * CPU : i3-4000M 2.40GHz
+  * RAM : 4.0GB
+  * OS : Microsoft Windows 8.1 Enterprise K 64Bit
+  * Electron Version： 0.36.8
 
 * 装置２スペック
-    * CPU : i3-3240 3.40GHz
-    * RAM : 4.0GB
-    * OS : Microsoft Windows 7 Professional SP1 32Bit
-    * Electron Version： 0.36.8
+  * CPU : i3-3240 3.40GHz
+  * RAM : 4.0GB
+  * OS : Microsoft Windows 7 Professional SP1 32Bit
+  * Electron Version： 0.36.8
 
 ### 下準備
 * **[Node.js](https://nodejs.org/en/#download)** : Stable Version (v.5.7.1)
-    * npmを使うので、**Node.js**の設置は必須！
-    * Windowsのバージョンに合わせて、msiファイルをダウンロードし、設置するだけでＯＫ
+  * npmを使うので、**Node.js**の設置は必須！
+  * Windowsのバージョンに合わせて、msiファイルをダウンロードし、設置するだけでＯＫ
 * **Node.js**の設置確認
-    * cmd > node
-    * 簡単なjavascriptコードを入力し、テスト
+  * cmd > node
+  * 簡単なjavascriptコードを入力し、テスト
 
 
   ![cmdTest.png](https://qiita-image-store.s3.amazonaws.com/0/114660/9538d2ae-2bd3-1729-b39b-362c2baf2213.png)
@@ -84,19 +84,19 @@ your-app/
 
 #### プロジェクト生成
 * Electronは、実行されるときに「package.json」のmain scriptを呼び出す。
-    * **main script**：main processで作動し、GUI Component操作・Web Page生成
+  * **main script**：main processで作動し、GUI Component操作・Web Page生成
 * **npm init**で**package.json**を作成
-    * 何を言ってるのか全然理解できなかったら、ただ**Enter**だけ押せばほとんどＯＫ
-        *ここではプロジェクト名を**electron**に設定
-    * ただ、**entry point**には必ず「**main.js**」を設定すること！
-        * もし**package.json**に**main script**tが設定されてない場合、
-          Electronは自動で同じディレクトリーの**index.js**をロードする
+  * 何を言ってるのか全然理解できなかったら、ただ**Enter**だけ押せばほとんどＯＫ
+    *ここではプロジェクト名を**electron**に設定
+  * ただ、**entry point**には必ず「**main.js**」を設定すること！
+    * もし**package.json**に**main script**tが設定されてない場合、
+      Electronは自動で同じディレクトリーの**index.js**をロードする
 
 
-    ![initProject.png](https://qiita-image-store.s3.amazonaws.com/0/114660/94b55d28-f7c0-1732-f0e6-3a8828946064.png)
+  ![initProject.png](https://qiita-image-store.s3.amazonaws.com/0/114660/94b55d28-f7c0-1732-f0e6-3a8828946064.png)
 
 
-    上の作業で、下のような「package.json」が生成される
+  上の作業で、下のような「package.json」が生成される
 
 
 ```javascript
@@ -161,7 +161,7 @@ app.on('ready', function() {
 ```
 
 * **main.js**が**index.html**を呼ぶことにしたので、今度は**index.html**を作成する。
-    * 実際目に見える部分はここで作成する。
+  * 実際目に見える部分はここで作成する。
 
 **index.html**
 
@@ -191,24 +191,22 @@ app.on('ready', function() {
 #### Packaging
 * プロジェクトを誰でも使えるように、パッケージ化してみよう。
 * ここでは、**[electron-packager](https://github.com/electron-userland/electron-packager)**を使って作業。
-    * これも**npm**でもってこればＯＫ
+  * これも**npm**でもってこればＯＫ
 
+  ![packager.png](https://qiita-image-store.s3.amazonaws.com/0/114660/d4f682f7-fba3-3b5c-5bc4-a7709c1bf286.png)
 
-    ![packager.png](https://qiita-image-store.s3.amazonaws.com/0/114660/d4f682f7-fba3-3b5c-5bc4-a7709c1bf286.png)
-
+  これでダウンロード終わり。
 
 **早速使ってみよう**
 
-    ![packager2.png](https://qiita-image-store.s3.amazonaws.com/0/114660/0886a369-3c43-60d1-0836-bac84197bbd9.png)
-
+  ![packager2.png](https://qiita-image-store.s3.amazonaws.com/0/114660/0886a369-3c43-60d1-0836-bac84197bbd9.png)
 
 この通り、electron-win32-ia32とelectron-win32-x64フォルダが生成された。
 書いた内容を説明すると…
 
->
-  platform : all, linux, win32, darwin
-  arch : all, ia32, x64
-  version : Electronのバージョン (現在0.36.8)
+platform : all, linux, win32, darwin
+arch : all, ia32, x64
+version : Electronのバージョン (現在0.36.8)
 
 ここでallを選んだので、フォルダが32と64の二つができた。
 
@@ -238,33 +236,33 @@ app.on('ready', function() {
 
 #### 2-1. Atom
 * Atom ダウンロード (https://atom.io)
-    * Windowsのバージョンに合わせてインストールするだけでＯＫ
+  * Windowsのバージョンに合わせてインストールするだけでＯＫ
 * Packageの設置 (File→Settings→InstallでPackage検索)
-    * **linter** : 文法上のエラー表示
-    * **grunt-runner** : AtomでGrunt実行
-    * **minimap**, **minimap-find-and-replace** : minimapが見える
-    * **atom-minify** : JS, CSSの圧縮化 (ctrl+shift+m or 「Minify on save」設定)
+  * **linter** : 文法上のエラー表示
+  * **grunt-runner** : AtomでGrunt実行
+  * **minimap**, **minimap-find-and-replace** : minimapが見える
+  * **atom-minify** : JS, CSSの圧縮化 (ctrl+shift+m or 「Minify on save」設定)
 
 ![package-atom.png](https://qiita-image-store.s3.amazonaws.com/0/114660/7961b67e-3203-7b9e-efbb-8ed7bb134693.png)
 
 
 #### 2-2. Grunt
 * **Grunt**とは？
-    * プロジェクト自動化のための**Command Line Build Tool**
-    * **パッケージ管理者** (Yeoman , Bower , Gulp等と同じ)
-    * もっとも基本的な自動化パッケージ
+  * プロジェクト自動化のための**Command Line Build Tool**
+  * **パッケージ管理者** (Yeoman , Bower , Gulp等と同じ)
+  * もっとも基本的な自動化パッケージ
 
 * **grunt-cli (Grunt's Command Line Interface) 設置**
-    * grunt-cliの設置で、システム経路に「grunt」コマンドが追加され、gruntが使えるようになる。
-    * grunt-cliの役割はただ**Gruntflie**というファイルがある場所に設置されたGruntを実行するだけ。
+  * grunt-cliの設置で、システム経路に「grunt」コマンドが追加され、gruntが使えるようになる。
+  * grunt-cliの役割はただ**Gruntflie**というファイルがある場所に設置されたGruntを実行するだけ。
 
 ![grunt-cli.png](https://qiita-image-store.s3.amazonaws.com/0/114660/4f6a6aa6-c214-c80c-6f92-ba90c957b50c.png)
 
 * **Grunt Module 設置方法** (package.jsonがあるディレクトリで設置)
-    * 新しいModuleを設置し、package.jsonに記入 : `npm install grunt --save dev`
-    * すでにpackage.jsonに記入されているModuleを設置 : `npm install`
-    (package.jsonとGruntfile.jsがあれば、どこでも同じgrunt作業が可能！)
-    * ここでは2の方法でプロジェクト作成
+  * 新しいModuleを設置し、package.jsonに記入 : `npm install grunt --save dev`
+  * すでにpackage.jsonに記入されているModuleを設置 : `npm install`
+  (package.jsonとGruntfile.jsがあれば、どこでも同じgrunt作業が可能！)
+  * ここでは2の方法でプロジェクト作成
 
 
 ### 3. Project作成
@@ -334,7 +332,7 @@ C:\PROJECT\MEMO
     ├─grunt-includes
     ├─load-grunt-tasks
     ├─moment
-    └─time-grunt                        
+    └─time-grunt
 ```
 
 css・fonts・libフォルダには、
@@ -586,27 +584,27 @@ function loadTxt(){
 
 #### 3-3. プロジェクト作成
 * **node_modules** インストール
-    * **package.json**に**devDependencies**として定義されているmoduleを全部インストールする。
-    * `C:\PROJECT`にて`npm install`
+  * **package.json**に**devDependencies**として定義されているmoduleを全部インストールする。
+  * `C:\PROJECT`にて`npm install`
 * **Atom Minify**で**memo.min.js**作成
-    * **atom-minify**の設定で「Minify on save」を設定すると、保存する時に自動でmemo.min.jsを生成
-    * この画面が出ればＯＫ。
+  * **atom-minify**の設定で「Minify on save」を設定すると、保存する時に自動でmemo.min.jsを生成
+  * この画面が出ればＯＫ。
 
-    ![success_minify.png](https://qiita-image-store.s3.amazonaws.com/0/114660/8f5e7196-8a67-4c43-b506-387b6b29733d.png)
+  ![success_minify.png](https://qiita-image-store.s3.amazonaws.com/0/114660/8f5e7196-8a67-4c43-b506-387b6b29733d.png)
 
 
 * **Grunt Runner**で**Grunt**を**Default**で動かす
-    * Gruntは勉強用で入れたのがほとんどで、実際この作業で必須なのは**includes**だけ。
-    * **link.html**、**memo.html**を**index.html**に含め、**/app/view/index.html**を作成
-    * この画面が出ればＯＫ。
+  * Gruntは勉強用で入れたのがほとんどで、実際この作業で必須なのは**includes**だけ。
+  * **link.html**、**memo.html**を**index.html**に含め、**/app/view/index.html**を作成
+  * この画面が出ればＯＫ。
 
-    ![grunt_success.png](https://qiita-image-store.s3.amazonaws.com/0/114660/948088db-b20f-aca4-4e34-10c76f657e1e.png)
+  ![grunt_success.png](https://qiita-image-store.s3.amazonaws.com/0/114660/948088db-b20f-aca4-4e34-10c76f657e1e.png)
 
 
 * `C:\PROJECT`にて`electron memo/`で動作確認
-    * この画面が出ればＯＫ。
+  * この画面が出ればＯＫ。
 
-    ![run_electron.png](https://qiita-image-store.s3.amazonaws.com/0/114660/630480d2-b2bf-8412-a4a1-84ef57289ace.png)
+  ![run_electron.png](https://qiita-image-store.s3.amazonaws.com/0/114660/630480d2-b2bf-8412-a4a1-84ef57289ace.png)
 
 
 ### 4. パッケージング・動作確認
@@ -628,18 +626,16 @@ C:\project>
 ![complete.png](https://qiita-image-store.s3.amazonaws.com/0/114660/eed83335-c18b-b816-244c-158be4a3d9c4.png)
 
 
-* * *
-
 ## まとめ
 * すごく簡単！
-    * Web Pageを作る感覚で、普通にDesktop Applicationが作れる。
-    * 環境設定に時間がかからないのもメリット
-        * 以前のHadoopの時を考えたら…
-        * 特にWindowsでも簡単にできるのが嬉い。
+  * Web Pageを作る感覚で、普通にDesktop Applicationが作れる。
+  * 環境設定に時間がかからないのもメリット
+    * 以前のHadoopの時を考えたら…
+    * 特にWindowsでも簡単にできるのが嬉い。
 
 * Creatorとしての喜び
-    * こうやって簡単にアプリを作れるから、創作意欲が沸く。
-    * 自分に必要な物は、自分で作ってみよう！
+  * こうやって簡単にアプリを作れるから、創作意欲が沸く。
+  * 自分に必要な物は、自分で作ってみよう！
 
 
 ## 参考

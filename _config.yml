@@ -10,6 +10,9 @@ github_username:
 
 # Build settings
 markdown: kramdown
+kramdown:
+  input: GFM
+
 theme: minima
 encoding: utf-8
 gems:

@@ -25,4 +25,5 @@ group :jekyll_plugins do
    gem 'jekyll-paginate'
    gem 'jekyll-mentions'
    gem 'jekyll-sitemap'
+   gem "jekyll-gist"
 end

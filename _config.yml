@@ -1,28 +1,89 @@
-title: 외국인 노동자의 SE Diary
-email:
+title:            외국인 노동자의 SE Diary
+description:      일하면서 알게 된 것을 적어두는 블로그입니다. 제 티스토리, Qiita의 자료를 조금씩 옮겨올 예정입니다.
+disqus_shortname: idenrai
+reading_time:     true
+words_per_minute: 200
 
-author:
-  name:           'Youngjae Kwon'
-  url:            ""
-  # gravatar:       https://en.gravatar.com/yourname
-  # photo:          http://2.gravatar.com/avatar/00000000000000000000000000000000?size=350
-  introduction:   '일하면서 알게 된 것을 적어두는 블로그입니다. 제 티스토리, Qiita의 자료를 조금씩 옮겨올 예정입니다.'
+# When testing locally leave blank or use http://localhost:4000
+url:https://idenrai.github.io/
 
-# Build settings
-markdown: kramdown
+# Owner/author information
+owner:
+  name:           Youngjae Kwon
+  avatar:         avatar.jpg
+  bio:
+  email:
+  # Social networking links used in footer. Update and remove as you like.
+  twitter:
+  facebook:
+  github:
+  stackexchange:
+  linkedin:
+  instagram:
+  flickr:
+  tumblr:
+  # google plus id, include the '+', eg +mmistakes
+  google_plus:
+
+# Background image to be tiled on all pages
+background:
+
+# Analytics and webmaster tools stuff goes here
+google_analytics:
+google_verify:
+# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
+bing_verify:
+
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone:    Asia/Seoul
+future:      false  # publish future dated posts --  true, false (default)
+highlighter: rouge
+markdown:    kramdown
+gems:
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-gist
+  - jekyll-feed
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# https://github.com/mojombo/jekyll/wiki/Permalinks
+permalink:   /:categories/:title/
+
+# Amount of post to show on home page
+paginate: 5
+
 kramdown:
   input: GFM
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  enable_coderay: false
 
-paginate:         5
-paginate_path:    '/blog/page:num'
-
-theme: minima
-encoding: utf-8
-gems:
-  - jekyll-feed
-  - jekyll-mentions
-  - jekyll-sitemap
-  - jekyll-archives
+include:
+  - .htaccess
 exclude:
+  - "*.less"
+  - "*.sublime-project"
+  - "*.sublime-workspace"
+  - .asset-cache
+  - .bundle
+  - .jekyll-assets-cache
+  - .sass-cache
+  - CHANGELOG
+  - Capfile
   - Gemfile
-  - Gemfile.lock
+  - Gruntfile.js
+  - LICENSE
+  - README
+  - Rakefile
+  - config
+  - gulpfile.js
+  - lib
+  - log
+  - node_modules
+  - package.json
+  - spec
+  - tmp

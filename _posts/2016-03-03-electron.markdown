@@ -3,6 +3,7 @@ layout: post
 title: 初めてのElectron
 category: Electron
 comments: true
+share: false
 ---
 
 ## Electronとは

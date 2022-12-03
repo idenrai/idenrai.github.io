@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 강의 1. 저는 일본 사람이에요.
+title: 한국어 교재 강의 1
 category: 한국어 교재
 comments: true
 share: false

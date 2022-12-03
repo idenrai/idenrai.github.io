@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 한국어 교재 강의 1
-category: 한국어 교재
+category: Korean
 comments: true
 share: false
 ---

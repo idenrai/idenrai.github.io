@@ -1,2 +1,3 @@
-# idenrai.github.io
-[외국인 노동자의 SE Diary](https://idenrai.github.io/)
+# Personal Webpage
+- [Main blog](https://idenrai.tistory.com/)
+- [Sub blog](https://idenrai.github.io/)

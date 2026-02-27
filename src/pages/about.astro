@@ -1,46 +1,153 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+
+const skills = [
+  { category: '언어', items: ['Python', 'JavaScript / TypeScript', 'Java', 'SQL'] },
+  { category: '프론트엔드', items: ['React', 'Svelte', 'HTML / CSS'] },
+  { category: '백엔드 / 배치', items: ['Node.js', 'REST API 설계', '배치 처리', '帳票 (JasperReport / iReport)'] },
+  { category: '데이터', items: ['Databricks', 'AWS Glue', 'Athena', 'Redshift', 'PostgreSQL', 'Oracle', 'MSSQL'] },
+  { category: '클라우드 / 인프라', items: ['AWS (Lambda, RDS, S3, EventBridge, Secrets Manager 등)', 'Azure (AI Search)', 'Docker', 'Linux'] },
+  { category: 'AI', items: ['Generative AI PoC', 'Azure OpenAI / ChatGPT 연동', 'RAG 구현', 'Azure AI Search'] },
+  { category: '프로세스', items: ['애자일 / 스크럼', 'Scrum Master', 'CI/CD', 'Playwright / Selenium (테스트 자동화)'] },
+];
+
+const career = [
+  {
+    period: '현재',
+    company: '딜로이트 토마츠 컨설팅 합동회사',
+    role: 'Data / AI Engineer',
+    desc: '데이터 분석 기반 운용, 사내 ChatGPT 개발, Generative AI 관련 각종 PoC, Databricks를 활용한 데이터 기반 구축 등 엔지니어로 활동 중.',
+    tags: ['Databricks', 'Python', 'Azure OpenAI', 'AWS', 'Generative AI'],
+  },
+  {
+    period: '',
+    company: '액센추어 주식회사',
+    role: 'Software Engineer',
+    desc: 'React를 활용한 프론트엔드 개발, 고객사 신입사원 대상 프로그래밍 연수 강사를 담당. AI 딜리버리 팀의 일원으로 사내외 AI 관련 프로젝트에 참여하여 최신 기술을 활용한 솔루션 제공에 기여.',
+    tags: ['React', 'TypeScript', 'AI', 'Frontend'],
+  },
+  {
+    period: '',
+    company: '일본계 독립 SIer',
+    role: 'Software Engineer',
+    desc: '한국 대학 졸업 후 일본 독립계 SIer에 입사. SE로서 상세 설계·개발·테스트까지 일련의 프로세스를 경험. FE/BE 개발부터 배치, 帳票 작성(JasperReport/iReport)까지 다양한 프로젝트에 참여하며 폭넓은 스킬을 습득.',
+    tags: ['Java', 'JavaScript', 'jQuery', 'Oracle', 'MSSQL', 'iReport'],
+  },
+];
 ---
 
-<PageLayout title="소개" description="안녕하세요, Youngjae Kwon입니다.">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
-      <h1 class="text-3xl font-extrabold text-gray-900 dark:text-gray-50 mb-10">소개</h1>
+<PageLayout title="소개" description="도쿄에서 일하는 소프트웨어 엔지니어 권영재입니다.">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
 
-      <div class="prose dark:prose-invert prose-gray max-w-none">
-        <h2>안녕하세요 👋</h2>
-        <p>
-          일본에서 일하는 소프트웨어 엔지니어 <strong>Youngjae Kwon (권영재)</strong>입니다.
-        </p>
-        <p>
-          이 블로그는 일하면서 배운 기술적인 내용들을 정리하는 공간입니다.
-          주로 백엔드, 인프라, 클라우드 관련 내용을 다룹니다.
-        </p>
-
-        <h2>경력</h2>
-        <ul>
-          <li>Software Engineer @ 일본 IT 기업</li>
-          <li>Backend / Infrastructure / Cloud</li>
-        </ul>
-
-        <h2>기술 스택</h2>
-        <ul>
-          <li><strong>언어:</strong> Python, Java, Go, TypeScript</li>
-          <li><strong>인프라:</strong> Kubernetes, Docker, Linux</li>
-          <li><strong>클라우드:</strong> AWS</li>
-          <li><strong>기타:</strong> CI/CD, Observability, Developer Tools</li>
-        </ul>
-
-        <h2>링크</h2>
-        <ul>
-          <li><a href="https://github.com/idenrai" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-        </ul>
-
-        <h2>이 블로그에 대해</h2>
-        <p>
-          <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a>와
-          Tailwind CSS로 만들었습니다.
-          GitHub Actions로 자동 배포됩니다.
-        </p>
-      </div>
+    <!-- Hero -->
+    <div class="mb-16">
+      <h1 class="text-4xl font-extrabold text-gray-900 dark:text-gray-50 mb-3">
+        권영재 <span class="text-xl font-normal text-gray-400 dark:text-gray-500">Youngjae Kwon</span>
+      </h1>
+      <p class="text-accent-600 dark:text-accent-400 font-semibold mb-5">Software / Data / AI Engineer — Tokyo, Japan</p>
+      <p class="text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl">
+        한국에서 태어나 일본에서 커리어를 쌓아온 소프트웨어 엔지니어입니다.
+        SIer에서 시작해 컨설팅 펌까지, 웹 시스템 개발·프론트엔드·데이터 엔지니어링·Generative AI까지 폭넓은 분야를 경험해 왔습니다.
+        이 블로그는 일하면서 배우고 부딪힌 것들을 기록하는 공간입니다.
+      </p>
     </div>
+
+    <!-- 경력 -->
+    <section class="mb-16">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6 flex items-center gap-2">
+        <span class="w-1 h-5 rounded-full bg-accent-500 inline-block"></span>
+        경력
+      </h2>
+      <div class="space-y-8">
+        {career.map((item, i) => (
+          <div class="flex gap-5">
+            <div class="flex flex-col items-center">
+              <div class={`w-3 h-3 rounded-full mt-1 shrink-0 ${i === 0 ? 'bg-accent-500' : 'bg-gray-300 dark:bg-gray-600'}`} />
+              {i < career.length - 1 && <div class="w-px flex-1 bg-gray-200 dark:bg-gray-700 mt-2" />}
+            </div>
+            <div class="pb-2">
+              <p class="font-bold text-gray-900 dark:text-gray-100">{item.company}</p>
+              <p class="text-sm text-accent-600 dark:text-accent-400 mb-2">{item.role}</p>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-3">{item.desc}</p>
+              <div class="flex flex-wrap gap-1.5">
+                {item.tags.map(tag => (
+                  <span class="px-2 py-0.5 rounded text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 기술 스택 -->
+    <section class="mb-16">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6 flex items-center gap-2">
+        <span class="w-1 h-5 rounded-full bg-accent-500 inline-block"></span>
+        기술 스택
+      </h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        {skills.map(({ category, items }) => (
+          <div class="rounded-xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 p-4">
+            <p class="text-xs font-semibold text-accent-600 dark:text-accent-400 uppercase tracking-wider mb-3">{category}</p>
+            <div class="flex flex-wrap gap-1.5">
+              {items.map(item => (
+                <span class="px-2.5 py-1 rounded-md text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 링크 -->
+    <section class="mb-16">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
+        <span class="w-1 h-5 rounded-full bg-accent-500 inline-block"></span>
+        링크
+      </h2>
+      <div class="flex flex-wrap gap-3">
+        <a
+          href="https://github.com/idenrai"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-secondary"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.607.069-.607 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.841-2.337 4.687-4.565 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.742 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+          </svg>
+          GitHub
+        </a>
+        <a
+          href="https://idenrai.tistory.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-secondary"
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+          </svg>
+          Tistory
+        </a>
+      </div>
+    </section>
+
+    <!-- 이 블로그에 대해 -->
+    <section>
+      <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
+        <span class="w-1 h-5 rounded-full bg-accent-500 inline-block"></span>
+        이 블로그에 대해
+      </h2>
+      <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+        <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="text-accent-600 dark:text-accent-400 hover:underline">Astro</a> +
+        Tailwind CSS로 구축하고 GitHub Actions로 자동 배포합니다.
+        포스트는 <a href="https://idenrai.tistory.com" target="_blank" rel="noopener noreferrer" class="text-accent-600 dark:text-accent-400 hover:underline">Tistory 원본 블로그</a>와 동기화됩니다.
+      </p>
+    </section>
+
+  </div>
 </PageLayout>

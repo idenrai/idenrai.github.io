@@ -1,9 +1,12 @@
 /**
  * scripts/sync-tistory.mjs
  *
- * Tistory RSS → Astro content/blog 동기화 스크립트
- * 실행: npm run sync-tistory
+ * Tistory (또는 임의의) RSS → Astro content/blog 동기화 스크립트
+ * 실행: node scripts/sync-tistory.mjs <tistory-url>
+ *   예) node scripts/sync-tistory.mjs https://idenrai.tistory.com
+ *       node scripts/sync-tistory.mjs https://example.tistory.com/rss
  *
+ * - URL을 생략하면 기본값 https://idenrai.tistory.com 사용
  * - 이미 존재하는 파일은 건너뜀 (중복 방지)
  * - RSS에서 제공하는 최근 포스트를 가져와 MD 파일로 저장
  */
@@ -13,7 +16,25 @@ import TurndownService from "turndown";
 import fs from "fs/promises";
 import path from "path";
 
-const RSS_URL = "https://idenrai.tistory.com/rss";
+const DEFAULT_URL = "https://idenrai.tistory.com";
+
+/** 입력 URL에서 RSS 피드 URL 생성 */
+function resolveRssUrl(input) {
+  // 이미 /rss 로 끝나면 그대로 사용
+  if (/\/rss$/.test(input)) return input;
+  // 끝에 /rss 붙이기 (trailing slash 처리)
+  return input.replace(/\/$/, "") + "/rss";
+}
+
+const rawArg = process.argv[2];
+if (rawArg === "--help" || rawArg === "-h") {
+  console.log("사용법: node scripts/sync-tistory.mjs [tistory-url]");
+  console.log("  예)  node scripts/sync-tistory.mjs https://idenrai.tistory.com");
+  console.log(`  생략 시 기본값: ${DEFAULT_URL}`);
+  process.exit(0);
+}
+
+const RSS_URL = resolveRssUrl(rawArg || DEFAULT_URL);
 const OUTPUT_DIR = path.resolve("src/content/blog");
 
 // --- Turndown 설정 ---

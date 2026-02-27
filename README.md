@@ -40,19 +40,6 @@ node scripts/sync-tistory.mjs https://example.tistory.com/rss
 - 이미 존재하는 파일은 스킵 (중복 방지)
 - 파일명: `{날짜}-{title-slug}.md`
 
-### HTML 백업 일괄 변환
-
-Tistory 백업 HTML 파일을 Astro MD 파일로 일괄 변환합니다.
-
-```bash
-node scripts/import-backup.mjs
-```
-
-- 백업 폴더 경로: `idenrai-1-1/` (프로젝트 루트, `.gitignore`에 포함)
-- 폴더 구조: `idenrai-1-1/{번호}/{번호}-제목.html`
-- colorscripter 코드 블록 → fenced 코드 블록 자동 변환
-- 파일명: `{날짜}-{title-slug}.md`
-
 ## 프로젝트 구조
 
 ```

@@ -16,9 +16,8 @@ const formattedDate = formatDate(date);
 <article class="card group">
   <a href={`/blog/${slug}`} class="block">
     <div class="flex flex-wrap gap-2 mb-3">
-      {tags.slice(0, 3).map((tag) => (
-        <span class="tag-badge">{tag}</span>
-      ))}
+      {tags[0] && <span class="tag-badge">{tags[0]}</span>}
+      {tags[1] && <span class="tag-badge opacity-75">{tags[1]}</span>}
     </div>
     <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors leading-snug mb-2">
       {title}

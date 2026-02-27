@@ -20,11 +20,16 @@ const formattedDate = formatDate(date);
       <!-- 포스트 헤더 -->
       <header class="mb-10 pb-10 border-b border-gray-100 dark:border-gray-800">
         <div class="flex flex-wrap gap-2 mb-4">
-          {tags.map((tag) => (
-            <a href={`/tags/${tag}`} class="tag-badge hover:opacity-80 transition-opacity">
-              {tag}
+          {tags[0] && (
+            <a href="/blog" class="tag-badge hover:opacity-80 transition-opacity">
+              {tags[0]}
             </a>
-          ))}
+          )}
+          {tags[1] && (
+            <a href="/blog" class="tag-badge opacity-75 hover:opacity-100 transition-opacity">
+              {tags[1]}
+            </a>
+          )}
         </div>
         <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-gray-50 leading-tight mb-4">
           {title}

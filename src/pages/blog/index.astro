@@ -1,83 +1,193 @@
 ---
 import { getCollection } from 'astro:content';
 import PageLayout from '../../layouts/PageLayout.astro';
-import PostCard from '../../components/PostCard.astro';
+import { formatDate } from '../../utils/date';
 
 const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-// 태그 목록
-const allTags = [...new Set(allPosts.flatMap((p) => p.data.tags))].sort();
-
-// URL 쿼리에서 태그 필터
-const filterTag = Astro.url.searchParams.get('tag');
-const posts = filterTag
-  ? allPosts.filter((p) => p.data.tags.includes(filterTag))
-  : allPosts;
+// tags[0] = 대분류, tags[1] = 소분류
+const mainCats = [...new Set(allPosts.map((p) => p.data.tags[0]).filter(Boolean))];
 ---
 
 <PageLayout title="블로그" description="개발하면서 배운 것들을 기록합니다.">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
-      <div class="flex items-end justify-between mb-10">
-        <div>
-          <h1 class="text-3xl font-extrabold text-gray-900 dark:text-gray-50 mb-2">블로그</h1>
-          <p class="text-gray-500 dark:text-gray-500 text-sm">
-            총 {allPosts.length}개의 글
-          </p>
-        </div>
+
+    <div class="flex items-end justify-between mb-8">
+      <div>
+        <h1 class="text-3xl font-extrabold text-gray-900 dark:text-gray-50 mb-2">블로그</h1>
+        <p class="text-gray-500 dark:text-gray-500 text-sm">
+          총 <span id="post-count">{allPosts.length}</span>개의 글
+        </p>
       </div>
-
-      <!-- 태그 필터 -->
-      {allTags.length > 0 && (
-        <div class="flex flex-wrap gap-2 mb-8">
-          <a
-            href="/blog"
-            class:list={[
-              'px-3 py-1 rounded-full text-sm font-medium transition-colors',
-              !filterTag
-                ? 'bg-accent-600 text-white'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700',
-            ]}
-          >
-            전체 ({allPosts.length})
-          </a>
-          {allTags.map((tag) => {
-            const count = allPosts.filter((p) => p.data.tags.includes(tag)).length;
-            return (
-              <a
-                href={`/blog?tag=${encodeURIComponent(tag)}`}
-                class:list={[
-                  'px-3 py-1 rounded-full text-sm font-medium transition-colors',
-                  filterTag === tag
-                    ? 'bg-accent-600 text-white'
-                    : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700',
-                ]}
-              >
-                {tag} ({count})
-              </a>
-            );
-          })}
-        </div>
-      )}
-
-      <!-- 포스트 목록 -->
-      {posts.length > 0 ? (
-        <div class="grid gap-4">
-          {posts.map((post) => (
-            <PostCard
-              title={post.data.title}
-              description={post.data.description}
-              date={post.data.date}
-              tags={post.data.tags}
-              slug={post.slug}
-            />
-          ))}
-        </div>
-      ) : (
-        <div class="text-center py-20 text-gray-400 dark:text-gray-600">
-          <p class="text-4xl mb-4">🔍</p>
-          <p>해당 태그의 포스트가 없습니다.</p>
-        </div>
-      )}
     </div>
+
+    <!-- 대분류 필터 -->
+    <div class="flex flex-wrap gap-2 mb-3" id="main-cats">
+      <button
+        data-main=""
+        class="cat-btn cat-main active px-3 py-1.5 rounded-lg text-sm font-medium transition-colors bg-accent-600 text-white"
+      >
+        전체 ({allPosts.length})
+      </button>
+      {mainCats.map((cat) => {
+        const count = allPosts.filter((p) => p.data.tags[0] === cat).length;
+        return (
+          <button
+            data-main={cat}
+            class="cat-btn cat-main px-3 py-1.5 rounded-lg text-sm font-medium transition-colors bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700"
+          >
+            {cat} ({count})
+          </button>
+        );
+      })}
+    </div>
+
+    <!-- 소분류 필터 (대분류 선택 시 표시) -->
+    <div id="sub-cats" class="hidden flex-wrap gap-2 mb-8 pl-1 border-l-2 border-accent-400/50">
+      <!-- JS로 동적 생성 -->
+    </div>
+
+    <!-- 포스트 목록 -->
+    <div class="grid gap-4" id="post-list">
+      {allPosts.map((post) => {
+        const mainCat = post.data.tags[0] ?? '';
+        const subCat = post.data.tags[1] ?? '';
+        return (
+          <article
+            class="post-item card group"
+            data-main={mainCat}
+            data-sub={subCat}
+          >
+            <a href={`/blog/${post.slug}`} class="block">
+              <div class="flex flex-wrap gap-2 mb-3">
+                {mainCat && <span class="tag-badge">{mainCat}</span>}
+                {subCat && <span class="tag-badge opacity-75">{subCat}</span>}
+              </div>
+              <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors leading-snug mb-2">
+                {post.data.title}
+              </h2>
+              {post.data.description && (
+                <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2 mb-4">
+                  {post.data.description}
+                </p>
+              )}
+              <time datetime={post.data.date.toISOString()} class="text-xs text-gray-400 dark:text-gray-600">
+                {formatDate(post.data.date)}
+              </time>
+            </a>
+          </article>
+        );
+      })}
+    </div>
+
+    <!-- 결과 없음 -->
+    <div id="empty-state" class="hidden text-center py-20 text-gray-400 dark:text-gray-600">
+      <p class="text-4xl mb-4">🔍</p>
+      <p>해당 카테고리의 포스트가 없습니다.</p>
+    </div>
+
+  </div>
 </PageLayout>
+
+<script>
+  // 포스트 데이터 수집
+  const posts = Array.from(document.querySelectorAll<HTMLElement>('.post-item'));
+  const postList = document.getElementById('post-list')!;
+  const emptyState = document.getElementById('empty-state')!;
+  const postCount = document.getElementById('post-count')!;
+  const subCatsEl = document.getElementById('sub-cats')!;
+
+  let selectedMain = '';
+  let selectedSub = '';
+
+  // 소분류 버튼 생성
+  function buildSubCats(main: string) {
+    const subs = [...new Set(
+      posts
+        .filter(p => p.dataset.main === main && p.dataset.sub)
+        .map(p => p.dataset.sub!)
+    )].sort();
+
+    if (subs.length === 0) {
+      subCatsEl.classList.add('hidden');
+      subCatsEl.classList.remove('flex');
+      return;
+    }
+
+    const allCount = posts.filter(p => p.dataset.main === main).length;
+    subCatsEl.innerHTML = `
+      <button data-sub="" class="cat-btn cat-sub active px-2.5 py-1 rounded-md text-xs font-medium transition-colors bg-accent-100 dark:bg-accent-900/40 text-accent-800 dark:text-accent-300">
+        전체 (${allCount})
+      </button>
+      ${subs.map(sub => {
+        const count = posts.filter(p => p.dataset.main === main && p.dataset.sub === sub).length;
+        return `<button data-sub="${sub}" class="cat-btn cat-sub px-2.5 py-1 rounded-md text-xs font-medium transition-colors bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700">${sub} (${count})</button>`;
+      }).join('')}
+    `;
+
+    subCatsEl.classList.remove('hidden');
+    subCatsEl.classList.add('flex');
+
+    // 소분류 이벤트 등록
+    subCatsEl.querySelectorAll<HTMLButtonElement>('.cat-sub').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedSub = btn.dataset.sub ?? '';
+        updateSubActive();
+        applyFilter();
+      });
+    });
+  }
+
+  function updateMainActive() {
+    document.querySelectorAll<HTMLButtonElement>('.cat-main').forEach(btn => {
+      const isActive = btn.dataset.main === selectedMain;
+      btn.className = `cat-btn cat-main px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+        isActive
+          ? 'bg-accent-600 text-white'
+          : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+      }`;
+    });
+  }
+
+  function updateSubActive() {
+    subCatsEl.querySelectorAll<HTMLButtonElement>('.cat-sub').forEach(btn => {
+      const isActive = btn.dataset.sub === selectedSub;
+      btn.className = `cat-btn cat-sub px-2.5 py-1 rounded-md text-xs font-medium transition-colors ${
+        isActive
+          ? 'bg-accent-100 dark:bg-accent-900/40 text-accent-800 dark:text-accent-300'
+          : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+      }`;
+    });
+  }
+
+  function applyFilter() {
+    let visible = 0;
+    posts.forEach(post => {
+      const matchMain = !selectedMain || post.dataset.main === selectedMain;
+      const matchSub = !selectedSub || post.dataset.sub === selectedSub;
+      const show = matchMain && matchSub;
+      post.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+    postCount.textContent = String(visible);
+    emptyState.classList.toggle('hidden', visible > 0);
+    postList.classList.toggle('hidden', visible === 0);
+  }
+
+  // 대분류 이벤트
+  document.querySelectorAll<HTMLButtonElement>('.cat-main').forEach(btn => {
+    btn.addEventListener('click', () => {
+      selectedMain = btn.dataset.main ?? '';
+      selectedSub = '';
+      updateMainActive();
+      if (selectedMain) {
+        buildSubCats(selectedMain);
+      } else {
+        subCatsEl.classList.add('hidden');
+        subCatsEl.classList.remove('flex');
+      }
+      applyFilter();
+    });
+  });
+</script>

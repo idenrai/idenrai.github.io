@@ -2,7 +2,7 @@
 title: "Databricks Git folder 추가하기"
 date: 2025-07-06
 description: "개요 Databricks Git folder는 Databricks 워크스페이스에서 Git 저장소를 직접 연동해 코드 버전 관리와 협업을 지원하는 기능. 이 도큐먼트에서는 간단한 설명 및 세팅, 조작 방법 등에 대해 "
-tags: ["Databricks", "databricks", "git folder", "git integration", "Github"]
+tags: ["Tech", "Databricks", "databricks", "git folder", "git integration", "Github"]
 tistory_url: "https://idenrai.tistory.com/301"
 ---
 
@@ -18,19 +18,19 @@ Databricks Git folder는 Databricks 워크스페이스에서 Git 저장소를 �
 
 **장점**
 
--   Databricks UI에서 Git 주요 기능(Clone, Commit, Push, Pull, 브랜치 관리, diff 등) 사용 가능
--   다양한 Git 제공자(GitHub, GitLab, Bitbucket 등) 지원
--   노트북, 코드 파일 등 다양한 파일 버전 관리
--   CI/CD 파이프라인 연동 및 자동화 가능
--   시각적 diff, 충돌 해결 등 협업에 유리
+- Databricks UI에서 Git 주요 기능(Clone, Commit, Push, Pull, 브랜치 관리, diff 등) 사용 가능
+- 다양한 Git 제공자(GitHub, GitLab, Bitbucket 등) 지원
+- 노트북, 코드 파일 등 다양한 파일 버전 관리
+- CI/CD 파이프라인 연동 및 자동화 가능
+- 시각적 diff, 충돌 해결 등 협업에 유리
 
 **단점**
 
--   복잡한 Git 작업(리베이스, 충돌 해결 등)은 제한적
--   네트워크, 인증(PAT, OAuth 등) 설정 필요
--   대용량 저장소/파일 처리 시 성능 저하 가능
--   일부 Git 워크플로(submodule 등) 미지원 또는 제약
--   폴더 권한 관리가 혼동될 수 있음
+- 복잡한 Git 작업(리베이스, 충돌 해결 등)은 제한적
+- 네트워크, 인증(PAT, OAuth 등) 설정 필요
+- 대용량 저장소/파일 처리 시 성능 저하 가능
+- 일부 Git 워크플로(submodule 등) 미지원 또는 제약
+- 폴더 권한 관리가 혼동될 수 있음
 
 ### Git folder 다루기
 

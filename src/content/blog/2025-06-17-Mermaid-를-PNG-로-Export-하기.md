@@ -2,7 +2,7 @@
 title: "Mermaid 를 PNG 로 Export 하기"
 date: 2025-06-17
 description: "개요 mermaid-cli 를 이용하여, Mermaid 로 만든 차트를 PNG 파일로 출력하기 상세 이전 포스팅에서 Mermaid 를 소개한 적이 있다. 현재 업무에서도 VSCode 를 이용하여 Mermaid 로 차"
-tags: ["Design", "markdown", "Mermaid", "MMD"]
+tags: ["Tech", "Design", "markdown", "Mermaid", "MMD"]
 tistory_url: "https://idenrai.tistory.com/300"
 ---
 

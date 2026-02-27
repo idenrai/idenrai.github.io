@@ -2,7 +2,7 @@
 title: "dbt with AWS Codebuild"
 date: 2024-12-18
 description: ":::note info 수년전 회사 블로그에 적었던 내용을 적당히 클렌징 및 한국어로 번역해서 올림 ::: 개요 AWS Codebuild 를 이용하여, Git 상의 dbt project 를 스케줄 실행하는 방법을 간"
-tags: ["AWS for Data Engineering", "codebuild", "DBT"]
+tags: ["Tech", "AWS for Data Engineering", "codebuild", "DBT"]
 tistory_url: "https://idenrai.tistory.com/299"
 ---
 
@@ -16,8 +16,8 @@ AWS Codebuild 를 이용하여, Git 상의 dbt project 를 스케줄 실행하�
 
 아래의 순서로 실시
 
-1.  AWS CodeBuild 로 빌드 프로젝트를 만들어, buildspec.yml 파일 작성
-2.  AWS EventBridge 로 빌드 스케줄 설정
+1. AWS CodeBuild 로 빌드 프로젝트를 만들어, buildspec.yml 파일 작성
+2. AWS EventBridge 로 빌드 스케줄 설정
 
 ### AWS CodeBuild 로 빌드 프로젝트를 만들어, buildspec.yml 파일 작성
 
@@ -73,8 +73,8 @@ phases:
 
 자동으로 만들어진 IAM 롤에 대해선 아래의 권한 부여를 실시
 
--   Lake Formation
--   Athena
+- Lake Formation
+- Athena
 
 #### 결과
 
@@ -136,12 +136,12 @@ CodeBuild 에서의 dbt 실행이 검증되었으므로, 매일 갱신되는 원
 
 ### 헤맸던 부분
 
--   `profiles.yml` 의 설정 부분에서 꽤 고통스러웠음. 다들 보통은 Docker 를 사용하고 있어서 참조할 곳도 없고...
+- `profiles.yml` 의 설정 부분에서 꽤 고통스러웠음. 다들 보통은 Docker 를 사용하고 있어서 참조할 곳도 없고...
 
 ### 좋았던 점
 
--   dbt 와 AWS 만 있으면 간단히 ETL 작업 가능
--   CodeBuild 의 기동 타이밍을 지정할 수 있으므로 유용하게 사용 가능할 듯
--   이번엔 스케줄 지정이 목적이었기에 이런 느낌이었지만, 실전에서 사용할 때엔 아래와 같이 `Step Function`에서 돌리는 등으로도 사용 가능
+- dbt 와 AWS 만 있으면 간단히 ETL 작업 가능
+- CodeBuild 의 기동 타이밍을 지정할 수 있으므로 유용하게 사용 가능할 듯
+- 이번엔 스케줄 지정이 목적이었기에 이런 느낌이었지만, 실전에서 사용할 때엔 아래와 같이 `Step Function`에서 돌리는 등으로도 사용 가능
 
 ![](https://blog.kakaocdn.net/dn/KHTku/btsLmiA9Rnk/cxoZoSet2YTam27GQ8KZNK/img.png)

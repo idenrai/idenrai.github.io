@@ -2,7 +2,7 @@
 title: "dbt-duckdb"
 date: 2024-07-14
 description: "개요 dbt project 를 손쉽게 검증할 수 있도록 로컬 개발 환경을 구축하기 https://github.com/idenrai/templates/tree/main/dbt_duckdb_local 상세 아래의 순서로"
-tags: ["DB・SQL", "DBT", "duckdb", "local"]
+tags: ["Tech", "DB・SQL", "DBT", "duckdb", "local"]
 tistory_url: "https://idenrai.tistory.com/294"
 ---
 
@@ -16,9 +16,9 @@ dbt project 를 손쉽게 검증할 수 있도록 로컬 개발 환경을 구축
 
 아래의 순서로 기재
 
--   dbt
--   duckdb
--   dbt project 를 작성하여, duckdb 와 연계
+- dbt
+- duckdb
+- dbt project 를 작성하여, duckdb 와 연계
 
 ### dbt
 

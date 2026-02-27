@@ -2,7 +2,7 @@
 title: "DynamoDB Local"
 date: 2024-07-06
 description: "DynamoDB 를 로컬 환경에서 구동하기 https://hub.docker.com/r/amazon/dynamodb-local https://hub.docker.com/r/aaronshaf/dynamodb-admin"
-tags: ["AWS for Data Engineering", "Docker", "dynamoDB", "local"]
+tags: ["Tech", "AWS for Data Engineering", "Docker", "dynamoDB", "local"]
 tistory_url: "https://idenrai.tistory.com/292"
 ---
 

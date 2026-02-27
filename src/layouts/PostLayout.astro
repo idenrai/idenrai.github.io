@@ -1,7 +1,6 @@
 ---
-import BaseLayout from './BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import PageLayout from './PageLayout.astro';
+import { formatDate } from '../utils/date';
 
 interface Props {
   title: string;
@@ -13,17 +12,10 @@ interface Props {
 }
 
 const { title, description, date, tags = [], image, tistory_url } = Astro.props;
-
-const formattedDate = new Intl.DateTimeFormat('ko-KR', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-}).format(date);
+const formattedDate = formatDate(date);
 ---
 
-<BaseLayout title={title} description={description} image={image} type="article">
-  <Header />
-  <main class="flex-1">
+<PageLayout title={title} description={description} image={image} type="article">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
       <!-- 포스트 헤더 -->
       <header class="mb-10 pb-10 border-b border-gray-100 dark:border-gray-800">
@@ -86,6 +78,4 @@ const formattedDate = new Intl.DateTimeFormat('ko-KR', {
         )}
       </footer>
     </div>
-  </main>
-  <Footer />
-</BaseLayout>
+</PageLayout>

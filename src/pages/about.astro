@@ -1,12 +1,8 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 ---
 
-<BaseLayout title="소개" description="안녕하세요, Youngjae Kwon입니다.">
-  <Header />
-  <main class="flex-1">
+<PageLayout title="소개" description="안녕하세요, Youngjae Kwon입니다.">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
       <h1 class="text-3xl font-extrabold text-gray-900 dark:text-gray-50 mb-10">소개</h1>
 
@@ -47,6 +43,4 @@ import Footer from '../components/Footer.astro';
         </p>
       </div>
     </div>
-  </main>
-  <Footer />
-</BaseLayout>
+</PageLayout>

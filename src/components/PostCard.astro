@@ -1,4 +1,6 @@
 ---
+import { formatDate } from '../utils/date';
+
 interface Props {
   title: string;
   description?: string;
@@ -8,12 +10,7 @@ interface Props {
 }
 
 const { title, description, date, tags = [], slug } = Astro.props;
-
-const formattedDate = new Intl.DateTimeFormat('ko-KR', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-}).format(date);
+const formattedDate = formatDate(date);
 ---
 
 <article class="card group">

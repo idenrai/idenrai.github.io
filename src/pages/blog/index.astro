@@ -1,8 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import PageLayout from '../../layouts/PageLayout.astro';
 import PostCard from '../../components/PostCard.astro';
 
 const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
@@ -18,10 +16,8 @@ const posts = filterTag
   : allPosts;
 ---
 
-<BaseLayout title="블로그" description="개발하면서 배운 것들을 기록합니다.">
-  <Header />
-  <main class="flex-1">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+<PageLayout title="블로그" description="개발하면서 배운 것들을 기록합니다.">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
       <div class="flex items-end justify-between mb-10">
         <div>
           <h1 class="text-3xl font-extrabold text-gray-900 dark:text-gray-50 mb-2">블로그</h1>
@@ -84,6 +80,4 @@ const posts = filterTag
         </div>
       )}
     </div>
-  </main>
-  <Footer />
-</BaseLayout>
+</PageLayout>

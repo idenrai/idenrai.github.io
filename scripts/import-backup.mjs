@@ -13,6 +13,7 @@ import { JSDOM } from "jsdom";
 import fs from "fs/promises";
 import path from "path";
 import { glob } from "glob";
+import { titleToSlug, makeFileName } from "./utils.mjs";
 
 const BACKUP_DIR = path.resolve("idenrai-1-1");
 const OUTPUT_DIR = path.resolve("src/content/blog");
@@ -160,18 +161,6 @@ function toMarkdown(html) {
   // 연속 빈줄 정리
   md = md.replace(/\n{3,}/g, "\n\n");
   return md.trim();
-}
-
-/** title → 파일명용 슬러그 */
-function titleToSlug(title) {
-  return title
-    .trim()
-    .replace(/[\s\u3000]+/g, "-")
-    .replace(/[<>:"/\\|?*]/g, "")
-    .replace(/[#%&{}[\]^`~!@$();,]/g, "")
-    .replace(/\.{2,}/g, ".")
-    .replace(/-{2,}/g, "-")
-    .replace(/^[-.]|[-.]$/g, "");
 }
 
 /** frontmatter 생성 */

@@ -13,6 +13,7 @@ import Parser from "rss-parser";
 import TurndownService from "turndown";
 import fs from "fs/promises";
 import path from "path";
+import { makeFileName } from "./utils.mjs";
 
 /** 입력 URL에서 RSS 피드 URL 생성 */
 function resolveRssUrl(input) {
@@ -25,7 +26,9 @@ function resolveRssUrl(input) {
 const rawArg = process.argv[2];
 if (!rawArg || rawArg === "--help" || rawArg === "-h") {
   console.log("사용법: node scripts/sync-tistory.mjs <tistory-url>");
-  console.log("  예)  node scripts/sync-tistory.mjs https://example.tistory.com");
+  console.log(
+    "  예)  node scripts/sync-tistory.mjs https://example.tistory.com",
+  );
   process.exit(rawArg ? 0 : 1);
 }
 
@@ -67,25 +70,7 @@ turndown.addRule("clean-ke", {
   },
 });
 
-// --- title → 파일명용 슬러그 ---
-function titleToSlug(title) {
-  return title
-    .trim()
-    .replace(/[\s\u3000]+/g, "-")
-    .replace(/[<>:"/\\|?*]/g, "")
-    .replace(/[#%&{}[\]^`~!@$();,]/g, "")
-    .replace(/\.{2,}/g, ".")
-    .replace(/-{2,}/g, "-")
-    .replace(/^[-.]|[-.]$/g, "");
-}
-
-// --- title + date → 파일명 ---
-function makeFileName(title, date) {
-  const slug = titleToSlug(title);
-  return date ? `${date}-${slug}.md` : `${slug}.md`;
-}
-
-// --- 날짜 파싱 ---
+/** RSS 피드 URL 생성 */ 날짜 파싱 ---
 function parseDate(dateStr) {
   try {
     return new Date(dateStr).toISOString().split("T")[0];

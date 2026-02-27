@@ -1,8 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 import PostCard from '../components/PostCard.astro';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
@@ -21,10 +19,8 @@ const techStack = [
 ];
 ---
 
-<BaseLayout title="Home">
-  <Header />
-  <main class="flex-1">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+<PageLayout title="Home">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
 
       <!-- Hero Section -->
       <section class="py-20 sm:py-28">
@@ -130,6 +126,4 @@ const techStack = [
         )}
       </section>
     </div>
-  </main>
-  <Footer />
-</BaseLayout>
+</PageLayout>

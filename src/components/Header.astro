@@ -1,0 +1,98 @@
+---
+const navLinks = [
+  { href: '/', label: '홈' },
+  { href: '/blog', label: '블로그' },
+  { href: '/about', label: '소개' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-gray-100 dark:border-gray-800 bg-white/80 dark:bg-gray-950/80 backdrop-blur-md">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="font-bold text-lg tracking-tight hover:text-accent-600 dark:hover:text-accent-400 transition-colors">
+      <span class="text-accent-600 dark:text-accent-400">idenrai</span>
+      <span class="text-gray-400 dark:text-gray-600">.dev</span>
+    </a>
+
+    <!-- Nav -->
+    <nav class="hidden sm:flex items-center gap-1">
+      {navLinks.map(({ href, label }) => (
+        <a
+          href={href}
+          class:list={[
+            'px-3 py-1.5 rounded-lg text-sm font-medium transition-colors duration-200',
+            currentPath === href || (href !== '/' && currentPath.startsWith(href))
+              ? 'bg-accent-50 text-accent-700 dark:bg-accent-900/30 dark:text-accent-300'
+              : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100',
+          ]}
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <!-- 다크모드 토글 -->
+      <button
+        id="theme-toggle"
+        aria-label="다크모드 전환"
+        class="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+      >
+        <!-- Sun icon (dark mode에서 보임) -->
+        <svg id="icon-sun" class="hidden dark:block w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+        </svg>
+        <!-- Moon icon (light mode에서 보임) -->
+        <svg id="icon-moon" class="block dark:hidden w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+      </button>
+
+      <!-- 모바일 메뉴 -->
+      <button
+        id="mobile-menu-btn"
+        aria-label="메뉴 열기"
+        class="sm:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+      >
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- 모바일 메뉴 드롭다운 -->
+  <div id="mobile-menu" class="hidden sm:hidden border-t border-gray-100 dark:border-gray-800 px-4 pb-4">
+    {navLinks.map(({ href, label }) => (
+      <a
+        href={href}
+        class:list={[
+          'block px-3 py-2 rounded-lg text-sm font-medium mt-1 transition-colors',
+          currentPath === href || (href !== '/' && currentPath.startsWith(href))
+            ? 'bg-accent-50 text-accent-700 dark:bg-accent-900/30 dark:text-accent-300'
+            : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800',
+        ]}
+      >
+        {label}
+      </a>
+    ))}
+  </div>
+</header>
+
+<script>
+  // 다크모드 토글
+  const themeToggle = document.getElementById('theme-toggle');
+  themeToggle?.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+
+  // 모바일 메뉴
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  mobileMenuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>

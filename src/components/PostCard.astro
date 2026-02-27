@@ -1,0 +1,41 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  date: Date;
+  tags?: string[];
+  slug: string;
+}
+
+const { title, description, date, tags = [], slug } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('ko-KR', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(date);
+---
+
+<article class="card group">
+  <a href={`/blog/${slug}`} class="block">
+    <div class="flex flex-wrap gap-2 mb-3">
+      {tags.slice(0, 3).map((tag) => (
+        <span class="tag-badge">{tag}</span>
+      ))}
+    </div>
+    <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors leading-snug mb-2">
+      {title}
+    </h2>
+    {description && (
+      <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2 mb-4">
+        {description}
+      </p>
+    )}
+    <time
+      datetime={date.toISOString()}
+      class="text-xs text-gray-400 dark:text-gray-600"
+    >
+      {formattedDate}
+    </time>
+  </a>
+</article>

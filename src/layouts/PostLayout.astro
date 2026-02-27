@@ -1,0 +1,77 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  date: Date;
+  tags?: string[];
+  image?: string;
+}
+
+const { title, description, date, tags = [], image } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('ko-KR', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(date);
+---
+
+<BaseLayout title={title} description={description} image={image} type="article">
+  <Header />
+  <main class="flex-1">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+      <!-- 포스트 헤더 -->
+      <header class="mb-10 pb-10 border-b border-gray-100 dark:border-gray-800">
+        <div class="flex flex-wrap gap-2 mb-4">
+          {tags.map((tag) => (
+            <a href={`/tags/${tag}`} class="tag-badge hover:opacity-80 transition-opacity">
+              {tag}
+            </a>
+          ))}
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-gray-50 leading-tight mb-4">
+          {title}
+        </h1>
+        {description && (
+          <p class="text-lg text-gray-600 dark:text-gray-400 mb-4">{description}</p>
+        )}
+        <div class="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-500">
+          <time datetime={date.toISOString()}>{formattedDate}</time>
+          <span>·</span>
+          <a href="/about" class="hover:text-accent-600 dark:hover:text-accent-400 transition-colors">
+            Youngjae Kwon
+          </a>
+        </div>
+      </header>
+
+      <!-- 포스트 본문 -->
+      <div class="prose dark:prose-invert prose-gray max-w-none
+        prose-headings:font-bold
+        prose-a:no-underline prose-a:font-medium hover:prose-a:underline
+        prose-img:rounded-xl prose-img:shadow-md
+        prose-blockquote:border-accent-400 prose-blockquote:bg-accent-50 dark:prose-blockquote:bg-accent-900/20
+        prose-blockquote:py-1 prose-blockquote:rounded-r-lg
+      ">
+        <slot />
+      </div>
+
+      <!-- 포스트 하단 -->
+      <footer class="mt-12 pt-8 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between gap-4">
+        <a
+          href="/blog"
+          class="btn-secondary text-sm"
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          목록으로
+        </a>
+      </footer>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

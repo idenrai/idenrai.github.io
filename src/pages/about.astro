@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="소개" description="안녕하세요, Youngjae Kwon입니다.">
+  <Header />
+  <main class="flex-1">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+      <h1 class="text-3xl font-extrabold text-gray-900 dark:text-gray-50 mb-10">소개</h1>
+
+      <div class="prose dark:prose-invert prose-gray max-w-none">
+        <h2>안녕하세요 👋</h2>
+        <p>
+          일본에서 일하는 소프트웨어 엔지니어 <strong>Youngjae Kwon (권영재)</strong>입니다.
+        </p>
+        <p>
+          이 블로그는 일하면서 배운 기술적인 내용들을 정리하는 공간입니다.
+          주로 백엔드, 인프라, 클라우드 관련 내용을 다룹니다.
+        </p>
+
+        <h2>경력</h2>
+        <ul>
+          <li>Software Engineer @ 일본 IT 기업</li>
+          <li>Backend / Infrastructure / Cloud</li>
+        </ul>
+
+        <h2>기술 스택</h2>
+        <ul>
+          <li><strong>언어:</strong> Python, Java, Go, TypeScript</li>
+          <li><strong>인프라:</strong> Kubernetes, Docker, Linux</li>
+          <li><strong>클라우드:</strong> AWS</li>
+          <li><strong>기타:</strong> CI/CD, Observability, Developer Tools</li>
+        </ul>
+
+        <h2>링크</h2>
+        <ul>
+          <li><a href="https://github.com/idenrai" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        </ul>
+
+        <h2>이 블로그에 대해</h2>
+        <p>
+          <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a>와
+          Tailwind CSS로 만들었습니다.
+          GitHub Actions로 자동 배포됩니다.
+        </p>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

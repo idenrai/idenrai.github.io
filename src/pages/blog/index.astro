@@ -1,0 +1,89 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PostCard from '../../components/PostCard.astro';
+
+const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// 태그 목록
+const allTags = [...new Set(allPosts.flatMap((p) => p.data.tags))].sort();
+
+// URL 쿼리에서 태그 필터
+const filterTag = Astro.url.searchParams.get('tag');
+const posts = filterTag
+  ? allPosts.filter((p) => p.data.tags.includes(filterTag))
+  : allPosts;
+---
+
+<BaseLayout title="블로그" description="개발하면서 배운 것들을 기록합니다.">
+  <Header />
+  <main class="flex-1">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+      <div class="flex items-end justify-between mb-10">
+        <div>
+          <h1 class="text-3xl font-extrabold text-gray-900 dark:text-gray-50 mb-2">블로그</h1>
+          <p class="text-gray-500 dark:text-gray-500 text-sm">
+            총 {allPosts.length}개의 글
+          </p>
+        </div>
+      </div>
+
+      <!-- 태그 필터 -->
+      {allTags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mb-8">
+          <a
+            href="/blog"
+            class:list={[
+              'px-3 py-1 rounded-full text-sm font-medium transition-colors',
+              !filterTag
+                ? 'bg-accent-600 text-white'
+                : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700',
+            ]}
+          >
+            전체 ({allPosts.length})
+          </a>
+          {allTags.map((tag) => {
+            const count = allPosts.filter((p) => p.data.tags.includes(tag)).length;
+            return (
+              <a
+                href={`/blog?tag=${encodeURIComponent(tag)}`}
+                class:list={[
+                  'px-3 py-1 rounded-full text-sm font-medium transition-colors',
+                  filterTag === tag
+                    ? 'bg-accent-600 text-white'
+                    : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700',
+                ]}
+              >
+                {tag} ({count})
+              </a>
+            );
+          })}
+        </div>
+      )}
+
+      <!-- 포스트 목록 -->
+      {posts.length > 0 ? (
+        <div class="grid gap-4">
+          {posts.map((post) => (
+            <PostCard
+              title={post.data.title}
+              description={post.data.description}
+              date={post.data.date}
+              tags={post.data.tags}
+              slug={post.slug}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-20 text-gray-400 dark:text-gray-600">
+          <p class="text-4xl mb-4">🔍</p>
+          <p>해당 태그의 포스트가 없습니다.</p>
+        </div>
+      )}
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

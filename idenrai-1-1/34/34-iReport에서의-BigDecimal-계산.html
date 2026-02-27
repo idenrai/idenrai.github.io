@@ -1,0 +1,61 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>iReport에서의 BigDecimal 계산</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">iReport에서의 BigDecimal 계산</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/iReport</p>
+                                    <p class="date">2015-10-15 15:21:37</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>Sum으로 고속과세총계를 구한 상태에서, 고속도로 비용의 税抜총계를 구하는 방법</p>
+<p><span style="font-size: 9pt; line-height: 1.5;">(이 때, 고속과세총계를 정의한 Value는, 지금 정의할 Value보다 jrxml상 위에 위치해야 함!</span><span style="font-size: 9pt; line-height: 1.5;">)</span></p>
+<p><br /></p>
+<pre class="brush:java">
+$V{mnKosokuKazeiSokei}
+.divide(
+    new BigDecimal(Double.valueOf($F{nuZeiritsu}))
+    .multiply(new BigDecimal("100"))
+    .add(new BigDecimal("100"))
+, 2, RoundingMode.HALF_UP)
+.multiply(new BigDecimal("100"))
+.setScale(
+    1,
+        ($F{stShohizeiHasuShori}.equals("1") ? BigDecimal.ROUND_HALF_UP :
+        ($F{stShohizeiHasuShori}.equals("2") ? BigDecimal.ROUND_UP : BigDecimal.ROUND_DOWN))
+)
+</pre>
+<p>마지막 諸費税端数処理区分 처리</p>
+<p style="margin-left: 2em;">1 : 반올림</p>
+<p style="margin-left: 2em;">2 : 올림</p>
+<p style="margin-left: 2em;">3 : 내림</p></pre>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

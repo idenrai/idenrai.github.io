@@ -1,0 +1,66 @@
+---
+title: "MongoDB에서의 데이터 항목 제어"
+date: 2021-05-21
+tags: ["Tech", "DB・SQL", "mongodb", "AWS", "jsonSchema", "항목"]
+tistory_url: "https://idenrai.tistory.com/241"
+---
+
+AWS DocumentDB를 이용하게 되어서, ACID트랜잭션이라거나 데이터 항목 제어 등을 조사할 필요가 있었다.
+
+사실상 MongoDB를 쓰는 거나 마찬가지라, MongoDB의 내용 위주로 인풋을 하게 되었는데... 그 중, 데이터 항목 제어 관련해서 메모를 좀 해 두도록 한다. MongoDB는 아래와 같이 Collection에 Validator를 달아주어 각 항목의 Type이나 범위, Required 등을 제어 가능하다.
+
+```
+db.createCollection("students", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: [ "name", "year" ],
+      properties: {
+        name: {
+          bsonType: "string",
+          description: "String & Required"
+        },
+        year: {
+          bsonType: "int",
+          minimum: 7,
+          maximum: 25,
+          description: "Integer & Required & IN 7~25"
+        },
+      }
+    }
+  }
+})
+```
+
+아래와 같이, 이미 존재하는 Collection에 대해서도 Validator를 부착 가능하다.
+
+```
+db.runCommand( {
+  collMod: "students",
+  validator: { $jsonSchema: {
+    bsonType: "object",
+    required: [ "name", "year" ],
+    properties: {
+      name: {
+        bsonType: "string",
+        description: "must be a string and is required"
+      },
+      year: {
+        bsonType: "int",
+        minimum: 7,
+        maximum: 25,
+        description: "must be an integer in [ 7, 25 ] and is required"
+      },
+    }
+  }},
+  validationLevel: "moderate"
+})
+```
+
+대충 이런 식으로 DocumentDB에서도 되겠거니 했는데...
+
+정작 [DocumentDB에서는 아직 대응해주지 않고 있더라](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html#mongo-apis-query-evaluation-operators).
+
+뭐 솔직히 데이터 넣을 때 Validation걸어서 넣으면 되니까 별 문제는 없긴 한데...
+
+ACID는 잘 해주면서 이건 안해주니까 좀 섭섭하더라.

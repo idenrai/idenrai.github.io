@@ -1,0 +1,97 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>테이블에서 sticky로 컬럼 고정시의 border투명화 현상 해결</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">테이블에서 sticky로 컬럼 고정시의 border투명화 현상 해결</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/HTML・CSS</p>
+                                    <p class="date">2021-04-21 19:40:44</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>좌측 복수 열을 고정시킨 테이블을 작성.</p>
+<p>열 고정에는 sticky를 사용.</p>
+<p>TD에 사용한 CSS는 다음과 같다.</p>
+<pre id="code_1619000897869" class="javascript" data-ke-language="javascript" data-ke-type="codeblock"><code>&lt;td
+  className="gray-dark p-1 m-0 border border-white"
+  align="center"
+  style={{
+    verticalAlign: 'middle',
+    position: 'sticky',
+    left: 0,
+    minWidth: `${DETAIL_TABLE_COLUMN_WIDTH.FIRST}rem`,
+    maxWidth: `${DETAIL_TABLE_COLUMN_WIDTH.FIRST}rem`
+  }}
+  colSpan={colSpan || 1}
+  rowSpan={rowSpan || 1}
+&gt;</code></pre>
+<p>border는 class로 부여, position을 sticky로 하고, 고정하고 싶은 left를 설정.</p>
+<p>위와 같은 방법으로 1~3열을 고정으로 지정하였다.</p>
+<p>2번째 열부터는 앞의 열의 width를 left로 설정해야 한다 (width설정 및 const화 필수)</p>
+<p>&nbsp;</p>
+<p>위와 같이 설정한 경우 sticky를 설정한 셀의 border가 투명해져버려,&nbsp;</p>
+<p>스크롤 이동 시 다른 셀의 내용 및 border가 비쳐 보이게 된다.</p>
+<p>대략 이런 식으로...</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" style="width: 46.8883%; margin-right: 10px;">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png" data-origin-width="0" data-origin-height="0" style="width: 46.8883%; margin-right: 10px;" />
+    </span>
+    <figcaption>좌: 스크롤 이동 전 / 우: 스크롤 이동 후</figcaption>
+</figure><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" style="width: 51.9489%;">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_2.png" data-origin-width="0" data-origin-height="0" style="width: 51.9489%;" />
+    </span>
+    <figcaption>좌: 스크롤 이동 전 / 우: 스크롤 이동 후</figcaption>
+</figure></p>
+<p>분명 흰색으로 border를 설정해 놓았건만 위와 같은 식이다.</p>
+<p>이를 해결한 방법은 다음과 같다.</p>
+<pre id="code_1619001437907" class="javascript" data-ke-language="javascript" data-ke-type="codeblock"><code>&lt;MDBTable
+  bordered
+  small
+  responsive
+  scrollx="true"
+  autoWidth
+  style={{
+    borderSpacing: 0,
+    borderCollapse: 'separate',
+  }}
+&gt;</code></pre>
+<p>Table에 borderCollapse를 separate로 지정하고,</p>
+<p>그로 인해 border가 굵어지는 것을 방지하기 위해 borderSpacing을 0으로 지정.</p>
+<p>결과물은 이러하다.</p>
+<p><figure class="imageblock alignCenter" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>선이 조금 굵어졌으나, 허용 범위 내라고 생각된다.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #CSS #Table #position: sticky #borderCollapse: separate #cell고정 #column고정 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

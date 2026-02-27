@@ -1,0 +1,15 @@
+---
+title: "mkfile"
+date: 2024-08-24
+description: "OpenAI 테스트용으로 20MiB 의 jpg 파일을 만드는 데 사용 mkfileコマンド mkfile -v 20m 20MiB.jp"
+tags: ["Tool", "mkfile"]
+tistory_url: "https://idenrai.tistory.com/297"
+---
+
+OpenAI 테스트용으로 20MiB 의 jpg 파일을 만드는 데 사용
+
+[mkfileコマンド](https://qiita.com/fantm21/items/656c1c937d5641b2d6b4)
+
+```
+mkfile -v 20m 20MiB.jp
+```

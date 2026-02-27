@@ -1,0 +1,70 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>VBA 워크시트 초기화</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">VBA 워크시트 초기화</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/VBA</p>
+                                    <p class="date">2020-01-14 20:22:56</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p><b>1. 전체 시트 초기화</b></p>
+<pre id="code_1579000617777" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>'워크시트 초기화
+Sub ClearSheet(TargetSheet)
+	'타겟 시트로 이동하여, 시트를 초기화
+	Sheets(TargetSheet).Activate
+	With ActiveSheet
+		Range("A1:XFD1048576").ClearContents
+	End With
+End Sub</code></pre>
+<pre id="code_1579000876097" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>'WorkSheet선언
+Dim shtWorkKnwl As String
+shtWorkKnwl = "Work_Knowledge"
+
+'시트 초기화
+Call ClearSheet(TargetSheet:=shtWorkKnwl)</code></pre>
+<p><b>2. Range지정 초기화</b></p>
+<pre id="code_1579000697595" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>'워크시트의 특정 Range초기화
+Sub CustomClearSheet(TargetSheet, TargetRange)
+	'TargetSheet로 이동하여 지정한 Range를 초기화 
+	Sheets(TargetSheet).Activate
+	With ActiveSheet
+		Range(TargetRange).ClearContents
+	End With
+End Sub</code></pre>
+<pre id="code_1579000949529" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>'WorkSheet선언
+Dim shtWorkKnwl As String
+shtWorkKnwl = "Work_Knowledge"
+
+'시트 초기화
+Call ClearSheet(TargetSheet:=shtWorkKnwl, TargetRange:="B4:XFD1048576")</code></pre>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #초기화 #vba 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

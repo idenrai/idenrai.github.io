@@ -1,0 +1,89 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>npm install에서의 Git branch지정</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">npm install에서의 Git branch지정</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/NPM</p>
+                                    <p class="date">2021-07-15 10:38:47</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">레포트 출력 API를 개발중이다.</p>
+<p data-ke-size="size16">RDS에서 데이터 검색 후 Lambda에서 데이터를 기존 준비된 엑셀 파일에 넣어 DL까지.</p>
+<p data-ke-size="size16">데이터 취득 후엔 xlsx-populate를 사용하여 리스트째로 엑셀에 넣었고,</p>
+<p data-ke-size="size16">작성된 엑셀 파일을 export하는데에는 exceljs를 사용하였다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">근데 exceljs를 사용해서 export를 해 보니, 조건부서식이 다 작살나더라.</p>
+<p><figure class="imageblock alignCenter" data-origin-width="963" data-origin-height="212" data-filename="currupted.png" data-ke-mobilestyle="widthOrigin">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" data-origin-width="963" data-origin-height="212" data-filename="currupted.png" data-ke-mobilestyle="widthOrigin" />
+    </span>
+    <figcaption>조건부서식 다 날라감</figcaption>
+</figure></p>
+<p data-ke-size="size16">내가 이 조건부서식 만들려고 얼마나 개고생을 했는데...</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">처음엔 전송방법에 문제가 있나 싶어 Header를 이리저리 바꿔보았는데, 결과는 다 똑같았다.</p>
+<p data-ke-size="size16">그래서 혹시나 하여, 그냥 exceljs로 멀쩡한 파일을 읽은 후, 그대로 다시 아웃풋해보니 박살나있는 것을 확인.</p>
+<p data-ke-size="size16">exceljs의 문제더라.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">알아보니 나와 같은 피해자들이 많았다.</p>
+<p data-ke-size="size16"><a href="https://github.com/exceljs/exceljs/issues/1305" target="_blank" rel="noopener">https://github.com/exceljs/exceljs/issues/1305</a></p>
+<figure id="og_1626312451727" contenteditable="false" data-ke-type="opengraph" data-ke-align="alignCenter" data-og-type="object" data-og-title="[BUG] Errors when opening file in Excel after saving a file with conditional formatting &middot; Issue #1305 &middot; exceljs/exceljs" data-og-description="? Bug Report Lib version: 3.9.0 Steps To Reproduce const Excel = require(&quot;exceljs&quot;); const fs = require(&quot;fs&quot;); const inputFilePath = &quot;input.xlsx&quot;; const outputFilePath..." data-og-host="github.com" data-og-source-url="https://github.com/exceljs/exceljs/issues/1305" data-og-url="https://github.com/exceljs/exceljs/issues/1305" data-og-image="https://scrap.kakaocdn.net/dn/Yb1wE/hyKTL28xow/uaTPrN6t1nOc6Ihoc7iP71/img.png?width=1200&amp;height=600&amp;face=0_0_1200_600"><a href="https://github.com/exceljs/exceljs/issues/1305" target="_blank" rel="noopener" data-source-url="https://github.com/exceljs/exceljs/issues/1305">
+<div class="og-image" style="background-image: url('https://scrap.kakaocdn.net/dn/Yb1wE/hyKTL28xow/uaTPrN6t1nOc6Ihoc7iP71/img.png?width=1200&amp;height=600&amp;face=0_0_1200_600');">&nbsp;</div>
+<div class="og-text">
+<p class="og-title" data-ke-size="size16">[BUG] Errors when opening file in Excel after saving a file with conditional formatting &middot; Issue #1305 &middot; exceljs/exceljs</p>
+<p class="og-desc" data-ke-size="size16">? Bug Report Lib version: 3.9.0 Steps To Reproduce const Excel = require("exceljs"); const fs = require("fs"); const inputFilePath = "input.xlsx"; const outputFilePath...</p>
+<p class="og-host" data-ke-size="size16">github.com</p>
+</div>
+</a></figure>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">근데 좀 더 찾아보니, 이미 올해 4월에 아래 Commit으로 해결이 되어 있더라.</p>
+<p data-ke-size="size16"><a href="https://github.com/exceljs/exceljs/pull/1574" target="_blank" rel="noopener">https://github.com/exceljs/exceljs/pull/1574</a></p>
+<figure id="og_1626312582774" contenteditable="false" data-ke-type="opengraph" data-ke-align="alignCenter" data-og-type="object" data-og-title="Fixed conditional format corrupting sheet #1305 by rolandostar &middot; Pull Request #1574 &middot; exceljs/exceljs" data-og-description="Summary I'm using a template for styling, and filling out data with ExcelJS. When my template had conditional formatting enabled on it, opening it and writing the file (even without data being ..." data-og-host="github.com" data-og-source-url="https://github.com/exceljs/exceljs/pull/1574" data-og-url="https://github.com/exceljs/exceljs/pull/1574" data-og-image="https://scrap.kakaocdn.net/dn/bIL1zu/hyKTOyM0qG/vNXbY9USo3RHn8NaI53Cz0/img.png?width=1200&amp;height=600&amp;face=0_0_1200_600"><a href="https://github.com/exceljs/exceljs/pull/1574" target="_blank" rel="noopener" data-source-url="https://github.com/exceljs/exceljs/pull/1574">
+<div class="og-image" style="background-image: url('https://scrap.kakaocdn.net/dn/bIL1zu/hyKTOyM0qG/vNXbY9USo3RHn8NaI53Cz0/img.png?width=1200&amp;height=600&amp;face=0_0_1200_600');">&nbsp;</div>
+<div class="og-text">
+<p class="og-title" data-ke-size="size16">Fixed conditional format corrupting sheet #1305 by rolandostar &middot; Pull Request #1574 &middot; exceljs/exceljs</p>
+<p class="og-desc" data-ke-size="size16">Summary I'm using a template for styling, and filling out data with ExcelJS. When my template had conditional formatting enabled on it, opening it and writing the file (even without data being ...</p>
+<p class="og-host" data-ke-size="size16">github.com</p>
+</div>
+</a></figure>
+<p data-ke-size="size16">이미 해결책이 나왔고, Master Branch에 Merge도 되었는데, NPM에 공개된 최신 버전에는 아직 안들어가있는거다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">일단 수동으로 node_modules/exceljs에서 위의 커밋대로 수정을 해 보니, 제대로 돌아가는 것이 확인되었다.</p>
+<p data-ke-size="size16">조만간 최신 버전이 릴리즈되기야 하겠지만서도, 일단 스케줄상 오늘까지 이 일을 마쳐야 하는지라...</p>
+<p data-ke-size="size16">Git의 특정 브랜치를 직접 npm install하는 형식으로 해결하기로 했다.</p>
+<pre id="code_1626312960107" class="bash" data-ke-language="bash" data-ke-type="codeblock"><code># npm install username/repository#branchName --save
+npm install exceljs/exceljs#master --save</code></pre>
+<p data-ke-size="size16">이렇게 하면 해당 브랜치의 내용이 인스톨되며, package.json에는 아래와 같이 기재된다.</p>
+<pre id="code_1626313056380" class="javascript" data-ke-language="javascript" data-ke-type="codeblock"><code>"exceljs": "github:exceljs/exceljs#master"</code></pre>
+<p data-ke-size="size16">일단 이걸로 해결.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #npm install branch 지정 #exceljs #exceljs xlsx currupted #exceljs conditional formatting 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

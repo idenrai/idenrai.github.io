@@ -1,0 +1,41 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Modal에서 출력한 DataTable의 Header 사이즈가 맞지 않을 경우</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Modal에서 출력한 DataTable의 Header 사이즈가 맞지 않을 경우</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/jQuery DataTables</p>
+                                    <p class="date">2016-08-12 21:47:57</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>Modal에서 데이터테이블을 뽑아놓고 보니</p><p>데이터는 그대로 잘 나오는데, 테이블 헤더의 사이즈가 맞지 않더라.</p><p>한번 헤더를 클릭해서 정렬시키고 나면 사이즈가 조절되긴 하는데...</p><p>역시 열었을 때 바로 맞춰지지 않으면 의미가 없다.</p><p><br /></p><p>DataTable옵션에서 자체 해결은 힘든 것 같고...</p><p>나중에 CSS를 조절하는 방법 등 여러가지가 나오긴 했는데</p><p>결국 난 이 방법으로 해결했다.</p><p><br /></p><div class="colorscripter-code" style="color:#010101; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important; overflow:auto"><table class="colorscripter-code-table" style="margin:0; padding:0; border:none; background-color:#fafafa; border-radius:4px;" cellspacing="0" cellpadding="0"><tbody><tr><td style="padding:6px; border-right:2px solid #e5e5e5"><div style="margin:0; padding:0; word-break:normal; text-align:right; color:#666; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div></div></td><td style="padding:6px 0"><div style="margin:0; padding:0; color:#010101; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#999999">//&nbsp;when&nbsp;modal&nbsp;shown,&nbsp;trigger&nbsp;resize&nbsp;for&nbsp;datatables&nbsp;adjust&nbsp;width</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;$(<span style="color:#63a35c">'#modal'</span>).off(<span style="color:#63a35c">'shown.bs.modal'</span>).on(<span style="color:#63a35c">'shown.bs.modal'</span>,&nbsp;<span style="color:#a71d5d">function</span>(e)&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(<span style="color:#066de2">window</span>).trigger(<span style="color:#63a35c">'resize'</span>);</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;});</div></div><div style="text-align:right; margin-top:-13px; margin-right:5px; font-size:9px; font-style:italic"><a href="http://colorscripter.com/info#e" target="_blank" style="color: rgb(229, 229, 229);">Colored by Color Scripter</a></div></td><td style="vertical-align:bottom; padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="color: white;"><span style="font-size: 9px; word-break: normal; border-radius: 10px; padding: 1px; background-color: rgb(229, 229, 229);">cs</span></a></td></tr></tbody></table></div><p><br /></p><p>일단 데이터테이블은 그대로 뽑아 놓고,</p><p>그 다음 펑션에 이 코드를 집어넣어 해결.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Windows에 Electron을 빌드하기 위한 준비</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Windows에 Electron을 빌드하기 위한 준비</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/Electron</p>
+                                    <p class="date">2015-10-25 15:57:19</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <b style="font-family: 돋움; font-size: 9pt; line-height: 1.5;"><span style="font-size: 12pt;">1. Python 설치 및 환경변수 설정</span></b>&nbsp;<div><div><b style="font-size: 9pt; line-height: 1.5;"><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">1)&nbsp;파이썬 설치 (</span><a href="https://www.python.org/download/releases/2.7/" target="_blank" class="tx-link"><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">https://www.python.org/download/releases/2.7/</span></a><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">)</span></b></div><div><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt; line-height: 1.5;">- Windows x86(or x64)&nbsp;MSI Installer</span><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt; line-height: 1.5;">- 받은 파일 실행하고 순서대로 설치</span></p>
+<p><b><br /></b></p>
+<p><b><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">2) 환경변수 설정</span></b></p>
+<p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">- 내 컴퓨터 &gt; 시스템 속성 &gt; 고급 &gt; 환경변수</span></p>
+<p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">- Path 편집 : 마지막에 Python이 설치된 경로 추가</span></p>
+<p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">&nbsp;- 변수값 : </span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">~~~~~~;</span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">C:\Python27</span></p>
+<p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">- PYTHONPATH 추가</span></p>
+<p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">&nbsp;- 변수명 : PYTHONPATH</span></p>
+<p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">&nbsp;- 변수값 :&nbsp;C:\Python27\Lib</span></p>
+<p><br /></p>
+<p><b><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">3) 설치 확인</span></b></p>
+<p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">- cmd &gt; python</span></p>
+<p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">- 테스트 파일 실행</span></p>
+<p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">&nbsp;- notepad &gt; print("Hello Python!") &gt; test.py로 저장 (문자코드는 UTF-8로 변경할 것!)</span></p>
+<p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">&nbsp;- cmd &gt;&nbsp;해당 폴더로 이동 &gt; python test.py</span></p>
+<p><br /></p>
+<p><br /></p>
+<p><b><span style="font-size: 12pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">2. Node.js 설치 및 환경변수 설정</span></b></p>
+<p><b style="font-size: 9pt; line-height: 1.5;"><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">1) Node.js 설치 (</span><a href="https://nodejs.org/en/#download" target="_blank" class="tx-link"><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">https://nodejs.org/en/#download</span></a></b><b style="font-size: 9pt; line-height: 1.5;"><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">)</span></b></p>
+<p><b><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">-</span></b><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">&nbsp;윈도우 버전 맞춰서 쭉쭉 설치만 하면 끝.</span></p>
+<p><b><br /></b></p>
+<p><b><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">2) 설치 확인</span></b></p>
+<p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">- cmd &gt; node</span></p>
+<p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">- 해당 입력창에서 javascript용 코드 입력 후 확인</span></p>
+<p><br /></p>
+<p style="text-align: left; clear: none; float: none;"><figure class="imageblock alignCenter" width="677" height="492" filename="cmdTest.png" filemime="image/jpeg">
+    <span data-lightbox="lightbox">
+        <img src="./img/cmdTest.png" width="677" height="492" filename="cmdTest.png" filemime="image/jpeg" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p><br /></p>
+<p><b><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;"><br /></span></b></p><p><b><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">3) 신기하니까 js파일로 한번&nbsp;더 테스트 (서버에서 돌리기)</span></b></p>
+<p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt; line-height: 1.5;">- app.js 작성 (Python과 동일하게, UTF-8로 인코딩)</span></p>
+<p><br /></p><span class="txt_fold">app.js 작성</span>
+<div class="moreless_content"><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">var http = require('http');</span></p>
+<p><br /></p>
+<p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">http.createServer(function(req,res){</span></p>
+<p><br /></p>
+<p><span class="Apple-tab-span" style="white-space: pre; font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">	</span><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">res.writeHead(200,{'Content-Type':'text/plain'});</span></p>
+<p><br /></p>
+<p><span class="Apple-tab-span" style="white-space: pre; font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">	</span><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">res.end('Hello World\nHello node.js!');</span></p>
+<p><br /></p>
+<p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">}).listen(1337,"127.0.0.1");</span></p>
+<p><br /></p>
+<p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">console.log("Server running at http://127.0.0.1:1337/");</span></p></div><p><br /></p>
+<p><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">- node로 app.js를 돌리고, 지정했던 IP인 127.0.0.1:1337에서 확인</span></p>
+<p><br /></p>
+<p style="text-align: left; clear: none; float: none;"><figure class="imageblock alignCenter" width="800" height="713" filename="nodeJSTest2.png" filemime="image/jpeg">
+    <span data-lightbox="lightbox">
+        <img src="./img/nodeJSTest2.png" width="800" height="713" filename="nodeJSTest2.png" filemime="image/jpeg" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p><br /></p>
+<p><br /></p>
+<p><br /></p>
+<p><b><span style="font-size: 12pt;">3.&nbsp;</span><span style="font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 16px; line-height: 25.6px;">Visual Studio 2013 설치 및 설정</span></b></p>
+<p><b><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">1) Visual Studio 2013 설치 (</span></b><b style=""><a href="https://www.visualstudio.com/downloads/download-visual-studio-vs" target="_blank" class="tx-link"><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">https://www.visualstudio.com/downloads/download-visual-studio-vs</span></a><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">)</span></b></p>
+<p><b><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">-</span></b><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">&nbsp;윈도우 버전 맞춰서 쭉쭉 설치만 하면 끝.</span></p><p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">- 회사 컴퓨터에 Visual Studio 2013 Professional이 있으므로 이를 사용하였고, 보통은 Community Edition을 사용하면 됨.</span></p>
+<p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;"><br /></span></p><p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;"><br /></span></p><p><b><span style="font-size: 12pt;">4. Git</span><span style="font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 16px; line-height: 25.6px;">&nbsp;설치 및 설정</span></b></p><p><b><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">1) Git 설치 (</span></b><b><font face="Gulim, 굴림, AppleGothic, sans-serif"><span style="font-size: 13.3333px; line-height: 20px;"><a href="http://git-scm.com/download/win" target="_blank" class="tx-link">http://git-scm.com/download/win</a></span><span style="font-size: 10pt; line-height: 1.5;">)</span></font></b></p><p><b><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">-</span></b><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">&nbsp;윈도우 버전 맞춰서 쭉쭉 설치만 하면 끝.</span></p><p><font face="Gulim, 굴림, AppleGothic, sans-serif"><span style="font-size: 13.3333px; line-height: 20px;">- 개인적으로, 윈도우 cmd 콘솔에서 사용하고 싶기에 콘솔 사용 선택</span></font></p><p><span style="font-size: 10pt; line-height: 1.5;"><br /></span></p><p><span style="font-size: 10pt; line-height: 1.5;">참고 :&nbsp;</span><a href="https://github.com/atom/electron/blob/master/docs-translations/ko-KR/development/build-instructions-windows.md" target="_blank" class="tx-link" style="font-size: 9pt; line-height: 1.5;"><span style="font-size: 10pt;">https://github.com/atom/el</span><span style="font-size: 10pt;">ectron/blob/master/docs-tran</span>slations/ko-KR/development/build-instructions-windows.md</a></p></div></div><p><br /></p><p><br /></p><p><span style="font-weight: bold; font-size: 12pt;">5. Atom Editor</span><span style="font-weight: bold; font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 16px; line-height: 25.6px;">&nbsp;설치 및 Package 설정</span></p><p><b><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;"># Electron을&nbsp;쓰는 김에 Atom도 써 보려는 것 뿐이므로, 다른 텍스트 에디터를 사용해도 전혀&nbsp;상관 없음.</span></b></p><p><b style="line-height: 1.5;"><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">1) atom 설치 (</span></b><font face="Gulim, 굴림, AppleGothic, sans-serif" style="line-height: 1.5;"><span style="font-size: 13.3333px; line-height: 20px;"><b><a href="https://atom.io" target="_blank" class="tx-link">https://atom.io</a></b></span></font><b style="line-height: 1.5;"><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">)</span></b></p><p><b><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">-</span></b><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">&nbsp;윈도우 버전 맞춰서 쭉쭉 설치만 하면 끝</span></p><p><br /></p><p><b><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">2) Package 설치 (</span></b><font face="Gulim, 굴림, AppleGothic, sans-serif"><span style="font-size: 13.3333px; line-height: 20px;"><b>File→Settings→Install 에서 패키지 검색</b></span></font><b style="line-height: 1.5;"><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">)</span></b></p><p><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">-&nbsp;</span><a href="https://atom.io/packages/linter" target="_blank" class="tx-link" style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;"><b>linter</b></a>&nbsp;:&nbsp;<span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt; line-height: 1.5;">문법상 오류 표시</span></p><p><font face="Gulim, 굴림, AppleGothic, sans-serif"><span style="font-size: 10pt; line-height: 1.5;">-&nbsp;</span></font><a href="https://atom.io/packages/grunt-runner" target="_blank" class="tx-link" style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 13.3333px; line-height: 20px;"><b>grunt-runner</b></a>&nbsp;: Atom에서&nbsp;<span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">Grunt 실행 가능 &nbsp;</span></p><p><font face="Gulim, 굴림, AppleGothic, sans-serif"><span style="font-size: 10pt; line-height: 1.5;">-&nbsp;</span></font><b><a href="https://atom.io/packages/minimap" target="_blank" class="tx-link" style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 13.3333px; line-height: 20px;">minimap</a><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 13.3333px; line-height: 20px;">,&nbsp;</span><a href="https://atom.io/packages/minimap-find-and-replace" target="_blank" class="tx-link" style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 13.3333px; line-height: 20px;">minimap-find-and-replace</a></b>&nbsp;:&nbsp;<span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">미니맵 표시</span></p><p><font face="Gulim, 굴림, AppleGothic, sans-serif"><span style="font-size: 10pt; line-height: 1.5;">-&nbsp;</span></font><a href="https://atom.io/packages/atom-minify" target="_blank" class="tx-link" style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 13.3333px; line-height: 20px;"><b>atom-minify</b></a>&nbsp;:&nbsp;<span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">JS, CSS 최소화</span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">&nbsp;(ctrl+shift+m 또는 Minify on save설정)</span></p><p><br /></p><p style="text-align: left; clear: none; float: none;"><figure class="imageblock alignCenter" width="700" height="759" filename="package-atom.png" filemime="image/jpeg" style="width: 700px; height: 759px;">
+    <span data-lightbox="lightbox">
+        <img src="./img/package-atom.png" width="700" height="759" filename="package-atom.png" filemime="image/jpeg" style="width: 700px; height: 759px;" />
+    </span>
+    <figcaption></figcaption>
+</figure></p><p><br /></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

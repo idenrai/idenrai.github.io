@@ -1,0 +1,55 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Convert list to array in Java</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Convert list to array in Java</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/Java</p>
+                                    <p class="date">2016-01-13 14:07:53</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>Javascript ⇒ JAVA ⇒ Oracle Stored Procedure</p>
+<p><br /></p>
+<p>위의 흐름대로 배열을 전송하던 중,</p>
+<p>Javascript의 배열을 JAVA에서&nbsp;List&lt;String&gt;로 받고 보니...</p>
+<p><span style="line-height: 1.5;">해당 배열을 프로시저로 보내는 과정에서</span></p>
+<p>String Array로 바꾸어야 하더라.</p>
+<p><br /></p>
+<p>다른 방법도 있었겠지만,&nbsp;<span style="line-height: 1.5;">일단 내가 찾아본 바로는&nbsp;</span></p>
+<p>JAVA에서 프로시저로 리스트를 넘기는 방법이</p>
+<p><a href="http://viralpatel.net/blogs/java-passing-array-to-oracle-stored-procedure/" target="_blank" class="tx-link">이런 방법</a><span style="line-height: 1.5;">&nbsp;뿐이었다.</span></p>
+<p><br /></p>
+<p>하여, List&lt;String&gt;을 String[] 로 바꾸려고 해 보니,</p>
+<p>toArray()를 써서 간단하게 바꿀 수 있었다.</p>
+<p><br /></p>
+<p>사용 예시는 다음과 같다.</p><p><span style="font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal; white-space: pre;">List strList </span><span class="cs-default-common-keyword2" style="color: rgb(0, 134, 179); font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal; white-space: pre;"></span><span class="cs-default-common-keyword1" style="color: rgb(167, 29, 93); font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal; white-space: pre;">=</span><span style="font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal; white-space: pre;"> </span><span class="cs-default-common-keyword1" style="color: rgb(167, 29, 93); font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal; white-space: pre;">new</span><span style="font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal; white-space: pre;"> ArrayList();</span></p><p><span style="line-height: 1.5;">일 때,</span></p><p><span style="line-height: 1.5;"><br /></span></p><p><span style="color: rgb(153, 153, 153); white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal;">// List의 사이즈만큼 Array의 크기 지정 후 toArray()</span></p><p><span class="cs-default-common-keyword0" style="white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal; color: rgb(6, 109, 226);">String</span><span style="white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal;">[] strArray </span><span class="cs-default-common-keyword2" style="white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal; color: rgb(0, 134, 179);"></span><span class="cs-default-common-keyword1" style="white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal; color: rgb(167, 29, 93);">=</span><span style="white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal;"> strList.toArray(</span><span class="cs-default-common-keyword1" style="white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal; color: rgb(167, 29, 93);">new</span><span style="white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal;"> </span><span class="cs-default-common-keyword0" style="white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal; color: rgb(6, 109, 226);">String</span><span style="white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal;">[strList.size()]);</span></p><p><span style="line-height: 1.5;"><br /></span></p><p><span style="line-height: 1.5;">또는</span></p><p><span style="line-height: 1.5;"><br /></span></p><p><span style="color: rgb(153, 153, 153); white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal;">// Array의 크기가 List보다 작을 경우, 자동으로 크기가 변환되는 것을 이용한</span></p><p><span class="cs-default-common-keyword0" style="white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal; color: rgb(6, 109, 226);">String</span><span style="white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal;">[] strArray </span><span class="cs-default-common-keyword2" style="white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal; color: rgb(0, 134, 179);"></span><span class="cs-default-common-keyword1" style="white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal; color: rgb(167, 29, 93);">=</span><span style="white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal;"> strList.toArray(</span><span class="cs-default-common-keyword1" style="white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal; color: rgb(167, 29, 93);">new</span><span style="white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal;"> </span><span class="cs-default-common-keyword0" style="white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal; color: rgb(6, 109, 226);">String</span><span style="white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal;">[</span><span class="cs-default-common-number" style="white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal; color: rgb(0, 153, 204);">0</span><span style="white-space: pre; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; line-height: normal;">]);</span></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #java #toArray 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

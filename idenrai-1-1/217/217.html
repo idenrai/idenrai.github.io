@@ -1,0 +1,73 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Git Commit Message와 Author를 취득하여 환경변수로 사용하기</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Git Commit Message와 Author를 취득하여 환경변수로 사용하기</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/Jenkins</p>
+                                    <p class="date">2020-01-20 21:07:11</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p><b><span style="color: #333333;">Commit Message 취득<br /></span></b></p>
+<pre id="code_1579521343100" class="javascript" data-ke-language="javascript" data-ke-type="codeblock"><code>def get_commit_msg(){
+    script {
+        return sh(script : "git show -s --format=%B ${env.GIT_COMMIT}", returnStdout: true).trim().replace (' ', '-spc-')
+    }
+}</code></pre>
+<p><b>Author 취득</b></p>
+<pre id="code_1579521959132" class="javascript" style="display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; margin: 20px auto 0px; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;" data-ke-language="javascript" data-ke-type="codeblock"><code>def get_commit_author(){
+    script {
+        return sh(script : "git --no-pager show -s --format=%an ${env.GIT_COMMIT}", returnStdout: true).trim()
+    }
+}</code></pre>
+<p><b><br />Jenkinsfile 환경변수 설정 및 사용<br /></b></p>
+<pre id="code_1579522166525" class="javascript" style="display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; margin: 20px auto 0px; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;" data-ke-language="javascript" data-ke-type="codeblock"><code>pipeline {
+    agent any
+    environment {
+        BATCH_DIR = "./path"
+        COMMIT_MSG = get_commit_msg()
+        COMMIT_AUTHOR = get_commit_author()       
+    }
+    stages {
+        stage('test') {
+            steps {
+                script {
+                    LAST_STARTED = env.STAGE_NAME
+                    // 아래와 같이 환경변수 사용 가능. GIT_BRANCH나 BUILD_URL은 기본 제공
+                    sh "bash ${env.BATCH_DIR}/test.sh ${env.GIT_BRANCH} ${env.COMMIT_AUTHOR} ${env.COMMIT_MSG} ${env.BUILD_URL}"
+				}
+            }
+        }
+    }
+}</code></pre>
+<p><b><br /></b>※ 환경변수에 관해서는 「<a href="https://jenkins.io/doc/pipeline/tour/environment/" target="_blank" rel="noopener"><b>Using environment variables</b></a>」를 참조</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #환경변수 #author #JenkinsFile #Commit Message 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

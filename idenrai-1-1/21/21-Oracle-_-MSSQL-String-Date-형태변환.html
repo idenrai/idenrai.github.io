@@ -1,0 +1,41 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Oracle / MSSQL String-Date 형태변환</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Oracle / MSSQL String-Date 형태변환</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/DB・SQL</p>
+                                    <p class="date">2015-07-23 09:04:58</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <div><i><font size="4" color="#ff0000"><b>ORACLE&nbsp;</b></font></i></div><div>&nbsp;- VARCHAR-&gt; DATE</div><div><span class="Apple-tab-span" style="white-space: pre;">	</span>TO_DATE( String값, 'yyyymmdd')&nbsp;</div><div><span class="Apple-tab-span" style="white-space: pre;">	</span>ex) TO_DATE( '20120704', 'yyyymmdd')&nbsp;</div><div>&nbsp;- DATE -&gt; VARCHAR&nbsp;</div><p><span class="Apple-tab-span" style="white-space: pre;">	</span>TO_CHAR(DATE필드, 'yyyymmdd')<span class="Apple-tab-span" style="white-space: pre;"><br class="Apple-interchange-newline">	</span>ex)&nbsp;TO_CHAR( REG_DATE, 'yyyymmdd')&nbsp;</p><div><br /></div><div><i style="color: rgb(0, 0, 0); font-family: sans-serif; line-height: 19.2000007629395px;"><font size="4" color="#ff0000"><b>MSSQL</b></font></i><div style="color: rgb(0, 0, 0); font-family: sans-serif; line-height: 19.2000007629395px;">&nbsp;-&nbsp;VARCHAR&nbsp;-&gt; DATETIME</div><span class="Apple-tab-span" style="color: rgb(0, 0, 0); font-family: sans-serif; line-height: 19.2000007629395px; white-space: pre;">	</span><span style="color: rgb(0, 0, 0); font-family: sans-serif; line-height: 19.2000007629395px;">CONVERT(&nbsp;DATETIME,String값)</span><span class="Apple-tab-span" style="color: rgb(0, 0, 0); font-family: sans-serif; line-height: 19.2000007629395px; white-space: pre;"><br class="Apple-interchange-newline">	</span><span style="color: rgb(0, 0, 0); font-family: sans-serif; line-height: 19.2000007629395px;">ex)&nbsp;CONVERT(&nbsp;&nbsp;DATETIME,&nbsp;'20120704')</span><div style="color: rgb(0, 0, 0); font-family: sans-serif; line-height: 19.2000007629395px;">&nbsp;-&nbsp;DATETIME&nbsp;-&gt; VARCHAR&nbsp;</div><span class="Apple-tab-span" style="color: rgb(0, 0, 0); font-family: sans-serif; line-height: 19.2000007629395px; white-space: pre;">	</span><span style="color: rgb(0, 0, 0); font-family: sans-serif; line-height: 19.2000007629395px;">CONVERT&nbsp;(VARCHAR&nbsp;, DATETIME필드, 112)</span><span class="Apple-tab-span" style="color: rgb(0, 0, 0); font-family: sans-serif; line-height: 19.2000007629395px; white-space: pre;"><br class="Apple-interchange-newline">	</span><span style="color: rgb(0, 0, 0); font-family: sans-serif; line-height: 19.2000007629395px;">ex)&nbsp;CONVERT(&nbsp;VARCHAR,&nbsp;REG_DATE, 112&nbsp;)</span><div class="copy_egloos" style="color: rgb(0, 0, 0); font-family: sans-serif; line-height: 19.2000007629395px;"><br /></div><div class="copy_egloos" style="color: rgb(0, 0, 0); font-family: sans-serif; line-height: 19.2000007629395px;">출처:<u style="color: rgb(4, 92, 122);"><a href="http://iris2380.egloos.com/147167" target="_blank" style="color: rgb(4, 92, 122);">DATE/VARCHAR 변환 (oracle vs mssql)</a></u></div></div><p><br /></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Makefile</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Makefile</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/Environment Setting</p>
+                                    <p class="date">2024-09-11 16:40:21</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h2 data-ke-size="size26">개요</h2>
+<p data-ke-size="size16">FastAPI로 API 개발 도중, Makefile을 사용해 보았다.</p>
+<h2 data-ke-size="size26">상세</h2>
+<p data-ke-size="size16">아래와 같은 식으로 샘플을 작성해 보았다.</p>
+<pre class="dockerfile"><code>.PHONY: shell install test fmt lint
+
+# Poetry 가상환경 활성화
+shell:
+    poetry shell
+
+# 종속성 설치
+install:
+    poetry lock
+    poetry install
+
+# 실행
+serve:
+    poetry run uvicorn main:app --reload
+
+# 테스트 실행
+test:
+    export PYTHONPATH=$(pwd):$PYTHONPATH
+    python -m pytest tests
+
+# 코드 포맷팅
+fmt:
+    poetry run ruff format .
+
+# 코드 린팅
+lint:
+    poetry run ruff check . --fix
+    poetry run mypy .</code></pre>
+<p data-ke-size="size16">사용 방법은 다음과 같음</p>
+<pre class="gauss"><code>make shell
+make install
+make serve</code></pre>
+<p data-ke-size="size16">VSCode에서 실행시, 아래와 같은 에러가 나올 수 있다.</p>
+<pre class="angelscript"><code>Makefile:5: *** missing separator.  Stop.</code></pre>
+<p data-ke-size="size16">Makefile은 인덴트를 Tab으로 해 줘야 하는데, VSCode에서 저장시 Space로 자동 포매팅을 해 주는 것이 문제.<br /><code>settings.json</code>에서 다음의 내용을 추가하면 해결된다.</p>
+<pre class="yaml"><code>  "[makefile]": {
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4
+  }</code></pre>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #makefile #FastAPI 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

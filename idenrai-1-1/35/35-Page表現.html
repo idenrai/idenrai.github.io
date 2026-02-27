@@ -1,0 +1,41 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Page表現</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Page表現</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/iReport</p>
+                                    <p class="date">2015-10-19 15:35:02</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">iReport에는 페이징이 존재하며, 당연히 그에 따라 페이지 표시 또한 가능하다.</span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">다만 약간의 버그가 존재해서...</span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">$V{PAGE_COUNT}를 분명 쓰라고 만들어 놓은 것일 터인데, 전혀 먹히지 않는다.</span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">결국&nbsp;</span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">$V{PAGE_NUMBER}로 해결해야 하는데...</span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">그냥 함수 집어넣듯이&nbsp;$V{PAGE_NUMBER} 만을 집어넣으면 전혀 페이지 표시가 되지 않는다...</span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">특히 1 / 20 頁 와 같은 형태로, 그것도 그룹별로 페이지를 분리해서 계산하는 것은 더더욱 답이 나오질 않는다.</span></p><p><br /></p><p><b><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">1. 단독으로 현재 페이지 출력시</span></b></p><p><br /></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">하나의 TextField</span></p><p style="margin-left: 2em;"><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">$V{PAGE_NUMBER} + " Page"</span></p><p style="margin-left: 2em;"><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">Evaluation Time : Now</span></p><p><br /></p><p><br /></p><p><b><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">2. 改頁条件이 따로</span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">&nbsp;존재하지 않고, 그저 Max Column만 있는 경우</span></b></p><p><span style="font-size: 9pt; line-height: 1.5;"><br /></span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">두개의 TextField가 필요</span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">1)&nbsp; &nbsp;</span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">$V{PAGE_NUMBER} + " / "</span></p><p style="margin-left: 2em;"><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">Evaluation Time : Now</span></p><p style="margin-left: 2em;"><br /></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">2)&nbsp; &nbsp;</span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">$V{PAGE_NUMBER} + " Page"</span></p><p style="margin-left: 2em;"><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">Evaluation Time : Report</span></p><p style="margin-left: 2em;"><br /></p><p style="margin-left: 2em;"><br /></p><p><b><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">3. 改頁条件이 </span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">존재, 그에 따라 그룹별 페이지수 표시가 필요한&nbsp;경우</span></b></p><p><span style="font-size: 9pt; line-height: 1.5;"><br /></span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">두개의 TextField가 필요</span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">1)&nbsp; &nbsp;</span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">$V{PAGE_NUMBER} + " / "</span></p><p style="margin-left: 2em;"><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">Evaluation Time : Page</span></p><p style="margin-left: 2em;"><br /></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">2)&nbsp; &nbsp;</span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">$V{PAGE_NUMBER} + " Page"</span></p><p style="margin-left: 2em;"><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">Evaluation Time : Group</span></p><p style="margin-left: 2em;"><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">Evaluation Group : 해당 그룹</span></p><p style="margin-left: 2em;"><br /></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

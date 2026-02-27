@@ -1,0 +1,91 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>npm install을 필요할 때에만 돌리기</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">npm install을 필요할 때에만 돌리기</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/Jenkins</p>
+                                    <p class="date">2020-01-20 20:53:08</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>node_modules가 없거나 package.json이 갱신된 경우에만 npm install을 돌리도록 한다.<br /><br /><b>1. package.json이 갱신되었는지 판별</b></p>
+<pre id="code_1579521139075" class="javascript" data-ke-language="javascript" data-ke-type="codeblock"><code>def check_package_updated() {
+    script {
+        def pretty = ""
+        def file_paths =  sh(script : "git show --pretty=${pretty} --name-only ${env.GIT_COMMIT}", returnStdout: true).trim()
+        def path_list = file_paths.split('\n')
+
+        def is_updated = 0
+        for (path in path_list) {
+            if(path.contains("package.json")) {
+                is_updated=1
+            }
+        }
+        return is_updated
+    }
+}</code></pre>
+<p><b>2. 폴더/파일이 존재하는지 확인</b></p>
+<pre id="code_1579524850925" class="javascript" style="display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; margin: 20px auto 0px; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;" data-ke-language="javascript" data-ke-type="codeblock"><code>def check_target_exist(target_dir) {
+    script {
+        def res = sh(script: "test -d ${target_dir} &amp;&amp; echo '1' || echo '0' ", returnStdout: true).trim()
+        return res
+    }
+}</code></pre>
+<p><b><br />3. <b>package.json이 갱신되었거나, node_modules가 없는 경우에만 </b>npm install</b></p>
+<pre id="code_1579524971318" class="javascript" style="display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; margin: 20px auto 0px; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;" data-ke-language="javascript" data-ke-type="codeblock"><code>pipeline {
+    agent any
+
+    tools {nodejs "node"}
+
+    stages {
+        stage('Install') {
+            steps {
+                echo ""
+                echo "+++----- [Pipeline] Install"
+                echo ""
+                script {
+                    LAST_STARTED = env.STAGE_NAME
+                    def is_package_updated = check_package_updated()
+                    def is_node_modules_exist = check_target_exist("./node_modules")
+
+                    if((is_package_updated == 1) || (is_node_modules_exist == 0)){
+                        echo "+--- npm install"
+                        sh "npm install"
+                    } else {
+                        echo "+--- skip npm install command."
+                    }
+                }
+            }
+        }
+    }
+}</code></pre>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #JenkinsFile #npm install #package.json 갱신여부 #node_modules 존재여부 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

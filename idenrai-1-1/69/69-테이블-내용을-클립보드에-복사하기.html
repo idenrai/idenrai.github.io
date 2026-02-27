@@ -1,0 +1,133 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>테이블 내용을 클립보드에 복사하기</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">테이블 내용을 클립보드에 복사하기</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/JavaScript</p>
+                                    <p class="date">2016-06-08 14:40:44</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>jQuery DataTables등, 각종 테이블에 입력된 내용을 엑셀로 옮길 필요가 있었다.</p>
+<p>그냥 마우스 드래그로 대충 긁어서 Ctrl+C, Ctrl+V를 해도 된다만...</p>
+<p>아무래도 엔드유저를 대상으로 하다 보니, 버튼 클릭만으로 클립보드 복사를 해야 했다.</p>
+<p>예전에 회사 선배 한 분이 <b>document.body.createTextRange()</b>를 써서 해결하려 했던 것 같은데...</p>
+<p>결국엔 익스플로러에서만 된다고 하고는 내비뒀더라.</p>
+<p>뭐, 여하튼 알아보았더니 크롬 등에서도 다 방법이 있길래 적어보도록 한다.</p>
+<p>&nbsp;</p>
+<p><b>1. 일단 버튼을 만들고</b></p>
+<div class="colorscripter-code" style="color: #010101; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position: relative !important; overflow: auto;">
+<table class="colorscripter-code-table" style="margin: 0; padding: 0; border: none; background-color: #fafafa; border-radius: 4px;" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td style="padding: 6px; border-right: 2px solid #e5e5e5;">
+<div style="margin: 0; padding: 0; word-break: normal; text-align: right; color: #666; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height: 130%;">
+<div style="line-height: 130%;">1</div>
+<div style="line-height: 130%;">2</div>
+<div style="line-height: 130%;">3</div>
+<div style="line-height: 130%;">4</div>
+<div style="line-height: 130%;">5</div>
+<div style="line-height: 130%;">6</div>
+</div>
+</td>
+<td style="padding: 6px 0;">
+<div style="margin: 0; padding: 0; color: #010101; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height: 130%;">
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;">&lt;<span style="color: #066de2;">div</span>&nbsp;<span style="color: #0a9989;">class</span>=<span style="color: #df5000;">"pull-right"</span>&nbsp;<span style="color: #0a9989;">style</span>=<span style="color: #df5000;">"margin-bottom:&nbsp;10px;&nbsp;padding-bottom:&nbsp;10px;"</span>&gt;</div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;">&nbsp;&nbsp;&lt;<span style="color: #066de2;">a</span>&nbsp;<span style="color: #0a9989;">id</span>=<span style="color: #df5000;">"ctrlCButton"</span>&nbsp;<span style="color: #0a9989;">class</span>=<span style="color: #df5000;">"btn&nbsp;btn-info&nbsp;btn-small"</span>&nbsp;<span style="color: #0a9989;">style</span>=<span style="color: #df5000;">"width:&nbsp;100px;"</span>&nbsp;<span style="color: #0a9989;">rel</span>=<span style="color: #df5000;">"tooltip"</span>&nbsp;<span style="color: #0a9989;">data-original-title</span>=<span style="color: #df5000;">"クリップボードにコピーします"</span>&gt;</div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span style="color: #066de2;">i</span>&nbsp;<span style="color: #0a9989;">class</span>=<span style="color: #df5000;">"icon-pencil&nbsp;icon-white"</span>&gt;&lt;/<span style="color: #066de2;">i</span>&gt;</div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span style="color: #066de2;">span</span>&nbsp;<span style="color: #0a9989;">class</span>=<span style="color: #df5000;">"btnTitle"</span>&nbsp;<span style="color: #0a9989;">style</span>=<span style="color: #df5000;">"vertical-align:&nbsp;text-top;"</span>&gt;Ctrl&nbsp;+&nbsp;C&lt;/<span style="color: #066de2;">span</span>&gt;</div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;">&nbsp;&nbsp;&lt;/<span style="color: #066de2;">a</span>&gt;</div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;">&lt;/<span style="color: #066de2;">div</span>&gt;</div>
+</div>
+<div style="text-align: right; margin-top: -13px; margin-right: 5px; font-size: 9px; font-style: italic;"><a style="color: #e5e5e5;" href="http://colorscripter.com/info#e" target="_blank" rel="noopener">Colored by Color Scripter</a></div>
+</td>
+<td style="vertical-align: bottom; padding: 0 2px 4px 0;"><a style="color: white;" href="http://colorscripter.com/info#e" target="_blank" rel="noopener"><span style="font-size: 9px; word-break: normal; border-radius: 10px; padding: 1px; background-color: #e5e5e5;">cs</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><b>2. javascript에서 아래와 같이 적어주면 끝</b></p>
+<div class="colorscripter-code" style="color: #010101; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position: relative !important; overflow: auto;">
+<table class="colorscripter-code-table" style="margin: 0; padding: 0; border: none; background-color: #fafafa; border-radius: 4px;" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td style="padding: 6px; border-right: 2px solid #e5e5e5;">
+<div style="margin: 0; padding: 0; word-break: normal; text-align: right; color: #666; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height: 130%;">
+<div style="line-height: 130%;">1</div>
+<div style="line-height: 130%;">2</div>
+<div style="line-height: 130%;">3</div>
+<div style="line-height: 130%;">4</div>
+<div style="line-height: 130%;">5</div>
+<div style="line-height: 130%;">6</div>
+<div style="line-height: 130%;">7</div>
+<div style="line-height: 130%;">8</div>
+<div style="line-height: 130%;">9</div>
+<div style="line-height: 130%;">10</div>
+<div style="line-height: 130%;">11</div>
+<div style="line-height: 130%;">12</div>
+<div style="line-height: 130%;">13</div>
+<div style="line-height: 130%;">14</div>
+<div style="line-height: 130%;">15</div>
+<div style="line-height: 130%;">16</div>
+<div style="line-height: 130%;">17</div>
+</div>
+</td>
+<td style="padding: 6px 0;">
+<div style="margin: 0; padding: 0; color: #010101; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height: 130%;">
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;"><span style="color: #999999;">/**</span></div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;"><span style="color: #999999;">&nbsp;*&nbsp;Ctrl&nbsp;+&nbsp;C&nbsp;ボタン押下</span></div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;"><span style="color: #999999;">&nbsp;*/</span></div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;">$(<span style="color: #066de2;">document</span>).on(<span style="color: #63a35c;">'click'</span>,&nbsp;<span style="color: #63a35c;">'#ctrlCButton'</span>,&nbsp;<span style="color: #a71d5d;">function</span>()&nbsp;{</div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #a71d5d;">if</span>&nbsp;(<span style="color: #066de2;">document</span>.body.createTextRange)&nbsp;{</div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #999999;">//createTextRangeをサポート(IE)</span></div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #a71d5d;">var</span>&nbsp;textRange&nbsp;<span style="color: #a71d5d;">=</span>&nbsp;<span style="color: #066de2;">document</span>.body.createTextRange();</div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;textRange.moveToElementText(<span style="color: #066de2;">document</span>.<span style="color: #066de2;">getElementById</span>(<span style="color: #63a35c;">"projectHanbai_table"</span>));</div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;textRange.execCommand(<span style="color: #63a35c;">"Copy"</span>);</div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$common.notice_success(<span style="color: #63a35c;">'クリップボードにコピーしました。'</span>);</div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span style="color: #a71d5d;">else</span>&nbsp;{</div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #999999;">//createTextRangeを非サポート(IE以外)</span></div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #066de2;">window</span>.getSelection().selectAllChildren(<span style="color: #066de2;">document</span>.<span style="color: #066de2;">getElementById</span>(<span style="color: #63a35c;">'projectHanbai_table'</span>));</div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #066de2;">document</span>.execCommand(<span style="color: #63a35c;">'Copy'</span>);</div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$common.notice_success(<span style="color: #63a35c;">'クリップボードにコピーしました。'</span>);</div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;">&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+<div style="padding: 0 6px; white-space: pre; line-height: 130%;">});</div>
+</div>
+<div style="text-align: right; margin-top: -13px; margin-right: 5px; font-size: 9px; font-style: italic;"><a style="color: #e5e5e5;" href="http://colorscripter.com/info#e" target="_blank" rel="noopener">Colored by Color Scripter</a></div>
+</td>
+<td style="vertical-align: bottom; padding: 0 2px 4px 0;"><a style="color: white;" href="http://colorscripter.com/info#e" target="_blank" rel="noopener"><span style="font-size: 9px; word-break: normal; border-radius: 10px; padding: 1px; background-color: #e5e5e5;">cs</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #javascript #클립보드 복사 #createTextRange #window.getSelection 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

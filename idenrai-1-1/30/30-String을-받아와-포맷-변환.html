@@ -1,0 +1,41 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>String을 받아와 포맷 변환</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">String을 받아와 포맷 변환</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/iReport</p>
+                                    <p class="date">2015-09-10 13:42:45</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p><b><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">1. 수량 포맷 변환</span></b></p><p><br /></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">new DecimalFormat("#,###.00").format(</span></p><p style="margin-left: 2em;"><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">new BigDecimal(</span></p><p style="margin-left: 4em;"><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">Double.valueOf(</span></p><p style="margin-left: 6em;"><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">$F{noSuryo}</span></p><p style="margin-left: 4em;"><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">)</span></p><p style="margin-left: 2em;"><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">)</span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">) + " " + $F{cdSuryoTani}</span></p><p><br /></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">String을 Double 변환</span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">Double을 BigDecimal로 변환</span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">DecimalFormat으로 포맷변환</span></p><p><br /></p><p><br /></p><p><b><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">2. 날짜, 시간 포맷 변환</span></b></p><p><br /></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">new SimpleDateFormat("YYYY年MM月dd日").format(</span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">&nbsp; &nbsp; new SimpleDateFormat("yyyyMMdd").parse(</span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">&nbsp; &nbsp; &nbsp; &nbsp; $F{dtTsumi}</span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">&nbsp; &nbsp; )</span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">) + " 出荷"</span></p><p><br /></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">날짜 형태의 String을&nbsp;</span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">SimpleDateFormat으로 parse하여 Date 포맷으로 변환</span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">Date를&nbsp;</span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">SimpleDateFormat으로 다시 String변환</span></p><p><span style="font-size: 9pt; line-height: 1.5;"><br /></span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">이 때, 처음 투입되는 String은 반드시 parse할 DateFormat과 동일해야 함.</span></p><p><br /></p><p><br /></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">당일 날짜 포맷은</span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">new SimpleDateFormat("YYYY年MM月dd日").format(</span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">&nbsp; &nbsp; &nbsp; &nbsp; new java.util.Date()</span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">&nbsp; &nbsp; )</span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">이걸로 해결.</span></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Selenium 환경 설정</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Selenium 환경 설정</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/Selenium</p>
+                                    <p class="date">2022-02-21 09:54:45</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h1>Selenium 환경 설정</h1>
+<h2>Selenium</h2>
+<p>웹 브라우저 조작을 자동화하기 위한 프레임워크</p>
+<h2>환경구축</h2>
+<h3>Python 인스톨</h3>
+<p>버전은 최신이면 됨 (난 3.10.0사용)</p>
+<h4>MacOS의 경우</h4>
+<p>기본적으로 Python이 깔려 있으나, 되도록이면 Python3을 설치하는 것을 추천.</p>
+<pre><code>brew install python3</code></pre><h3>Selenium 인스톨</h3>
+<h4>Windows</h4>
+<pre><code>pip install selenium</code></pre><h4>Mac</h4>
+<pre><code>python3 -m pip install selenium</code></pre><h3>Chrome Driver 인스톨</h3>
+<p>우선 자신의 크롬 버전을 확인<br>설정에서 아래와 같이 버전 확인 가능</p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>내 경우엔 98.0.4758.102 니까 버전 98을 받으면 된다.</p>
+<pre><code>pip install chromedriver-binary==98.*</code></pre><p>원래는 직접 <a href="https://chromedriver.chromium.org/downloads">여기서</a> 크롬드라이버를 DL해야 하지만,<br>어떤 친절한 사람이 <a href="https://github.com/danielkaiser/python-chromedriver-binary">이런 걸</a> 만들어 줬으므로, 그냥 pip으로 해결했다.<br>※현재는 위의 링크가 죽은 것 같다. <a href="https://pypi.org/project/chromedriver-binary/">이쪽</a>을 참조.</p>
+<h4>Mac</h4>
+<p>맥의 경우는 그냥 brew로 설치 가능하다.</p>
+<pre><code>brew install chromedriver</code></pre><p>설치 확인</p>
+<pre><code>chromedriver -v</code></pre><h2>구동 확인</h2>
+<h3>소스코드</h3>
+<p>아래의 소스코드를 작성, test.py라는 이름으로 저장해 두자</p>
+<pre><code>import time
+
+# MacOS의 경우는 import할 필요 없음
+import chromedriver_binary
+
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+
+# WebDriver의 옵션 설정
+options = webdriver.ChromeOptions()
+# Headless Chrome을 사용하면, 화면을 띄우지 않고 테스트 실시
+options.add_argument(&#39;--headless&#39;)
+
+print(&#39;Connecting to remote browser...&#39;)
+
+# 옵션을 사용할 경우엔 이런 식으로
+# driver = webdriver.Chrome(options=options)
+
+driver = webdriver.Chrome()
+
+# Access
+driver.get(&#39;https://www.naver.com&#39;)
+
+print(&#39;first&#39;)
+print(driver.current_url)
+print(driver.title)
+
+# 1. Naver
+# 검색창을 찾아 검색어 입력
+elm = driver.find_elements(By.ID, &#39;query&#39;)[0]
+elm.send_keys(&#39;Selenium&#39;)
+
+# 검색
+# 검색 버튼 Element를 찾아 클릭
+btn_elm = driver.find_elements(By.ID, &#39;search_btn&#39;)[0]
+btn_elm.click()
+
+# 새 탭 지정 : googl
+# Google을 googl로 지정
+driver.execute_script(
+  &quot;(function() { &quot; +
+  &quot;window.open(&#39;https://www.google.com/&#39;, &#39;googl&#39;);&quot; + 
+  &quot;})();&quot;
+)
+
+# googl 탭 열기
+driver.switch_to.window(&quot;googl&quot;)
+
+print(&#39;googl&#39;)
+print(driver.current_url)
+print(driver.title)
+
+# 검색창을 찾아 검색어 입력
+search = driver.find_element(By.XPATH, &quot;//input[@name=&#39;q&#39;]&quot;)
+search.send_keys(&#39;Selenium&#39;)
+# 검색
+# 검색창에서 엔터키 누르기
+search.send_keys(Keys.ENTER)
+
+# 동작 확인을 위해 Sleep
+# Selenium을 돌리는 데 있어서, 이런식으로 트릭키한 작업이 필요한 경우가 꽤 많다
+# 특히 화면이동이나 검색 등의 확인도, 매번 sleep을 주어야 제대로 돌아간다
+time.sleep(5)
+
+# 브라우저 종료
+driver.quit()</code></pre><h3>실행</h3>
+<p>저장해 둔 폴더에서</p>
+<pre><code>test.py</code></pre><p>또는</p>
+<pre><code>python test.py</code></pre><h4>Mac</h4>
+<pre><code>python3 test.py</code></pre>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #Selenium 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

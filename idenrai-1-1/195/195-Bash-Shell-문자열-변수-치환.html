@@ -1,0 +1,72 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Bash Shell 문자열 변수 치환</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Bash Shell 문자열 변수 치환</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/Shell</p>
+                                    <p class="date">2019-11-19 12:41:08</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>Git의&nbsp;Commit&nbsp;Message를&nbsp;Jenkinsfile에서&nbsp;Shell로&nbsp;전달해서&nbsp;curl로&nbsp;TEAMS에&nbsp;송신해야&nbsp;했다. <br />여기서&nbsp;문제가&nbsp;되는&nbsp;것이,&nbsp;커밋&nbsp;메시지에&nbsp;공백이&nbsp;있어서&nbsp;쉘로&nbsp;변수&nbsp;전달시&nbsp;짤린다는&nbsp;것. <br />그래서 일단 Jenkinsfile에서는 커밋 아이디로 커밋 메시지를 취득하여, 메시지의 공백을 "-spc-"라는 문자열로 치환하였다.</p>
+<pre id="code_1574134452995" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>def get_commit_msg(){
+    script {
+        return sh(script : "git show -s --format=%B ${env.GIT_COMMIT}", returnStdout: true).trim().replace (' ', '-spc-')
+    }
+}</code></pre>
+<p>이를&nbsp;환경변수에&nbsp;저장하여&nbsp;다음과&nbsp;같이&nbsp;쉘에&nbsp;송신.</p>
+<pre id="code_1574134482657" class="html xml" style="display: block; overflow: auto; padding: 15px; color: #383a42; background: #f6f7f8; font-size: 14px; border-radius: 3px; font-family: Menlo, Consolas, Monaco, monospace; border: 1px solid #dddddd; margin: 20px auto 0px; cursor: default; z-index: 1; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;" data-ke-language="html" data-ke-type="codeblock"><code>stage('TEAMS') {
+    steps {
+        echo 'TEAMS_MSG_Finished!'
+        script {
+            last_started = env.STAGE_NAME
+            sh "bash ${env.BATCH_DIR}/teams-notice.sh ${env.GIT_BRANCH} ${env.COMMIT_MSG} ${env.BUILD_URL}"
+        }
+    }
+}</code></pre>
+<p>&nbsp;</p>
+<p>쉘에서&nbsp;변수를&nbsp;받아&nbsp;다음과&nbsp;같이&nbsp;커밋&nbsp;메시지를&nbsp;치환</p>
+<pre id="code_1574134516405" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>#!/bin/bash
+
+# Branch Name
+BRANCH_NAME=$1
+# Commit Message
+COMMIT_MSG=$2
+# Build URL
+BUILD_URL=$3
+
+SPC_COMMIT_MSG=$(echo ${COMMIT_MSG}|sed 's/-spc-/\ /g')
+</code></pre>
+<p>치환한 내용을 바로 변수에 넣는 것이 계속 안되더라.</p>
+<p>그냥 출력하는 방법은 인터넷상에 많기에, 일단 <span style="color: #333333;">echo로 </span>출력 후 그 결과를 변수에 넣는 형식으로 해결했다.</p>
+<p>&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #Bash #Shell #문자열 치환 #JenkinsFile 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>elm Native</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">elm Native</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/elm</p>
+                                    <p class="date">2017-05-26 10:53:51</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>@markdown</p><p><br /></p><p>## elm Native</p><p><br /></p><p>#### elm Ports의 단점</p><p><br /></p><p>이전에 elm Ports를 통해 jQuery로 Bootstrap Modal을 열어 보았다.</p><p>Ports는 코드도 간단하고 편하고 이래저래 쓸만했다.</p><p>단 한가지, 날 찝찝하게 만드는 것이 있다면...</p><p>Ports를 사용하는 모듈은 port module로 선언해야 한다는 것.</p><p>port module을 사용하는 패키지는 Elm Package로 공개할 수 없다.</p><p>Port의 사용으로 인해 JS를 인스톨할 필요가 생기기 때문이란다.</p><p>내가 Elm Package를 만들어 배포할 일은 없으니 사실 Ports를 쓰건 말건 별 상관도 없지만서도, 우리 팀의 미학에도 어긋나기에 슬프지만 Ports를 사용하는 것은 그만두기로 했다.</p><p><br /></p><p>#### elm Native</p><p><br /></p><p>그래서 모듈을 모듈이라 쓸 수 있는 Native로 이동하기로 결정.</p><p>일단 사용할 Javascript code는 다음과 같다.</p><p><br /></p><p>**TableTool.js**</p><p><br /></p><p>```javascript</p><p>var _demo$elm_webpack$Native_TableTool = function() {</p><p>&nbsp; &nbsp; var openModal = function(target){</p><p>&nbsp; &nbsp; &nbsp; &nbsp; $(target).modal('show');</p><p>&nbsp; &nbsp; &nbsp; &nbsp; return true;</p><p>&nbsp; &nbsp; };</p><p>&nbsp; &nbsp; return {</p><p>&nbsp; &nbsp; &nbsp; &nbsp; openModal : openModal</p><p>&nbsp; &nbsp; };</p><p>}();</p><p>```</p><p><br /></p><p>Native는 Native 나름대로 짜증나는 룰이 두가지 존재한다.</p><p><br /></p><p>1. &nbsp;Javascript 코드를 놓을 위치</p><p>&nbsp; &nbsp; Native로 사용할 js는 `elm-package.json`에서 설정한 &nbsp;`source-directories`의 바로 아래에 `Native`라는 폴더를 만들고, 그 안에 다 넣어야 한다.</p><p><br /></p><p>2. &nbsp;function명</p><p>&nbsp; &nbsp; 위의 코드를 보면, `_demo$elm_webpack$Native_TableTool`이라는 요상한 이름으로 선언을 하고 있다.</p><p>&nbsp; &nbsp; 이는 `elm-package.json`에서 설정한 &nbsp;`repository`를 따라간다.</p><p><br /></p><p>`repository": "https://github.com/demo/elm-webpack.git,`</p><p>`_유저명$프로젝트명$Native_함수명`</p><p><br /></p><p>대략 이런 느낌이다.</p><p><br /></p><p>이것으로 이미 Native 자체의 설정은 끝났고,</p><p>이를 Module에서 사용하기만 하면 된다.</p><p><br /></p><p>**Datatables.elm**</p><p><br /></p><p>&nbsp; &nbsp; module Components.CustomTables.WantedTable exposing (..)</p><p><br /></p><p>&nbsp; &nbsp; -- 선언해 둔 TableTool을 import</p><p>&nbsp; &nbsp; import Native.TableTool</p><p><br /></p><p>&nbsp; &nbsp; -- Native를 사용할 함수를 설정</p><p>&nbsp; &nbsp; openModal : String -&gt; bool</p><p>&nbsp; &nbsp; openModal target =</p><p>&nbsp; &nbsp; &nbsp; &nbsp; Native.TableTool.openModal target</p><p><br /></p><p>&nbsp; &nbsp; -- update에서 Cmd에 port를 가져옴</p><p>&nbsp; &nbsp; update : WantedMsg -&gt; Wanted -&gt; ( Wanted, Cmd WantedMsg )</p><p>&nbsp; &nbsp; update message model =</p><p>&nbsp; &nbsp; &nbsp; case message of</p><p>&nbsp; &nbsp; &nbsp; &nbsp; NoOp -&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ( model, Cmd.none )</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; ShowDetailModal quest -&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ( { model | modalStatus = quest }</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; , openModal "#detailModal"</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ) &nbsp; &nbsp;</p><p><br /></p><p>이상의 작업을 통해, ShowDetailModal Message가 날아왔을 때 Native.TableTool의 openModal을 가동할 수 있었다.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

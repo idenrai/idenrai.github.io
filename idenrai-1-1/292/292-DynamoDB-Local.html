@@ -1,0 +1,112 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>DynamoDB Local</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">DynamoDB Local</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/AWS for Data Engineering</p>
+                                    <p class="date">2024-07-06 21:21:08</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>DynamoDB 를 로컬 환경에서 구동하기</p>
+<p><a href="https://hub.docker.com/r/amazon/dynamodb-local">https://hub.docker.com/r/amazon/dynamodb-local</a></p>
+<p><a href="https://hub.docker.com/r/aaronshaf/dynamodb-admin">https://hub.docker.com/r/aaronshaf/dynamodb-admin</a></p>
+<h2>준비물</h2>
+<h3>Docker</h3>
+<p>Docker Desktop 설치</p>
+<p><a href="https://docs.docker.com/desktop/install/mac-install/">https://docs.docker.com/desktop/install/mac-install/</a></p>
+<h3>AWS</h3>
+<p>AWS-CLI 설치</p>
+<p><a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html</a></p>
+<h4>boto3</h4>
+<pre><code class="language-shell">pip install boto3</code></pre>
+<p><a href="https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html">https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html</a></p>
+<h4>Configure</h4>
+<p>원활한 이용을 위해 AWS Credentials 설정이 필요</p>
+<pre><code class="language-shell">aws configure</code></pre>
+<p>아래와 같이 설정</p>
+<pre><code class="language-text">$ aws configure
+AWS Access Key ID [None]: dummy
+AWS Secret Access Key [None]: dummy
+Default region name [None]: ap-northeast-1
+Default output format [None]: json</code></pre>
+<p>수동 설정의 경우는 아래와 같음</p>
+<pre><code class="language-shell">touch ~/.aws/credentials
+vi ~/.aws/credentials</code></pre>
+<pre><code class="language-text">[default]
+aws_access_key_id = dummy
+aws_secret_access_key = dummy</code></pre>
+<pre><code class="language-shell">touch ~/.aws/config
+vi ~/.aws/config</code></pre>
+<pre><code class="language-test">[default]
+region = ap-northeast-1
+output = json</code></pre>
+<h2>Code</h2>
+<p>docker-compose.yml</p>
+<pre><code class="language-yml">version: &quot;3.8&quot;
+services:
+  dynamodb-local:
+    command: &quot;-jar DynamoDBLocal.jar -sharedDb -dbPath ./data&quot;
+    image: &quot;amazon/dynamodb-local:latest&quot;
+    container_name: dynamodb-local
+    ports:
+      - &quot;8000:8000&quot;
+    volumes:
+      - &quot;./docker/dynamodb:/home/dynamodblocal/data&quot;
+    working_dir: /home/dynamodblocal
+
+  dynamodb-admin:
+    container_name: dynamodb-admin
+    image: aaronshaf/dynamodb-admin:latest
+    environment:
+      DYNAMO_ENDPOINT: dynamodb-local:8000
+    ports:
+      - &quot;8001:8001&quot;
+    depends_on:
+      - dynamodb-local</code></pre>
+<h2>Run</h2>
+<pre><code class="language-shell">docker-compose up</code></pre>
+<h3>Test</h3>
+<pre><code class="language-shell">aws dynamodb list-tables --endpoint-url http://localhost:8000</code></pre>
+<p>아래와 같이 출력되면 OK</p>
+<pre><code class="language-text">$ aws dynamodb list-tables --endpoint-url http://localhost:8000
+{
+    &quot;TableNames&quot;: []
+}</code></pre>
+<h3>GUI</h3>
+<p>8000 에서 DynamoDB 를, 8001 에서 GUI 를 기동하므로, GUI 에서도 확인 가능</p>
+<p><a href="http://localhost:8001/">http://localhost:8001/</a></p>
+<h2>Github</h2>
+<p>위의 내용을 그대로 실시해 보았음</p>
+<p><a href="https://github.com/idenrai/templates/tree/main/dynamodb_local">https://github.com/idenrai/templates/tree/main/dynamodb_local</a></p>
+
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #local #Docker #dynamoDB 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

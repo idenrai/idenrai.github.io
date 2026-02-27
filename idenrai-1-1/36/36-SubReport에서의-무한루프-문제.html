@@ -1,0 +1,41 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>SubReport에서의 무한루프 문제</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">SubReport에서의 무한루프 문제</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/iReport</p>
+                                    <p class="date">2015-10-20 10:05:59</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p><span style="font-family: Dotum, 돋움; font-size: 10pt;">iReport에서 SubReport를 써야 하는 상황.</span></p><p><span style="font-family: Dotum, 돋움; font-size: 10pt;">레포트 상단 반쪽을 그냥 냅두고 하단 반쪽에 서브레포트를 넣으려고도 해 보았으나 잘 되지 않았다.</span></p><p><span style="font-size: 10pt; line-height: 1.5; font-family: Dotum, 돋움;">결국 서브레포트 두개를 하나의 마스터레포트에 올려서 한 페이지로 출력하기로 하였다.</span></p><p><br /></p><p><span style="font-family: Dotum, 돋움; font-size: 10pt;">MaserReport에서 Detail밴드의 크기를 풀로 넣고</span></p><p><span style="font-family: Dotum, 돋움; font-size: 10pt;">두 레포트를 순서대로 집어넣었더니 일단 움직이는 것은 성공.</span></p><p><span style="font-family: Dotum, 돋움; font-size: 10pt;">다만, 정상적으로 구동하였다면 4장이 출력되어야 했을 레포트가 무슨 이유에선가 84장 출력.</span></p><p><br /></p><p><span style="font-family: Dotum, 돋움; font-size: 10pt;">Detail에 넣은 것이 문제인가 싶어 Page&nbsp;</span><span style="font-family: Dotum, 돋움; font-size: 10pt;">Header와 Column Header에 넣어 보았더니</span></p><p><span style="font-family: Dotum, 돋움; font-size: 10pt;">이번에는 "</span><span style="color: rgb(0, 0, 0); font-family: Dotum, 돋움; font-size: 10pt; line-height: 1.5;">Infinite loop creating new page due to column header overflow.</span><span style="font-size: 10pt; line-height: 1.5; font-family: Dotum, 돋움;">"라며 아예 돌아가질 않는다.</span></p><p><span style="font-size: 9pt; line-height: 1.5;"><br /></span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;"><span style="font-family: Dotum, 돋움;">둘 다 </span><b><u><span style="font-family: Dotum, 돋움;">Summary필드</span></u></b><span style="font-family: Dotum, 돋움;">에 넣는 것으로, 정상적으로 4장이 출력되었다.</span></span></p><p><br /></p><p><span style="font-family: Dotum, 돋움; font-size: 11pt;">* iReport SubReport의 특성</span></p><p><span style="font-family: Dotum, 돋움; font-size: 11pt;">- Footer에서는 되지 않음</span></p><p><span style="font-family: Dotum, 돋움; font-size: 11pt;">- Detail Band에서는 상황에 따라 무한루프 발생</span></p><p><span style="font-family: Dotum, 돋움; font-size: 11pt;">- Header에서는 무한루프로 인해 컴파일 불가</span></p><p><span style="font-family: Dotum, 돋움; font-size: 11pt;">- Summary를 사용하자.</span></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

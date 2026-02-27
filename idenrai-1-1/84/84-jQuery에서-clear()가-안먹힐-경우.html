@@ -1,0 +1,41 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>jQuery에서 clear()가 안먹힐 경우</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">jQuery에서 clear()가 안먹힐 경우</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/JavaScript</p>
+                                    <p class="date">2016-08-12 22:00:44</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>한번 만든 Modal을 각 행의 버튼 클릭에 따라 여러번 불러내는 작업이 있었다.</p><p>이 과정에서 상세 데이터가 있는 경우는 DataTable로 데이터를 화면 출력하고</p><p>데이터가 없는 경우에는 메시지만 출력.</p><p><br /></p><p>그런데 해당 테이블의 &lt;tr&gt;수를 확인하여 1이상일 경우 데이터테이블을 없애는 과정에서</p><p>datatable.destroy만으로는 해결이 되지 않기 때문에...</p><p><br /></p><p>언제나처럼 테이블.clear()를 사용해서 없애 보려고 했다.</p><p>그런데 <b>clear is not a function</b>이라는 에러가 뜨더라...</p><p>remove를 쓰려니 자식 테이블 잡기가 애매하고...</p><p>혹시나 해서 <b>table.empty()&nbsp;</b>를 썼더니 해결되었다.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

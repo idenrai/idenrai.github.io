@@ -1,0 +1,145 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>RDS PostgreSQL에서 유저 권한 부여하기</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">RDS PostgreSQL에서 유저 권한 부여하기</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/DB・SQL</p>
+                                    <p class="date">2020-03-03 00:56:16</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>RDS에 PostgreSQL을 깔고 DB를 구축했다.<br>DB에는 <strong>Master</strong>와 <strong>Transaction</strong>의 두가지 스키마를 만들었고, 아래와 같이 롤을 부여하기로 했다.</p>
+<h4>Role</h4>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>이름</strong></th>
+<th align="center"><strong>Master</strong></th>
+<th align="center"><strong>Transaction</strong></th>
+<th align="center"><strong>설명</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">master_user</td>
+<td align="center">CRUD</td>
+<td align="center">-</td>
+<td align="center">마스터 테이블 유지보수용 롤</td>
+</tr>
+<tr>
+<td align="center">readonly_user</td>
+<td align="center">R</td>
+<td align="center">R</td>
+<td align="center">열람용 롤</td>
+</tr>
+<tr>
+<td align="center">normal_user</td>
+<td align="center">R</td>
+<td align="center">CRUD</td>
+<td align="center">시스템 가동에 필요한 권한 부여 롤</td>
+</tr>
+<tr>
+<td align="center">super_admin</td>
+<td align="center">CRUD</td>
+<td align="center">CRUD</td>
+<td align="center">전 권한 부여</td>
+</tr>
+</tbody></table>
+<h4>User</h4>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>이름</strong></th>
+<th align="center"><strong>Role</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">master_user_01</td>
+<td align="center">master_user</td>
+</tr>
+<tr>
+<td align="center">readonly_user_01</td>
+<td align="center">readonly_user</td>
+</tr>
+<tr>
+<td align="center">normal_user_01</td>
+<td align="center">normal_user</td>
+</tr>
+<tr>
+<td align="center">normal_user_02</td>
+<td align="center">normal_user</td>
+</tr>
+<tr>
+<td align="center">super_admin_01</td>
+<td align="center">super_admin</td>
+</tr>
+</tbody></table>
+<p>바로 본론으로 들어가, 소스는 다음과 같다.</p>
+<pre><code>-- ROLE
+CREATE ROLE master_user;
+CREATE ROLE readonly_user;
+CREATE ROLE normal_user;
+CREATE ROLE super_admin;
+
+-- USER
+CREATE USER master_user_01 WITH PASSWORD &#39;aaa&#39;;
+CREATE USER readonly_user_01 WITH PASSWORD &#39;bbb&#39;;
+CREATE USER normal_user_01 WITH PASSWORD &#39;ccc&#39;;
+CREATE USER normal_user_02 WITH PASSWORD &#39;ddd&#39;;
+CREATE USER super_admin_01 WITH PASSWORD &#39;eee&#39;;
+
+-- GRANT USAGE
+GRANT USAGE ON SCHEMA master TO master_user, readonly_user, normal_user;
+GRANT USAGE ON SCHEMA transaction TO readonly_user, normal_user;
+
+-- GRANT
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA master TO master_user;
+GRANT SELECT ON ALL TABLES IN SCHEMA master TO readonly_user;
+GRANT SELECT ON ALL TABLES IN SCHEMA transaction TO readonly_user;
+GRANT SELECT ON ALL TABLES IN SCHEMA master TO normal_user;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA transaction TO normal_user;
+
+-- GRANT SUPERUSER ROLE TO super_admin
+GRANT rds_superuser TO super_admin;
+
+-- GRANT ROLE TO USER
+GRANT master_user TO master_user_01;
+GRANT readonly_user TO readonly_user_01;
+GRANT normal_user TO normal_user_01;
+GRANT normal_user TO normal_user_02;
+GRANT super_admin TO super_admin_01;</code></pre><h4>Grant Usage</h4>
+<p>Grant가 테이블의 CRUD 권한을 부여하는 것이라면, Grant Usage는 스키마에 대한 엑세스 권한을 부여한다.<br>테이블 권한이 있더라도, 스키마를 사용할 수 없다면 그 안의 테이블을 만질 수 없다는 것.<br>자세한 것은 <strong><a href="https://stackoverflow.com/questions/17338621/what-grant-usage-on-schema-exactly-do">What GRANT USAGE ON SCHEMA exactly do?</a></strong>를 참조.</p>
+<h4>RDS for PostgreSQL의 ADMIN권한</h4>
+<p>RDS for PostgreSQL에서는 ADMIN권한을 가진 Role이 존재한다.<br>이름하야 「rds_superuser」.<br>이것만 GRANT로 발라주면, 그 유저/롤은 바로 슈퍼유저가 된다.</p>
+<h4>참조</h4>
+<p><strong><a href="https://www.postgresql.org/docs/current/sql-grant.html">PostgreSQL Grant</a></strong></p>
+
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #User #db #권한 #grant #PostgreSQL #Role #rds 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

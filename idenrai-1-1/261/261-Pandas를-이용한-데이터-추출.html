@@ -1,0 +1,629 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Pandas를 이용한 데이터 추출</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Pandas를 이용한 데이터 추출</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/Python</p>
+                                    <p class="date">2022-05-27 19:36:29</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h1>Pandas</h1>
+<h2>Pandas Dataframe</h2>
+<ul>
+<li>2차원의 데이터에 대응하는 데이터 구조</li>
+<li>열&amp;행으로 데이터 추출 가능</li>
+<li>1행 or 1열의 정보는 series에 대응</li>
+</ul>
+<h2>Pandas read_html</h2>
+<p>지정한 URL상의 table태그를 가져옴</p>
+<p>pd.read_html(url, 그외 임의의 인수)</p>
+<table>
+<thead>
+<tr>
+<th>인수</th>
+<th>필수/임의</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>URL</td>
+<td>필수</td>
+<td>읽기 대상의 URL</td>
+</tr>
+<tr>
+<td>header</td>
+<td>임의</td>
+<td>헤더에 지정하는 행 지정</td>
+</tr>
+<tr>
+<td>index_col</td>
+<td>임의</td>
+<td>인덱스에 지정하는 열 지정</td>
+</tr>
+<tr>
+<td>skiprows</td>
+<td>임의</td>
+<td>읽지 않는 행수</td>
+</tr>
+</tbody></table>
+<p>반환값</p>
+<ul>
+<li>DataFrame 리스트</li>
+</ul>
+<h2>Yahoo Finance에서 일본주 랭킹 가져오기</h2>
+<pre><code class="language-python">import pandas as pd</code></pre>
+<pre><code class="language-python">url = &quot;https://info.finance.yahoo.co.jp/ranking/?kd=4&quot;</code></pre>
+<pre><code class="language-python">data = pd.read_html(url,header=0)</code></pre>
+<h3>상위 5개 항목</h3>
+<pre><code class="language-python">data[0].head()</code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>順位</th>
+      <th>名称・コード・市場</th>
+      <th>取引値</th>
+      <th>発行済み株式数</th>
+      <th>時価総額(百万円)</th>
+      <th>単元株数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>トヨタ自動車(株)7203東証PRM掲示板</td>
+      <td>2,08415:00</td>
+      <td>16,314,987,460株</td>
+      <td>34,000,434百万円</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>日本電信電話(株)9432東証PRM掲示板</td>
+      <td>3,99615:00</td>
+      <td>3,622,012,656株</td>
+      <td>14,473,563百万円</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>ソニーグループ(株)6758東証PRM掲示板</td>
+      <td>11,42515:00</td>
+      <td>1,261,081,781株</td>
+      <td>14,407,859百万円</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>(株)キーエンス6861東証PRM掲示板</td>
+      <td>49,05015:00</td>
+      <td>243,207,684株</td>
+      <td>11,929,337百万円</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>ＫＤＤＩ(株)9433東証PRM掲示板</td>
+      <td>4,54415:00</td>
+      <td>2,304,179,550株</td>
+      <td>10,470,192百万円</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h3>하위 5개 항목</h3>
+<pre><code class="language-python">data[0].tail()</code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>順位</th>
+      <th>名称・コード・市場</th>
+      <th>取引値</th>
+      <th>発行済み株式数</th>
+      <th>時価総額(百万円)</th>
+      <th>単元株数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>45</th>
+      <td>46</td>
+      <td>コマツ6301東証PRM掲示板</td>
+      <td>3,18215:00</td>
+      <td>973,145,800株</td>
+      <td>3,096,550百万円</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>47</td>
+      <td>オリックス(株)8591東証PRM掲示板</td>
+      <td>2,42115:00</td>
+      <td>1,258,277,087株</td>
+      <td>3,046,289百万円</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>48</td>
+      <td>三菱電機(株)6503東証PRM掲示板</td>
+      <td>1,38115:00</td>
+      <td>2,147,201,551株</td>
+      <td>2,965,285百万円</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>49</td>
+      <td>ルネサスエレクトロニクス(株)6723東証PRM掲示板</td>
+      <td>1,49115:00</td>
+      <td>1,948,507,856株</td>
+      <td>2,905,225百万円</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>50</td>
+      <td>パナソニック　ホールディングス(株)6752東証PRM掲示板</td>
+      <td>1,179.515:00</td>
+      <td>2,453,866,297株</td>
+      <td>2,894,335百万円</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h3>매매가 수정</h3>
+<p>문자열 자르기를 통해, 가격과 시간이 붙어있는 문제 해결</p>
+<p>이를 응용하여, 수치나 DateTime 등도 수정 가능</p>
+<pre><code class="language-python">data[0][&quot;値&quot;] = [i[:-5] for i in data[0][&quot;取引値&quot;]]
+data[0][&quot;基準時間&quot;] = [i[-5:] for i in data[0][&quot;取引値&quot;]]
+data[0][&quot;名称&quot;] = [i[:-12] for i in data[0][&quot;名称・コード・市場&quot;]]
+data[0][&quot;コード&quot;] = [i[-12:][:-8] for i in data[0][&quot;名称・コード・市場&quot;]]</code></pre>
+<pre><code class="language-python">data[0].head()</code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>順位</th>
+      <th>名称・コード・市場</th>
+      <th>取引値</th>
+      <th>発行済み株式数</th>
+      <th>時価総額(百万円)</th>
+      <th>単元株数</th>
+      <th>値</th>
+      <th>基準時間</th>
+      <th>名称</th>
+      <th>コード</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>トヨタ自動車(株)7203東証PRM掲示板</td>
+      <td>2,08415:00</td>
+      <td>16,314,987,460株</td>
+      <td>34,000,434百万円</td>
+      <td>100</td>
+      <td>2,084</td>
+      <td>15:00</td>
+      <td>トヨタ自動車(株)</td>
+      <td>7203</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>日本電信電話(株)9432東証PRM掲示板</td>
+      <td>3,99615:00</td>
+      <td>3,622,012,656株</td>
+      <td>14,473,563百万円</td>
+      <td>100</td>
+      <td>3,996</td>
+      <td>15:00</td>
+      <td>日本電信電話(株)</td>
+      <td>9432</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>ソニーグループ(株)6758東証PRM掲示板</td>
+      <td>11,42515:00</td>
+      <td>1,261,081,781株</td>
+      <td>14,407,859百万円</td>
+      <td>100</td>
+      <td>11,425</td>
+      <td>15:00</td>
+      <td>ソニーグループ(株)</td>
+      <td>6758</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>(株)キーエンス6861東証PRM掲示板</td>
+      <td>49,05015:00</td>
+      <td>243,207,684株</td>
+      <td>11,929,337百万円</td>
+      <td>100</td>
+      <td>49,050</td>
+      <td>15:00</td>
+      <td>(株)キーエンス</td>
+      <td>6861</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>ＫＤＤＩ(株)9433東証PRM掲示板</td>
+      <td>4,54415:00</td>
+      <td>2,304,179,550株</td>
+      <td>10,470,192百万円</td>
+      <td>100</td>
+      <td>4,544</td>
+      <td>15:00</td>
+      <td>ＫＤＤＩ(株)</td>
+      <td>9433</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h3>필요없는 열 삭제</h3>
+<pre><code class="language-python">data[0] = data[0].drop([&#39;名称・コード・市場&#39;, &#39;取引値&#39;], axis=1)</code></pre>
+<pre><code class="language-python">data[0].head()</code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>順位</th>
+      <th>発行済み株式数</th>
+      <th>時価総額(百万円)</th>
+      <th>単元株数</th>
+      <th>値</th>
+      <th>基準時間</th>
+      <th>名称</th>
+      <th>コード</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>16,314,987,460株</td>
+      <td>34,000,434百万円</td>
+      <td>100</td>
+      <td>2,084</td>
+      <td>15:00</td>
+      <td>トヨタ自動車(株)</td>
+      <td>7203</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>3,622,012,656株</td>
+      <td>14,473,563百万円</td>
+      <td>100</td>
+      <td>3,996</td>
+      <td>15:00</td>
+      <td>日本電信電話(株)</td>
+      <td>9432</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>1,261,081,781株</td>
+      <td>14,407,859百万円</td>
+      <td>100</td>
+      <td>11,425</td>
+      <td>15:00</td>
+      <td>ソニーグループ(株)</td>
+      <td>6758</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>243,207,684株</td>
+      <td>11,929,337百万円</td>
+      <td>100</td>
+      <td>49,050</td>
+      <td>15:00</td>
+      <td>(株)キーエンス</td>
+      <td>6861</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>2,304,179,550株</td>
+      <td>10,470,192百万円</td>
+      <td>100</td>
+      <td>4,544</td>
+      <td>15:00</td>
+      <td>ＫＤＤＩ(株)</td>
+      <td>9433</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h3>컬럼 순서 변경</h3>
+<p>필요없는 컬럼은 여기서도 삭제 가능</p>
+<pre><code class="language-python">data[0] = data[0][[&#39;順位&#39;,&#39;コード&#39;, &#39;名称&#39;, &#39;値&#39;, &#39;時価総額(百万円)&#39;, &#39;発行済み株式数&#39;,&#39;単元株数&#39;]]</code></pre>
+<pre><code class="language-python">data[0].head()</code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>順位</th>
+      <th>コード</th>
+      <th>名称</th>
+      <th>値</th>
+      <th>時価総額(百万円)</th>
+      <th>発行済み株式数</th>
+      <th>単元株数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>7203</td>
+      <td>トヨタ自動車(株)</td>
+      <td>2,084</td>
+      <td>34,000,434百万円</td>
+      <td>16,314,987,460株</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>9432</td>
+      <td>日本電信電話(株)</td>
+      <td>3,996</td>
+      <td>14,473,563百万円</td>
+      <td>3,622,012,656株</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>6758</td>
+      <td>ソニーグループ(株)</td>
+      <td>11,425</td>
+      <td>14,407,859百万円</td>
+      <td>1,261,081,781株</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>6861</td>
+      <td>(株)キーエンス</td>
+      <td>49,050</td>
+      <td>11,929,337百万円</td>
+      <td>243,207,684株</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>9433</td>
+      <td>ＫＤＤＩ(株)</td>
+      <td>4,544</td>
+      <td>10,470,192百万円</td>
+      <td>2,304,179,550株</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h2>Pandas set_index</h2>
+<p>DataFrame에 인덱스 설정</p>
+<p>DataFrame.set_index(열 이름, 임의의 인수)</p>
+<pre><code class="language-python">data[0].set_index(&quot;順位&quot;, inplace=True)</code></pre>
+<pre><code class="language-python">data[0].head()</code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>コード</th>
+      <th>名称</th>
+      <th>値</th>
+      <th>時価総額(百万円)</th>
+      <th>発行済み株式数</th>
+      <th>単元株数</th>
+    </tr>
+    <tr>
+      <th>順位</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>7203</td>
+      <td>トヨタ自動車(株)</td>
+      <td>2,084</td>
+      <td>34,000,434百万円</td>
+      <td>16,314,987,460株</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9432</td>
+      <td>日本電信電話(株)</td>
+      <td>3,996</td>
+      <td>14,473,563百万円</td>
+      <td>3,622,012,656株</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6758</td>
+      <td>ソニーグループ(株)</td>
+      <td>11,425</td>
+      <td>14,407,859百万円</td>
+      <td>1,261,081,781株</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>6861</td>
+      <td>(株)キーエンス</td>
+      <td>49,050</td>
+      <td>11,929,337百万円</td>
+      <td>243,207,684株</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>9433</td>
+      <td>ＫＤＤＩ(株)</td>
+      <td>4,544</td>
+      <td>10,470,192百万円</td>
+      <td>2,304,179,550株</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h3>Pandas to_csv</h3>
+<p>DataFrame(Series)를 CSV파일로 출력</p>
+<p>DataFrame(Series).to_csv(저장할 디렉토리 + CSV파일명)</p>
+<pre><code class="language-python">data[0].to_csv(&quot;./StockRanking&quot;)</code></pre>
+
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #Python #CSV #pandas 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

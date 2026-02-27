@@ -1,0 +1,42 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>postgreSQL로 Yesod 샘플 프로그램 실행까지</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">postgreSQL로 Yesod 샘플 프로그램 실행까지</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/Yesod</p>
+                                    <p class="date">2017-03-28 10:17:33</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>업무상 Haskell과 Yesod를 만지게 되었는데...</p><p><br /></p><p>scaffolded site templet 중 yesod-postgre로 개발환경을 구죽하는 예문이 아무리 찾아도 없기에</p><p><br /></p><p>이래저래 만져본 김에 직접 적어 보았다.</p><p><br /></p><p>아래의 글은 Qiita에 올린 Markdown 원문이므로</p><p><br /></p><p>자세한 내용은 <a href="http://qiita.com/YoungjaeKwon/items/8265834c0436944bc3ca" target="_blank" class="tx-link">postgreSQLでYesodのサンプルプログラムの実行まで</a>를 참조할 것.</p><div><br /></div><span class="txt_fold">본문 열기</span>
+<div class="moreless_content"><p>#&nbsp;postgreSQLでYesodのサンプルプログラムの実行まで</p><p><br /></p><p>### 構築環境</p><p>- &nbsp;装置スペック</p><p>&nbsp;- &nbsp;CPU : i5-4310M 2.70GHz</p><p>&nbsp;- &nbsp;RAM : 8.0GB</p><p>&nbsp;- &nbsp;OS : Microsoft Windows 10 Pro 64Bit</p><p><br /></p><p>### Haskell Stackのインストール</p><p>- **[Download Haskell Stack](https://haskell-lang.org/get-started#why-not-haskell-platform)**</p><p>&nbsp;- OSを選び、ダウンロード（windowsだと普通にダウンロード、macOSやLinuxだとwget・curlを使ってダウンロードできる）</p><p><br /></p><p>- **Haskell Stack** の設置確認</p><p>&nbsp;- HelloWorld.hsの作成</p><p><br /></p><p>&nbsp; &nbsp; ```Haskell</p><p>&nbsp; &nbsp; #!/usr/bin/env stack</p><p>&nbsp; &nbsp; -- stack --install-ghc runghc</p><p>&nbsp; &nbsp; main :: IO ()</p><p>&nbsp; &nbsp; main = putStrLn "Hello World"</p><p>&nbsp; &nbsp; ```</p><p>&nbsp;- terminalで```stack haskell```を入力し、「Hello World」の出力を確認</p><p><br /></p><p>### プロジェクト作成</p><p>- scaffolded site templateのpostgreSQL版でpgcrudフォルダを作成</p><p><br /></p><p>&nbsp; ```text</p><p>&nbsp; stack new pgcrud yesod-postgres</p><p>&nbsp; stack build yesod-bin cabal-install --install-ghc</p><p>&nbsp; stack build</p><p>&nbsp; ```</p><p><br /></p><p>- stack buildで ```pg_config.exe``` が見つけられないとエラーが出たら、postgreSQLのbinフォルダを環境変数に追加（```C:\Program Files\PostgreSQL\9.3\bin```）</p><p>&nbsp;- ```Windows PowerShell```では```pg_config.exe```が取れないので、cmd上で実行すること</p><p><br /></p><p>### &nbsp; posrgreSQLでユーザとDBを作成（pgAdminⅢのlocal serverで実行）</p><p>- ユーザの生成：ログインロールを右クリックし、「新しいログインロール」でユーザを二つ追加する</p><p><br /></p><p>&nbsp; &nbsp; ```Text</p><p>&nbsp; &nbsp; ロール名：kwon</p><p>&nbsp; &nbsp; パスワード：kwon</p><p>&nbsp; &nbsp; ```</p><p><br /></p><p>- DBの生成：データベースを右クリックし、「新しいデータベース」で実際使うDBとテスト用のDBを作成する</p><p><br /></p><p>&nbsp; &nbsp; ```Text</p><p>&nbsp; &nbsp; 名前：yesod</p><p>&nbsp; &nbsp; オーナー：kwon</p><p>&nbsp; &nbsp; ```</p><p><br /></p><p>### &nbsp; Yesodでのデータベース接続設定</p><p>- [ここ](http://blog.livedoor.jp/rtabaladi_58/archives/58083990.html)ではプロジェクト名に合わせてユーザやDBを作成すると書いてあるが、実際は```config/settings.yml```でDBのsettingが普通にできる</p><p><br /></p><p>&nbsp; &nbsp; ```Text</p><p>&nbsp; &nbsp; database:</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; user: &nbsp; &nbsp; "_env:PGUSER:kwon"</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; password: "_env:PGPASS:kwon"</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; host: &nbsp; &nbsp; "_env:PGHOST:localhost"</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; port: &nbsp; &nbsp; "_env:PGPORT:5432"</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; database: "_env:PGDATABASE:yesod"</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; poolsize: "_env:PGPOOLSIZE:10"</p><p>&nbsp; &nbsp; ```</p><p><br /></p><p>- test用のDBも設定したいなら、```config/test-setting.yml```で他のDB（オーナーは同じく）だけを設定する。</p><p><br /></p><p>&nbsp; &nbsp; ```Text</p><p>&nbsp; &nbsp; database:</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; database: yesod_test</p><p>&nbsp; &nbsp; ```</p><p><br /></p><p>### &nbsp; プログラム稼働</p><p>- ```stack exec -- yesod devel```</p><p>- これを実行すると、つなげたDBにサンプルデータのテーブルが生成される（comment, email, user）</p><p>- テストも実行してみたいなら、```stack test```で、設定した```yesod_test```DBにテーブルができたらOK</p><p>- [http://localhost:3000/](http://localhost:3000/) に接続し、Comment作成やユーザ登録などでDBが更新されるかを確認する。</p><p>- ここまで設定したら、他の作業はsqliteでのと同じなので **[ここ](http://qiita.com/erin/items/55e0109e4be6b3257bef)** などを参考し、次の実装をしてもOK</p><p><br /></p><p>## 参考</p><p>- [Yesod のインストールとサンプルプログラムの実行](http://qiita.com/waddlaw/items/e47552cb26c1d58ece0b)</p><p>- [YesodでpostgreSQLを使う Haskell stack](http://blog.livedoor.jp/rtabaladi_58/archives/58083990.html)</p><p>- [Yesod 1.4でのCRUD処理およびメール送信（stackによる開発環境の構築からketerによるデプロイまで）](http://qiita.com/erin/items/55e0109e4be6b3257bef)</p><p><br /></p></div><p><br /></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

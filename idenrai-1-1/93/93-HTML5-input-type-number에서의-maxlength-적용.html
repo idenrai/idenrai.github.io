@@ -1,0 +1,41 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>HTML5 input type number에서의 maxlength 적용</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">HTML5 input type number에서의 maxlength 적용</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/React.js</p>
+                                    <p class="date">2016-09-21 10:31:36</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>입력란에 글자제한을 걸어달라는 요구가 있었다.</p><p>그냥 maxlength 하나만 걸면 되니 뭐 어려울 것도 없지 싶었는데...</p><p>분명 maxlength="4"가 들어가 있는데 그냥 뭐 글자가 일렬로 쑥쑥 들어간다.</p><p>가만 보니 input type이 number더라...</p><p><br /></p><p>가뜩이나 지금 환경에서 HTML5가 안먹혀서 돌아버릴것 같은데</p><p>이 븅신같은 input number는 대체 왜 집어넣었을까...하고 후회하면서 몇가지를 시도해 보았다.</p><p><br /></p><p>일단 HTML5 안에서 해결해 보고자 max="9999"를 넣었지만, 역시나 안먹히고...</p><p>input type을 text로 바꾸고 pattern을 넣어봤지만 역시나 안먹힌다.</p><p><br /></p><p>결국 해결한 방법은 이것.</p><p>보통은 그냥 아래의 참고에서처럼 바로 집어넣으면 되는데,</p><p>현재 개발환경에서는 요상하게 컴포넌트 내에 바로 attr을 집어넣으면 안먹혀서</p><p>일단 renderModal을 해 놓고 나서 attr을 우겨넣고 있다.</p><p><br /></p><div class="colorscripter-code" style="color:#010101; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important; overflow:auto"><table class="colorscripter-code-table" style="margin:0; padding:0; border:none; background-color:#fafafa; border-radius:4px;" cellspacing="0" cellpadding="0"><tbody><tr><td style="padding:6px; border-right:2px solid #e5e5e5"><div style="margin:0; padding:0; word-break:normal; text-align:right; color:#666; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div></div></td><td style="padding:6px 0"><div style="margin:0; padding:0; color:#010101; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#a71d5d">function</span>&nbsp;attrInfo(param)&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;<span style="color:#a71d5d">return</span>&nbsp;<span style="color:#a71d5d">new</span>&nbsp;Promise(<span style="color:#a71d5d">function</span>(resolve,&nbsp;reject)&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;$(<span style="color:#63a35c">'#'</span>&nbsp;<span style="color:#a71d5d">+</span>&nbsp;param.id&nbsp;<span style="color:#a71d5d">+</span>&nbsp;<span style="color:#63a35c">'&nbsp;.code'</span>).attr(<span style="color:#63a35c">'maxlength'</span>,&nbsp;<span style="color:#0099cc">4</span>);</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;$(<span style="color:#63a35c">'#'</span>&nbsp;<span style="color:#a71d5d">+</span>&nbsp;param.id&nbsp;<span style="color:#a71d5d">+</span>&nbsp;<span style="color:#63a35c">'&nbsp;.code'</span>).attr(<span style="color:#63a35c">'oninput'</span>,&nbsp;<span style="color:#63a35c">"javascript:&nbsp;if&nbsp;(this.value.length&nbsp;&gt;&nbsp;this.maxLength)&nbsp;this.value&nbsp;=&nbsp;this.value.slice(0,&nbsp;this.maxLength);"</span>);</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;resolve(param);</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;});</div><div style="padding:0 6px; white-space:pre; line-height:130%">}</div></div><div style="text-align:right; margin-top:-13px; margin-right:5px; font-size:9px; font-style:italic"><a href="http://colorscripter.com/info#e" target="_blank" style="color: rgb(229, 229, 229);">Colored by Color Scripter</a></div></td><td style="vertical-align:bottom; padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="color: white;"><span style="font-size: 9px; word-break: normal; background-color: rgb(229, 229, 229); border-radius: 10px; padding: 1px;">cs</span></a></td></tr></tbody></table></div><p><br /></p><p>※ 참고 :&nbsp;<a href="http://stackoverflow.com/questions/18510845/maxlength-ignored-for-input-type-number-in-chrome" target="_blank" class="tx-link">maxlength ignored for input type=“number” in Chrome</a></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

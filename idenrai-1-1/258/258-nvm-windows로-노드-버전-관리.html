@@ -1,0 +1,95 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>nvm-windows로 노드 버전 관리</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">nvm-windows로 노드 버전 관리</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/NPM</p>
+                                    <p class="date">2022-02-22 07:43:39</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h1>nvm</h1>
+<h2>개요</h2>
+<p>node.js의 버전을 쉽게 관리할 수 있게 해 주는 아주 기특한 녀석.</p>
+<p>그동안 아무 생각 없이 그냥 써 왔는데, 간만에 컴퓨터 새로 세팅하려니 이름이고 뭐고 다 까먹어서...</p>
+<p>다시 설치하는 김에 블로그에도 남겨두도록 한다.</p>
+<h2>nvm-windows</h2>
+<p>nvm을 windows에서도 사용할 수 있게 해 준다.</p>
+<p>상세 정보는 <a href="https://github.com/coreybutler/nvm-windows">여기</a>에서.</p>
+<h3>설치 방법</h3>
+<h4>다운로드</h4>
+<p><a href="https://github.com/coreybutler/nvm-windows/releases">여기</a>에서 대강 최신 버전의 nvm-setup.zip을 다운로드 받도록 하자.</p>
+<h4>설치</h4>
+<p>압축을 풀고, nvm-setup.exe을 관리자 실행.</p>
+<h4>설치 확인</h4>
+<p>이하를 통해 확인 가능</p>
+<pre><code>nvm -v</code></pre><h4>node.js 설치</h4>
+<h5>설치 가능한 node.js 버전 확인</h5>
+<p>이하 명령어 실행</p>
+<pre><code>nvm list available</code></pre><p>대강 아래와 같이 사용 가능한 버전이 나온다.<br><figure class="imageblock alignCenter" width="100%">
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" width="100%" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<h5>node.js 설치</h5>
+<p>원하는 버전의 node.js를 설치하자.<br>이하 명령어 실행.</p>
+<pre><code>nvm install [버전]</code></pre><p>나는 그냥 최신으로 일단 설치했다.</p>
+<pre><code>nvm install latest</code></pre><h5>설치된 버전 확인</h5>
+<p>이하 명령어를 통해 확인 가능</p>
+<pre><code>nvm list</code></pre><h5>node.js 사용 선택</h5>
+<p>이하 명령어를 통해 선택 가능</p>
+<pre><code>nvm use [버전]</code></pre><p>내 경우에는 아래와 같다.</p>
+<pre><code>nvm use 17.5.0</code></pre><h5>node.js 버전 확인</h5>
+<p>이하를 통해 node.js와 npm의 버전 확인</p>
+<pre><code>node -v
+npm -v</code></pre><h4>트러블 발생시</h4>
+<h5>Access is denied</h5>
+<p><code>nvm use [버전]</code>을 사용 시, 아래와 같은 에러가 발생할 수 있다.</p>
+<p><figure class="imageblock alignCenter" width="100%">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png" width="100%" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p>cmd를 종료 후, 관리자 실행하여 다시 시도하면 해결된다.</p>
+<p><figure class="imageblock alignCenter" width="100%">
+    <span data-lightbox="lightbox">
+        <img src="./img/img_2.png" width="100%" />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<h5>문자가 깨지는 경우</h5>
+<p>이번에 설치할 때에는 나오지 않았는데, 문자가 깨져서 나오는 경우가 있다.</p>
+<p>아래의 명령어로 cmd의 문자 코드를 바꿔 주면 해결.</p>
+<pre><code>chcp 65001</code></pre>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #NPM #node.js #nvm #nvm-windows 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

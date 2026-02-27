@@ -1,0 +1,41 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>OUTPUT Clause (SQL Server)</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">OUTPUT Clause (SQL Server)</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/DB・SQL</p>
+                                    <p class="date">2016-03-29 20:03:16</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>요즘 販売管理 관련 솔루션을 만지고 있는데,</p><p>주문서 작성 페이지를 다루는 과정에서</p><p>주문서 테이블과 주문서(상세) 테이블에 한번에 데이터를 집어넣는 동작을 넣어야 했다.</p><p><br /></p><p><span style="line-height: 1.5;">주문서 테이블과 그에 해당하는 상세 테이블을 연결지을 키가 필요한데</span></p><p>Update면 상관없지만, Insert의 경우&nbsp;<span style="line-height: 1.5;">採番マスタ가 없어서&nbsp;</span><span style="line-height: 1.5;">조금 애매하게 되었다.</span></p><p>데이터를 그냥 싸그리 모아서 두 테이블에 한번에 집어넣는게 가장 단순무식하긴 한데...</p><p><br /></p><p>상세 테이블 입력창이 너무 많기도 하고&nbsp;<span style="line-height: 1.5;">내가 귀찮기도 해서</span></p><p><span style="line-height: 1.5;">그냥 테이블을 긁어서 배열로 만들어 JSON으로 넘기려던 중이었기에</span></p><p>이 짓을 다시 하려니 너무 승질나더라.</p><p><br /></p><p>분명 방금 입력한 애를 뽑아올 방법이 있을거라 생각해서 살펴보니</p><p><b>OUTPUT</b>이라는 애가 있었다!</p><p><br /></p><p>일단 자세한 설명은 다음과 같다.</p><p><a href="https://msdn.microsoft.com/en-us/library/ms177564.aspx" target="_blank" class="tx-link">OUTPUT Clause (Transact-SQL</a><a href="https://msdn.microsoft.com/en-us/library/ms177564.aspx" target="_blank" class="tx-link">)</a></p><p><br /></p><p>잘 정리된 자료는 이곳에.</p><p><a href="http://www.tech-recipes.com/rx/47032/a-beginners-guide-to-the-output-clause-in-sql-server/" target="_blank" class="tx-link">A Beginner's Guide to the OUTPUT Clause in SQL Server</a></p><p><br /></p><p>한때 유행하던 3줄요약으로&nbsp;설명을 하자면,</p><p><br /></p><p>1. deleted : 수정 전의 데이터를 갖고 있는 테이블</p><p>2. inserted : 수정 후의 데이터를 갖고 있는 테이블</p><p><span style="line-height: 1.5;">3. OUTPUT절을 통해&nbsp;</span><span style="line-height: 1.5;">이 두 가지 테이블에 접근할 수 있다.</span></p><p><br /></p><p>이거 덕분에</p><p>일단 주문서 테이블에 Insert를 하고</p><p>그 때 딴 키 (注文番号, 注文番号枝番) 를 OUTPUT으로 뽑아내&nbsp;리턴시켜서</p><p>그 키를 가지고 상세 테이블에 데이터를 집어넣을 수 있었다.</p><p><br /></p><p>일단 OUTPUT을 써먹은 코드는 대강 이런 느낌이다.</p><p><br /></p><div class="colorscripter-code" style="color:#010101; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important; overflow:auto"><table class="colorscripter-code-table" style="margin:0; padding:0; border:none; background-color:#fafafa; border-radius:4px;" cellspacing="0" cellpadding="0"><tbody><tr><td style="padding:6px; border-right:2px solid #e5e5e5"><div style="margin:0; padding:0; word-break:normal; text-align:right; color:#666; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div></div></td><td style="padding:6px 0"><div style="margin:0; padding:0; color:#010101; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#ff3399">INSERT</span>&nbsp;<span style="color:#ff3399">INTO</span>&nbsp;INDENT&nbsp;(</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;注文番号</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">--&nbsp;이하생략</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">)</div><div style="padding:0 6px; white-space:pre; line-height:130%">OUTPUT</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;INSERTED.注文番号</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="line-height: 130%;">&nbsp;</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#ff3399">VALUES</span>&nbsp;(</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;(<span style="color:#ff3399">SET</span>&nbsp;TRANSACTION&nbsp;ISOLATION&nbsp;LEVEL&nbsp;READ&nbsp;UNCOMMITTED&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff3399">SELECT</span>&nbsp;CONVERT(<span style="color:#0099cc">VARCHAR</span>,&nbsp;ISNULL(MAX(CONVERT(NUMERIC,&nbsp;[注文番号])),<span style="color:#004fc8">0</span>)<span style="color:#0099cc">+</span><span style="color:#004fc8">1</span>)&nbsp;<span style="color:#ff3399">FROM</span>&nbsp;INDENT)</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">--&nbsp;이하생략</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">)</div></div><div style="text-align:right; margin-top:-13px; margin-right:5px; font-size:9px; font-style:italic"><a href="http://colorscripter.com/info#e" target="_blank" style="color: rgb(229, 229, 229);">Colored by Color Scripter</a></div></td><td style="vertical-align:bottom; padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="color: white;"><span style="font-size: 9px; word-break: normal; border-radius: 10px; padding: 1px; background-color: rgb(229, 229, 229);">cs</span></a></td></tr></tbody></table></div><p><br /></p><p>이러면 마치 SELECT문을 날린 것 마냥</p><p>새로 입력된 注文番号가&nbsp;나온다.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

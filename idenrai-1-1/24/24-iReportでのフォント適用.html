@@ -1,0 +1,205 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>iReportでのフォント適用</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">iReportでのフォント適用</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/iReport</p>
+                                    <p class="date">2015-08-05 10:43:46</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-family: 'ＭＳ 明朝', serif; font-size: 11pt; line-height: 115%;"><b><span style="font-family: Batang, 바탕; font-size: 12pt;"><span style="font-family: Dotum, 돋움; font-size: 12pt;">１．</span></span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">PDF</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">で出力してほしいフォントの</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">True Type Font</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">ファイルを準備する。</span></b></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-family: Dotum, 돋움; font-size: 12pt; line-height: 115%;">C:\Windows\Fonts</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 12pt;">にあるフォントは、</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">TTC</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">（</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">True Type Collection</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">）ファイル。</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 12pt;">これを</span></span><font face="Batang, 바탕" style="font-size: 9pt; line-height: 1.5;"><span style="font-size: 12pt; line-height: 16.8667px; font-family: Dotum, 돋움;">BREAKTTC.EXEを使って</span></font><span lang="ja" style="line-height: 18.4px; font-family: Dotum, 돋움; font-size: 12pt;">TTF</span><span style="line-height: 18.4px; font-family: Dotum, 돋움; font-size: 12pt;">ファイルを抽出できる。</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><font face="Batang, 바탕"><span style="font-size: 12pt; line-height: 16.8667px; font-family: Dotum, 돋움;">（TTSDK-TTC-BREAKTTC.EXE / ＭＳのもので、安全）</span></font></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-family: 'ＭＳ 明朝', serif; font-size: 11pt; line-height: 115%;"><span style="font-family: Batang, 바탕; font-size: 12pt;"><br /></span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-family: 'ＭＳ 明朝', serif; font-size: 11pt; line-height: 115%;"><b><span style="font-family: Dotum, 돋움; font-size: 12pt;">２．</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">TTF</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">ファイルを</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">Desktop</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">とかに置く。</span></b></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-family: 'ＭＳ 明朝', serif; font-size: 11pt; line-height: 115%;"><span style="font-family: Batang, 바탕; font-size: 12pt;"><br /></span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-family: 'ＭＳ 明朝', serif; font-size: 11pt; line-height: 115%;"><b><span style="font-family: Dotum, 돋움; font-size: 12pt;">３．</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">iReport</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">での作業</span></b></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 12pt;">ツール→オプション→</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">iReport</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">→</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">Fonts</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">で、右側の</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">Install Font</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">をクリック。</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span lang="ja" style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">Browse</span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 12pt;">をクリックし、用意した</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">TTF</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">ファイルを選択→次へ</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span lang="ja" style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;"><br /></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span lang="ja" style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">Family Name</span><span style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">はそのままで、</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span lang="ja" style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">Font details</span><span style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">も、別になければ追加しなくてもいい。</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span lang="ja" style="font-size: 12pt; line-height: 115%; font-family: Batang, 바탕;"><br /></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span lang="ja" style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">PDF details</span><span style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">では</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span lang="ja" style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">PDF Encoding : Identity-H(Unicode
+with horizontal writing)</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span lang="ja" style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">Embed this font in the PDF
+document</span><span style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">にチェック</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="line-height: 115%; font-family: Batang, 바탕; font-size: 12pt;"><br /></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="line-height: 115%; font-family: Dotum, 돋움; font-size: 12pt;">次へ　をクリックし、</span><span lang="ja" style="line-height: 115%; font-family: Dotum, 돋움; font-size: 12pt;">Locales</span><span style="line-height: 115%; font-family: Dotum, 돋움; font-size: 12pt;">画面で、完了をクリック</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">（ほかのとこで完了をクリックすると、なぜかエラー発生！）</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="line-height: 115%; font-family: Batang, 바탕; font-size: 12pt;"><br /></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="line-height: 115%; font-family: Dotum, 돋움; font-size: 12pt;">※&nbsp;</span><span style="font-family: Dotum, 돋움; font-size: 12pt; line-height: 115%;">保安設定によって、フォントの登録時にAccess拒否になることがある。</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="line-height: 115%; font-family: Dotum, 돋움; font-size: 12pt;">&nbsp; &nbsp;この場合は、Window Installerではなく、EXEファイルで実行してみること。</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="line-height: 115%; font-family: Batang, 바탕; font-size: 12pt;"><br /></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="line-height: 115%; font-family: Dotum, 돋움; font-size: 12pt;">完了を押したら、</span><span lang="ja" style="line-height: 115%; font-family: Dotum, 돋움; font-size: 12pt;">Fonts</span><span style="line-height: 115%; font-family: Dotum, 돋움; font-size: 12pt;">に今登録したフォントが入っているか確認。</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 12pt;">入っていたら、それをクリック→</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">Export
+as extension</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">をクリック</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="line-height: 115%; font-family: Batang, 바탕; font-size: 12pt;"><br /></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="line-height: 115%; font-family: Dotum, 돋움; font-size: 12pt;">名前は同じくして、拡張子を</span><span lang="ja" style="line-height: 115%; font-family: Dotum, 돋움; font-size: 12pt;">jar</span><span style="line-height: 115%; font-family: Dotum, 돋움; font-size: 12pt;">にして保存。</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span lang="ja" style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">ex) MS-PGothic.jar</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-family: 'ＭＳ 明朝', serif; font-size: 11pt; line-height: 115%;"><span style="font-family: Batang, 바탕; font-size: 12pt;"><br /></span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-family: 'ＭＳ 明朝', serif; font-size: 11pt; line-height: 115%;"><b><span style="font-family: Dotum, 돋움; font-size: 12pt;">４．</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">Classpath</span></b></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 12pt;">オプション→</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">iReport</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">→</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">Classpath</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">に移動。</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span lang="ja" style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">Add JAR</span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 12pt;">をクリックして、さっき作った</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">jar</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">ファイルを登録。</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 12pt;">その後、了解をクリックして、一回</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">iReport</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">を再起動。</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">再起動しないと適用されないので、必ず再起動すること。</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 12pt; line-height: 115%;"><span style="font-family: Batang, 바탕;"><br /></span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 12pt; line-height: 115%;"><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 12pt;"><b><span style="font-family: Dotum, 돋움;">５．適用</span></b></span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">漢字を使いたいところを選んで、プロパティーを見る。</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span lang="ja" style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">Text properties</span><span style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">で</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span lang="ja" style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">Font name</span><span style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">で、登録したフォントがあるか確認。</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">ここで出ないと、そのフォントはできないと考えてもいい…</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-family: Batang, 바탕; font-size: 12pt; line-height: 115%;"><br /></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-family: Dotum, 돋움; font-size: 12pt; line-height: 115%;">今まではテストしたうちでは、</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 12pt;">梅フォント、</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">CP and Trans</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">、</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">font_1_honokamarugo_1.1</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">、</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">nicomoji-plus_v0.9</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">、</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span lang="ja" style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">MS-Gothic</span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 12pt;">、</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">MS-Mincho</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">、</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">MS-PGothic</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">、</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">MS-PMincho</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><br /></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-family: Dotum, 돋움; font-size: 12pt; line-height: 115%;">フォントが選べたら、いったん成功。</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-family: Dotum, 돋움; font-size: 12pt; line-height: 115%;">後は、</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 12pt;">下の</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">PDF</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">設定を触る。</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><br /></p><p style="margin-bottom: 10pt; text-align: left; clear: none; float: none; line-height: 1;"><figure class="imageblock alignCenter" width="594" height="554" filename="1.png" filemime="image/jpeg">
+    <span data-lightbox="lightbox">
+        <img src="./img/1.png" width="594" height="554" filename="1.png" filemime="image/jpeg" />
+    </span>
+    <figcaption></figcaption>
+</figure></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span lang="ja" style="font-size: 12pt; line-height: 115%; font-family: Batang, 바탕;"><br /></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span lang="ja" style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">PdfFont Name</span><span style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">には、</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span lang="ja" style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">SelectBox</span><span style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">にフォントが出ないので、</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span lang="ja" style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">Font name</span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 12pt;">からコピーして、貼り付けたら</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">OK</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">。</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span lang="ja" style="font-size: 12pt; line-height: 115%; font-family: Batang, 바탕;"><br /></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span lang="ja" style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">PDF Embedded</span><span style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">にはチェックし、</span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span lang="ja" style="font-size: 12pt; line-height: 115%; font-family: Dotum, 돋움;">PDF Encoding</span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 12pt;">には</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">Identity-H(Unicode
+with horizontal writing)</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 12pt; line-height: 115%;"><span style="font-family: Batang, 바탕;"><br /></span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 12pt; line-height: 115%;"><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 12pt;"><b><span style="font-family: Dotum, 돋움;">６．確認</span></b></span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 1;"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 12pt;">メニューの</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">preview</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">で、</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">PDF</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">を選択。</span></span></p><p style="line-height: 1;"><span style="font-family: Dotum, 돋움; font-size: 12pt;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</span><span style="font-size:11.0pt;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011;mso-fareast-language:JA;
+mso-bidi-language:AR-SA"><span style="font-family: Dotum, 돋움; font-size: 12pt;">その後</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">Preview</span><span style="font-family: Dotum, 돋움; font-size: 12pt;">を見ると、</span><span lang="ja" style="font-family: Dotum, 돋움; font-size: 12pt;">PDF</span><span style="font-family: Arial; font-size: 12pt;"><span style="font-family: Dotum, 돋움; font-size: 12pt;">での出力が見れる。</span></span></span></p><p style="line-height: 1;"><br /></p><p style="line-height: 1;"><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 12pt; line-height: 18.3999996185303px;"><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 12pt;"><b><span style="font-family: Dotum, 돋움;">7．Eclipseでの適用</span></b></span></span></p><p style="line-height: 1;"><font face="Gulim, 굴림, AppleGothic, sans-serif"><span style="font-size: 16px; line-height: 18.4px; font-family: Dotum, 돋움;">以前exportしたjarファイルをプロジェクトのlibフォルダに入れる。</span></font></p><p style="line-height: 1;"><font face="Gulim, 굴림, AppleGothic, sans-serif"><span style="font-size: 16px; line-height: 18.4px; font-family: Dotum, 돋움;">後、プロジェクトを右クリック→プロパティー</span></font></p><p style="line-height: 1;"><font face="Gulim, 굴림, AppleGothic, sans-serif"><span style="font-size: 16px; line-height: 18.4px; font-family: Dotum, 돋움;">Javaのビルド・パス→ライブラリー→Jar追加</span></font></p><p style="line-height: 1;"><font face="Gulim, 굴림, AppleGothic, sans-serif"><span style="font-size: 16px; line-height: 18.4px; font-family: Dotum, 돋움;">Jarファイルを入れたlibフォルダをクリックすると、</span></font></p><p style="line-height: 1;"><font face="Gulim, 굴림, AppleGothic, sans-serif"><span style="font-size: 16px; line-height: 18.4px; font-family: Dotum, 돋움;">そのJarファイルをビルド・パスに登録できる。</span></font></p><p style="line-height: 1;"><font face="Gulim, 굴림, AppleGothic, sans-serif"><span style="font-size: 16px; line-height: 18.4px; font-family: Dotum, 돋움;">これでＯＫ。</span></font></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

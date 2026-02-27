@@ -1,0 +1,226 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Creating JasperReport with subreports using datasource</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Creating JasperReport with subreports using datasource</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/iReport</p>
+                                    <p class="date">2015-10-29 12:04:57</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span style="font-family: Dotum, 돋움; font-size: 11pt;">출처 :&nbsp;</span><a href="http://junaedhalim.blogspot.jp/2009/12/creating-jasperreport-with-subreports.html" target="_blank" class="tx-link"><span style="font-family: Dotum, 돋움; font-size: 11pt;">http://junaedhalim.blogspot.jp/2009/12/creating-jasperreport-with-subreports.html</span></a><br /><span style="font-family: 'ＭＳ 明朝', serif; font-size: 11pt; line-height: 115%;"><br /><br /><span style="font-family: Dotum, 돋움; font-size: 11pt;">Creating JasperReport with
+subreports using datasource</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">In my previous post, I explained
+how to use datasources to create jasper reports. As I promised, now I am going
+to explain how to use subreports with datasources.</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size: 11pt; line-height: 115%; font-family: Dotum, 돋움;">&nbsp;</span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">The concept is very similar. All
+we have to do is pass the appropriate datasource(s) to the subreport(s).</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size: 11pt; line-height: 115%; font-family: Dotum, 돋움;">&nbsp;</span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">For example, say we have the
+following reports in hand:</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">1. MasterReport.jrxml</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">2. SubReport1.jrxml</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">3. SubReport2.jrxml</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">Both the subreports are contained
+in the master report.</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size: 11pt; line-height: 115%; font-family: Dotum, 돋움;">&nbsp;</span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">Now prepare the datasources for
+these reports (as list, as I mentioned in my previous post):</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">1. masterReportDataList</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">2. subReport1DataList</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">3. subReport2DataList</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">Construct 3
+TestDataSource(extends JRDataSource) type objects using these 3 lists. Say
+these are:</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">1. masterReportDS</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">2. subReport1DS</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">3. subReport2DS</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">Now we have to pass these
+datasources to the appropriate reports.</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size: 11pt; line-height: 115%; font-family: Dotum, 돋움;">&nbsp;</span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">I am going to pass the subreport
+datasources as parameters to the main report, while passing the master report
+datasource as usual - using the following call:</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">JasperPrint jasperPrint =
+JasperFillManager.fillReport(jasperReportPath, parameters, masterReportDS);</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size: 11pt; line-height: 115%; font-family: Dotum, 돋움;">&nbsp;</span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">In the parameter HashMap, we are
+going to put our subReport DataSources and any other parameters needed by the
+report. </span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">Map parameters = new HashMap();</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">parameters.put('subreport_datasource',subReport1DS);</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">parameters.put('subreport_datasource_2',subReport2DS);</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">Now open the master report using
+iReport. Add two parameters to the main report named subreport_datasource and
+subreport_datasource_2. Set the data type of these two parameters as</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">&nbsp; </span><span style="font-family: Dotum, 돋움; font-size: 11pt;">net.sf.jasperreports.engine.JRDataSource. </span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">&nbsp;</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">Open the properties window of
+subreport1. Set the following:</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">Connection type: Use a datasource
+expression</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">Data Source Expression:
+$P{subreport_datasource}</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size: 11pt; line-height: 115%; font-family: Dotum, 돋움;">&nbsp;</span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">Do the same for the other
+subreport:</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">Connection type: Use a datasource
+expression</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">Data Source Expression:
+$P{subreport_datasource_2} </span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">&nbsp;</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">If you are not using iReport,
+then open the masterReport.jrxml in any text editor. Go to the subreport
+section (look for &lt;subreport&gt;). Remove &lt;connectionexpression&gt; tag
+(if any). Add the following: </span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size: 11pt; line-height: 115%; font-family: Dotum, 돋움;">&nbsp;</span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">That's all. Now you can create
+reports containing subreports using DataSources. You can even have one
+subreport inside another.</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">There is a beautiful article I
+found earlier on this topic. You can find that here. </span></span></p><p><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">
+
+</span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Dotum, 돋움; font-size: 11pt;">Thanks for visiting. Good bye.&nbsp;</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span lang="ja" style="font-size:11.0pt;line-height:115%;font-family:&quot;ＭＳ 明朝&quot;,serif;mso-hansi-font-family:
+Century;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;ＭＳ 明朝&quot;;
+mso-font-kerning:0pt;mso-ansi-language:#0011"><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 11pt;"><br /></span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span style="font-family: Dotum, 돋움; font-size: 11pt;">정리하자면...</span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><font face="Gulim, 굴림, AppleGothic, sans-serif"><span style="font-size: 11pt; font-family: Dotum, 돋움;">SubReport에 데이터를 보낼 때엔</span></font></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><font face="Gulim, 굴림, AppleGothic, sans-serif"><span style="font-size: 11pt; font-family: Dotum, 돋움;">MainReport에&nbsp;</span></font><span style="font-family: Dotum, 돋움; font-size: 11pt; line-height: 16.8667px;">net.sf.jasperreports.engine.JRDataSource 클래스</span><span style="font-size: 11pt; font-family: Dotum, 돋움; line-height: 115%;">로 Parameter를 정해 두고,</span></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><font face="Gulim, 굴림, AppleGothic, sans-serif"><span style="font-size: 11pt; font-family: Dotum, 돋움;">Java쪽에서 데이터를 MainReport에 보낼 때</span></font></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><font face="Gulim, 굴림, AppleGothic, sans-serif"><span style="font-size: 13.3333px;"><span style="font-family: Dotum, 돋움; font-size: 11pt;">SubReport용 Data를 해당&nbsp;</span><span style="font-family: Dotum, 돋움; font-size: 11pt;">Parameter명으로 동봉해서 보내야 한다는 거다.</span></span></font></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><font face="Gulim, 굴림, AppleGothic, sans-serif"><span style="font-size: 13.3333px;"><br /></span></font></p><p align="left" style="margin-bottom: 10pt; line-height: 115%;"><span style="font-family: Dotum, 돋움; font-size: 11pt;">그렇게 받아온 Patameter를 다음과 같이</span></p><p align="left" style="margin-bottom: 10pt; line-height: 13.8px;"><span lang="ja" style="font-size: 11pt; line-height: 16.8667px; font-family: 'ＭＳ 明朝', serif;"><span style="font-family: Dotum, 돋움; font-size: 11pt;">Connection type: Use a datasource expression</span></span></p><p align="left" style="margin-bottom: 10pt; line-height: 13.8px;"><span lang="ja" style="font-size: 11pt; line-height: 16.8667px; font-family: 'ＭＳ 明朝', serif;"><span style="font-family: Dotum, 돋움; font-size: 11pt;">Data Source Expression: $P{subreport_datasource}</span></span></p><p align="left" style="margin-bottom: 10pt;"><span style="font-size: 14.6667px; line-height: 16.8667px; font-family: Dotum, 돋움;">해당 Parameter를 SubReport의 ReportData로 활용한다고 설정하면 된다.</span></p><p align="left" style="margin-bottom: 10pt;"><br /></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

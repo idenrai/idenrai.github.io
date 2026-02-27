@@ -1,0 +1,66 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>parallel execute sample</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">parallel execute sample</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/Python</p>
+                                    <p class="date">2023-12-06 19:36:50</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h2 data-ke-size="size26">concurrent.futures</h2>
+<p data-ke-size="size16"><a href="https://docs.python.org/3/library/concurrent.futures.html">https://docs.python.org/3/library/concurrent.futures.html</a></p>
+<h3 data-ke-size="size23">ThreadPoolExecutor</h3>
+<p data-ke-size="size16">지정한 함수를 병렬기동</p>
+<pre class="livecodeserver"><code>from concurrent.futures import ThreadPoolExecutor
+
+def parallel_execute(function, args_list, max_workers=20):
+    futures = []
+    with ThreadPoolExecutor(
+        max_workers=max_workers, thread_name_prefix="thread"
+    ) as pool:
+        for args in args_list:
+            future = pool.submit(function, *args)
+            futures.append(future)
+
+    return [fut.result() for fut in futures]</code></pre>
+<p data-ke-size="size16">사용법</p>
+<p data-ke-size="size16"><code>translate_story</code> 함수를 병렬기동하고 싶은 경우, 함수의 파라메터의 배열을 만들어서 넘기면 됨</p>
+<pre class="sas"><code>def translate_story(title, df):
+    df['story'] = df['name'].apply(lambda x: translate(x))
+    return df
+
+grouped_by_title = df.groupby('title')
+args = list(grouped_by_title)
+
+result = parallel_execute(translate_story, args)</code></pre>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #Python #Parallel #Jupyter notebook 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>“ERROR: Permission to ~.git denied to user”</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">“ERROR: Permission to ~.git denied to user”</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/Git</p>
+                                    <p class="date">2018-06-04 12:24:43</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>개인 프로젝트를 좀 건드는데 자꾸 이딴 에러가 나와서 사람 미치게 만들더라.</p><p><br /></p><p>“ERROR: Permission to ~.git denied to user”</p><p><br /></p><p>내가 쓰는 username이 내 Git에 Permission denied되었다는 건데</p><p>user.email이나 user.name은 맞는데 이상하게 안 되더라.</p><p>내 경우는 이 에러에 뜨는 username이 내가 예전에 쓰던 username이던 터라</p><p>뭔가 잘못되어 있다는 것을 빨리 파악할수 있었다.</p><p><br /></p><p><a href="https://stackoverflow.com/questions/5335197/gits-famous-error-permission-to-git-denied-to-user" target="_blank" class="tx-link">Git's famous “ERROR: Permission to .git denied to user”</a></p><p>이 글의 아래쪽에 있는&nbsp;</p><p>[If problem is coming on windows then remove the Credentials from the Windows history.]</p><p>를 보고 해결할 수 있었다.</p><p><br /></p><p>결론은 예전에 사용했던 git 관련 credential이 남아 있어서 이 꼴이 났던 거라,</p><p>Windows의 Credential Manager에서 해당 항목을 삭제하니 깔끔하게 해결되더라.</p><p><br /></p><p>Credential Manager는 Control Panel에서 찾을 수 있는데,</p><p>한글 윈도우나 일본어 윈도우에서는 다른 이름이니 그냥 <a href="https://support.microsoft.com/en-ca/help/4026814/windows-accessing-credential-manager" target="_blank" class="tx-link">여기</a>서 그림 보고 찾도록 하자.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

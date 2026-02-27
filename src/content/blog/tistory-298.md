@@ -1,0 +1,69 @@
+---
+title: "Makefile"
+date: 2024-09-11
+description: "개요 FastAPI로 API 개발 도중, Makefile을 사용해 보았다. 상세 아래와 같은 식으로 샘플을 작성해 보았다. .PHONY: shell install test fmt lint  # Poetry 가상환경 "
+tags: ["Environment Setting", "FastAPI", "makefile"]
+tistory_url: "https://idenrai.tistory.com/298"
+---
+
+## 개요
+
+FastAPI로 API 개발 도중, Makefile을 사용해 보았다.
+
+## 상세
+
+아래와 같은 식으로 샘플을 작성해 보았다.
+
+```
+.PHONY: shell install test fmt lint
+
+# Poetry 가상환경 활성화
+shell:
+    poetry shell
+
+# 종속성 설치
+install:
+    poetry lock
+    poetry install
+
+# 실행
+serve:
+    poetry run uvicorn main:app --reload
+
+# 테스트 실행
+test:
+    export PYTHONPATH=$(pwd):$PYTHONPATH
+    python -m pytest tests
+
+# 코드 포맷팅
+fmt:
+    poetry run ruff format .
+
+# 코드 린팅
+lint:
+    poetry run ruff check . --fix
+    poetry run mypy .
+```
+
+사용 방법은 다음과 같음
+
+```
+make shell
+make install
+make serve
+```
+
+VSCode에서 실행시, 아래와 같은 에러가 나올 수 있다.
+
+```
+Makefile:5: *** missing separator.  Stop.
+```
+
+Makefile은 인덴트를 Tab으로 해 줘야 하는데, VSCode에서 저장시 Space로 자동 포매팅을 해 주는 것이 문제. `settings.json`에서 다음의 내용을 추가하면 해결된다.
+
+```
+  "[makefile]": {
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4
+  }
+```

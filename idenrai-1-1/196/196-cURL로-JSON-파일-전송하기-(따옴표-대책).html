@@ -1,0 +1,70 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>cURL로 JSON 파일 전송하기 (따옴표 대책)</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">cURL로 JSON 파일 전송하기 (따옴표 대책)</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/Shell</p>
+                                    <p class="date">2019-11-22 09:21:04</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>Jenkinsfile에서 받은 데이터를 Shell로 넘겨서, TEAMS로 cURL을 통해 Notification을 날리는 업무.</p>
+<p>일 자체는 그냥 데이터 받은거 편집해서 curl로 날리면 땡인데...</p>
+<p>보시다시피 날려야 할 cURL이 이런 식이다.</p>
+<pre id="code_1574381493404" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>curl -X POST -H "Content-Type: application/json" -d '{"text":"Branch Name:${BRANCH_NAME}&lt;br&gt;Author:${COMMIT_AUTHOR}&lt;br&gt;Commit Comment:${COMMIT_MSG}&lt;br&gt; ... Jenkins Build:&lt;a href=${BUILD_URL}&gt;${BUILD_URL}&lt;/a&gt;&lt;br&gt;"}' ${TEAMS_URL}</code></pre>
+<p>이걸 쉘에 그대로 써서 돌리려니&nbsp;당연히 따옴표와 쌍따옴표의 카오스가 일어난다.</p>
+<p>가독성은 말할 것도 없이 더럽고...</p>
+<p>&nbsp;</p>
+<p>그래서 방법을 찾아보다가...</p>
+<p>가장 따옴표 문제가 심각한 JSON부분을 통째로 들어내서 json파일에 넣어버리기로 했다.</p>
+<p>그리고 그 파일을 cURL에서 불러내어 전송.</p>
+<p>방법은 딱히 뭐 없고, 그냥 아래와 같이, 보낼 파일 앞에 @만 붙이면 된댄다.</p>
+<pre id="code_1574382039619" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code>curl -X POST -H "Content-Type: application/json" &lt;URL&gt; -d @&lt;파일명&gt;</code></pre>
+<p>뭐 이걸로 설명은 다 했고, 구현한 코드는 이렇다.</p>
+<pre id="code_1574381940720" class="html xml" data-ke-language="html" data-ke-type="codeblock"><code># request.json파일이 존재할 경우 삭제
+if [ -e ./request.json ]; then
+    rm -rf request.json
+fi
+
+# json부분을 request.json파일을 만들어 통째로 집어넣기
+echo "{text: '" &gt; request.json
+echo "Branch Name   : ${BRANCH_NAME}&lt;br&gt;" &gt;&gt;  request.json
+echo "Commit Author : ${COMMIT_AUTHOR}&lt;br&gt;" &gt;&gt;  request.json
+echo "Commit Comment: ${SPC_COMMIT_MSG}&lt;br&gt;" &gt;&gt;  request.json
+...
+echo "Jenkins Build : &lt;a href=${BUILD_URL}&gt;${BUILD_URL}&lt;/a&gt;&lt;br&gt;" &gt;&gt;  request.json
+echo "'}" &gt;&gt; request.json
+
+# TEAMS에 날리기
+curl -X POST -H "Content-Type: application/json" ${TEAMS_URL} -d @request.json
+</code></pre>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #JSON #curl #문자열 대책 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>new line in Text Field</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">new line in Text Field</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/iReport</p>
+                                    <p class="date">2015-09-29 15:05:03</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">DB에서 Data를 가지고 올 경우,&nbsp;</span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">해당 Data를 줄바꿈해야 할 필요가 있다면...</span></p><p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">받아온 Data를&nbsp;iReport자체에서 줄바꾸기를 하는 것은 불가능하다.</span></p><p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">(Replace all 등으로 어찌어찌 만지면 바꿀 수 있을지도 모르겠다</span><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">)</span></p><p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">다만, A</span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">ction에서 iReport로 값을 넘길 때&nbsp;</span><span style="font-size: 9pt; line-height: 1.5;"><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">(혹은 DB자체에서) 자체 줄바꿈을&nbsp;</span><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">할 수 있는 방법을 발견하여 여기 적는다.</span></span></p><p><span style="font-size: 9pt; line-height: 1.5;"><br /></span></p><p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">1. </span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">일단 받아올 Data(String)에서 줄바꿈이 필요한 부분을&nbsp;</span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">&lt;br</span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">&gt;로 고친다.</span></p><p><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">2. iReport에서 해당</span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">&nbsp;Text Field의 Property를 열어, Markup을 none에서 html로 수정한다.</span></p><p><span style="font-size: 9pt; line-height: 1.5;"><br /></span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt; line-height: 1.5;">Static Text에서는 그냥 Alt + Enter로 해결되며,</span></p><p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">혹시 Text Field에서 두 개의 항목을 줄바꿈으로 표현해야 하는 경우에는</span></p><p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">$F{A} + "\n</span><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">" + $F{B</span><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">}</span></p><p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;">의 형태로 줄바꿈이 가능하다.</span></p><p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;"><br /></span></p><p><font face="Gulim, 굴림, AppleGothic, sans-serif"><span style="font-size: 13.3333px; line-height: 20px;">* 물론, spacebar의 경우도 &amp;nbsp; 로 바꾸어야 적용된다.</span></font></p><p><span style="font-size: 10pt; font-family: Gulim, 굴림, AppleGothic, sans-serif;"><br /></span></p><span class="txt_fold">textarea의 값 치환</span>
+<div class="moreless_content"><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">text = text.replace("</span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">\r\n</span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">", "&lt;br&gt;");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;</span><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 13.3333px; line-height: 20px;">Enter값 치환</span></p><p><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 10pt;">text = text.replace("\u0020"</span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">, "&amp;nbsp;"</span><span style="font-size: 10pt; line-height: 1.5; font-family: Gulim, 굴림, AppleGothic, sans-serif;">);&nbsp;&nbsp;&nbsp;&nbsp;// Spacebar</span><span style="font-family: Gulim, 굴림, AppleGothic, sans-serif; font-size: 13.3333px; line-height: 20px;">값 치환</span></p></div><p><br /></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

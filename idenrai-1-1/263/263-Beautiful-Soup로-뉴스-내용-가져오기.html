@@ -1,0 +1,239 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Beautiful Soup로 뉴스 내용 가져오기</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Beautiful Soup로 뉴스 내용 가져오기</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/Python</p>
+                                    <p class="date">2022-06-10 19:52:51</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h1>BeautifulSoup</h1>
+<p>복수의 뉴스 정보를 취득</p>
+<pre><code class="language-python">import requests
+from bs4 import BeautifulSoup
+import time</code></pre>
+<pre><code class="language-python">url = &quot;https://www.yahoo.co.jp/&quot;</code></pre>
+<pre><code class="language-python">res = requests.get(url)</code></pre>
+<pre><code class="language-python">soup = BeautifulSoup(res.text, &quot;html.parser&quot;)</code></pre>
+<h2>find_all로 a태그 가져오기</h2>
+<pre><code class="language-python">elems = soup.find_all(&quot;a&quot;)</code></pre>
+<h2>re를 사용한 필터링</h2>
+<p>URL에 <a href="https://news.yahoo.co.jp/pickup">https://news.yahoo.co.jp/pickup</a> 이 포함된 태그만 추출</p>
+<pre><code class="language-python">import re</code></pre>
+<pre><code class="language-python">elems = soup.find_all(href=re.compile(&quot;news.yahoo.co.jp/pickup&quot;))</code></pre>
+<pre><code class="language-python">elems</code></pre>
+<pre><code>[&lt;a class=&quot;yMWCYupQNdgppL-NV6sMi _3sAlKGsIBCxTUbNi86oSjt&quot; data-cl-params=&quot;_cl_vmodule:tpto;_cl_link:title;_cl_position:1;tpid:6429073;imgsize:s;cmt_num:2204&quot; data-ual-gotocontent=&quot;true&quot; data-ylk=&quot;rsec:tpto;slk:title;pos:1;tpid:6429073;imgsize:s;cmt_num:2204&quot; href=&quot;https://news.yahoo.co.jp/pickup/6429073&quot;&gt;&lt;div class=&quot;_2cXD1uC4eaOih4-zkRgqjU&quot;&gt;&lt;div class=&quot;TRuzXRRZHRqbqgLUCCco9&quot;&gt;&lt;h1 class=&quot;_3cl937Zpn1ce8mDKd5kp7u&quot;&gt;&lt;span class=&quot;fQMqQTGJTbIMxjQwZA2zk _1alzSpTqJzvSVUWqpx82d4&quot;&gt;円安進行を憂慮 政府・日銀が声明&lt;/span&gt;&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;,
+ &lt;a class=&quot;yMWCYupQNdgppL-NV6sMi _3sAlKGsIBCxTUbNi86oSjt&quot; data-cl-params=&quot;_cl_vmodule:tpto;_cl_link:title;_cl_position:2;tpid:6429080;imgsize:s;cmt_num:215&quot; data-ual-gotocontent=&quot;true&quot; data-ylk=&quot;rsec:tpto;slk:title;pos:2;tpid:6429080;imgsize:s;cmt_num:215&quot; href=&quot;https://news.yahoo.co.jp/pickup/6429080&quot;&gt;&lt;div class=&quot;_2cXD1uC4eaOih4-zkRgqjU&quot;&gt;&lt;div class=&quot;TRuzXRRZHRqbqgLUCCco9&quot;&gt;&lt;h1 class=&quot;_3cl937Zpn1ce8mDKd5kp7u&quot;&gt;&lt;span class=&quot;fQMqQTGJTbIMxjQwZA2zk _1alzSpTqJzvSVUWqpx82d4&quot;&gt;「都民割」再開 問い合わせが殺到&lt;/span&gt;&lt;/h1&gt;&lt;span class=&quot;_2obRU_TgAxzHaYqOXrZYlv&quot;&gt;&lt;span class=&quot;h4yLXygiSc5wwNlJOQEdz _1dr5aVDbNPF63JCS2bJhij _2M3AyDfFaeJl3Uo7lUPMAp&quot; style=&quot;width:30px;height:12px&quot;&gt;NEW&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;,
+ &lt;a class=&quot;yMWCYupQNdgppL-NV6sMi _3sAlKGsIBCxTUbNi86oSjt&quot; data-cl-params=&quot;_cl_vmodule:tpto;_cl_link:title;_cl_position:3;tpid:6429077;imgsize:s;cmt_num:352&quot; data-ual-gotocontent=&quot;true&quot; data-ylk=&quot;rsec:tpto;slk:title;pos:3;tpid:6429077;imgsize:s;cmt_num:352&quot; href=&quot;https://news.yahoo.co.jp/pickup/6429077&quot;&gt;&lt;div class=&quot;_2cXD1uC4eaOih4-zkRgqjU&quot;&gt;&lt;div class=&quot;TRuzXRRZHRqbqgLUCCco9&quot;&gt;&lt;h1 class=&quot;_3cl937Zpn1ce8mDKd5kp7u&quot;&gt;&lt;span class=&quot;fQMqQTGJTbIMxjQwZA2zk _1alzSpTqJzvSVUWqpx82d4&quot;&gt;キャシュふる 開始2日で終了&lt;/span&gt;&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;,
+ &lt;a class=&quot;yMWCYupQNdgppL-NV6sMi _3sAlKGsIBCxTUbNi86oSjt&quot; data-cl-params=&quot;_cl_vmodule:tpto;_cl_link:title;_cl_position:4;tpid:6429076;imgsize:s;cmt_num:729&quot; data-ual-gotocontent=&quot;true&quot; data-ylk=&quot;rsec:tpto;slk:title;pos:4;tpid:6429076;imgsize:s;cmt_num:729&quot; href=&quot;https://news.yahoo.co.jp/pickup/6429076&quot;&gt;&lt;div class=&quot;_2cXD1uC4eaOih4-zkRgqjU&quot;&gt;&lt;div class=&quot;TRuzXRRZHRqbqgLUCCco9&quot;&gt;&lt;h1 class=&quot;_3cl937Zpn1ce8mDKd5kp7u&quot;&gt;&lt;span class=&quot;fQMqQTGJTbIMxjQwZA2zk _1alzSpTqJzvSVUWqpx82d4&quot;&gt;「Famiポート」8月までに撤去へ&lt;/span&gt;&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;,
+ &lt;a class=&quot;yMWCYupQNdgppL-NV6sMi _3sAlKGsIBCxTUbNi86oSjt&quot; data-cl-params=&quot;_cl_vmodule:tpto;_cl_link:title;_cl_position:5;tpid:6429078;imgsize:s;cmt_num:624&quot; data-ual-gotocontent=&quot;true&quot; data-ylk=&quot;rsec:tpto;slk:title;pos:5;tpid:6429078;imgsize:s;cmt_num:624&quot; href=&quot;https://news.yahoo.co.jp/pickup/6429078&quot;&gt;&lt;div class=&quot;_2cXD1uC4eaOih4-zkRgqjU&quot;&gt;&lt;div class=&quot;TRuzXRRZHRqbqgLUCCco9&quot;&gt;&lt;h1 class=&quot;_3cl937Zpn1ce8mDKd5kp7u&quot;&gt;&lt;span class=&quot;fQMqQTGJTbIMxjQwZA2zk _1alzSpTqJzvSVUWqpx82d4&quot;&gt;生コン不正利用 取引業者も困惑&lt;/span&gt;&lt;/h1&gt;&lt;span class=&quot;_2obRU_TgAxzHaYqOXrZYlv&quot;&gt;&lt;span class=&quot;h4yLXygiSc5wwNlJOQEdz _1dr5aVDbNPF63JCS2bJhij _2M3AyDfFaeJl3Uo7lUPMAp&quot; style=&quot;width:30px;height:12px&quot;&gt;NEW&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;,
+ &lt;a class=&quot;yMWCYupQNdgppL-NV6sMi _3sAlKGsIBCxTUbNi86oSjt&quot; data-cl-params=&quot;_cl_vmodule:tpto;_cl_link:title;_cl_position:6;tpid:6429084;imgsize:s;cmt_num:0&quot; data-ual-gotocontent=&quot;true&quot; data-ylk=&quot;rsec:tpto;slk:title;pos:6;tpid:6429084;imgsize:s;cmt_num:0&quot; href=&quot;https://news.yahoo.co.jp/pickup/6429084&quot;&gt;&lt;div class=&quot;_2cXD1uC4eaOih4-zkRgqjU&quot;&gt;&lt;div class=&quot;TRuzXRRZHRqbqgLUCCco9&quot;&gt;&lt;h1 class=&quot;_3cl937Zpn1ce8mDKd5kp7u&quot;&gt;&lt;span class=&quot;fQMqQTGJTbIMxjQwZA2zk _1alzSpTqJzvSVUWqpx82d4&quot;&gt;速報サッカー 日本2-1でリード&lt;/span&gt;&lt;/h1&gt;&lt;span class=&quot;_2obRU_TgAxzHaYqOXrZYlv&quot;&gt;&lt;span class=&quot;h4yLXygiSc5wwNlJOQEdz _1dr5aVDbNPF63JCS2bJhij _2kuTmc13t1KkhU9h4mqeek&quot; style=&quot;width:30px;height:12px&quot;&gt;LIVE&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;,
+ &lt;a class=&quot;yMWCYupQNdgppL-NV6sMi _3sAlKGsIBCxTUbNi86oSjt&quot; data-cl-params=&quot;_cl_vmodule:tpto;_cl_link:title;_cl_position:7;tpid:6429072;imgsize:s;cmt_num:252&quot; data-ual-gotocontent=&quot;true&quot; data-ylk=&quot;rsec:tpto;slk:title;pos:7;tpid:6429072;imgsize:s;cmt_num:252&quot; href=&quot;https://news.yahoo.co.jp/pickup/6429072&quot;&gt;&lt;div class=&quot;_2cXD1uC4eaOih4-zkRgqjU&quot;&gt;&lt;div class=&quot;TRuzXRRZHRqbqgLUCCco9&quot;&gt;&lt;h1 class=&quot;_3cl937Zpn1ce8mDKd5kp7u&quot;&gt;&lt;span class=&quot;fQMqQTGJTbIMxjQwZA2zk _1alzSpTqJzvSVUWqpx82d4&quot;&gt;大谷に監督代行 すさまじかった&lt;/span&gt;&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;,
+ &lt;a class=&quot;yMWCYupQNdgppL-NV6sMi _3sAlKGsIBCxTUbNi86oSjt&quot; data-cl-params=&quot;_cl_vmodule:tpto;_cl_link:title;_cl_position:8;tpid:6429082;imgsize:s;cmt_num:258&quot; data-ual-gotocontent=&quot;true&quot; data-ylk=&quot;rsec:tpto;slk:title;pos:8;tpid:6429082;imgsize:s;cmt_num:258&quot; href=&quot;https://news.yahoo.co.jp/pickup/6429082&quot;&gt;&lt;div class=&quot;_2cXD1uC4eaOih4-zkRgqjU&quot;&gt;&lt;div class=&quot;TRuzXRRZHRqbqgLUCCco9&quot;&gt;&lt;h1 class=&quot;_3cl937Zpn1ce8mDKd5kp7u&quot;&gt;&lt;span class=&quot;fQMqQTGJTbIMxjQwZA2zk _1alzSpTqJzvSVUWqpx82d4&quot;&gt;EXILEの黒木啓司 芸能界引退へ&lt;/span&gt;&lt;/h1&gt;&lt;span class=&quot;_2obRU_TgAxzHaYqOXrZYlv&quot;&gt;&lt;span class=&quot;h4yLXygiSc5wwNlJOQEdz _1dr5aVDbNPF63JCS2bJhij _2M3AyDfFaeJl3Uo7lUPMAp&quot; style=&quot;width:30px;height:12px&quot;&gt;NEW&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;]</code></pre><h2>필요한 뉴스의 URL/TITLE 가져오기</h2>
+<h3>뉴스 지정</h3>
+<pre><code class="language-python">elems[0].span.string</code></pre>
+<pre><code>&#39;円安進行を憂慮 政府・日銀が声明&#39;</code></pre><pre><code class="language-python">elems[0].attrs[&quot;href&quot;]</code></pre>
+<pre><code>&#39;https://news.yahoo.co.jp/pickup/6429073&#39;</code></pre><h3>ForEach로 뉴스 URL/TITLE 긁어오기</h3>
+<h4>내용 확인</h4>
+<pre><code class="language-python">for elem in elems:
+    print(elem.span.string)
+    print(elem.attrs[&quot;href&quot;])</code></pre>
+<pre><code>円安進行を憂慮 政府・日銀が声明
+https://news.yahoo.co.jp/pickup/6429073
+「都民割」再開 問い合わせが殺到
+https://news.yahoo.co.jp/pickup/6429080
+キャシュふる 開始2日で終了
+https://news.yahoo.co.jp/pickup/6429077
+「Famiポート」8月までに撤去へ
+https://news.yahoo.co.jp/pickup/6429076
+生コン不正利用 取引業者も困惑
+https://news.yahoo.co.jp/pickup/6429078
+速報サッカー 日本2-1でリード
+https://news.yahoo.co.jp/pickup/6429084
+大谷に監督代行 すさまじかった
+https://news.yahoo.co.jp/pickup/6429072
+EXILEの黒木啓司 芸能界引退へ
+https://news.yahoo.co.jp/pickup/6429082</code></pre><h4>변수화</h4>
+<pre><code class="language-python">links = [elem.attrs[&quot;href&quot;] for elem in elems]</code></pre>
+<pre><code class="language-python">print(links)</code></pre>
+<pre><code>[&#39;https://news.yahoo.co.jp/pickup/6429073&#39;, &#39;https://news.yahoo.co.jp/pickup/6429080&#39;, &#39;https://news.yahoo.co.jp/pickup/6429077&#39;, &#39;https://news.yahoo.co.jp/pickup/6429076&#39;, &#39;https://news.yahoo.co.jp/pickup/6429078&#39;, &#39;https://news.yahoo.co.jp/pickup/6429084&#39;, &#39;https://news.yahoo.co.jp/pickup/6429072&#39;, &#39;https://news.yahoo.co.jp/pickup/6429082&#39;]</code></pre><h2>각 뉴스의 상세 내용 표시</h2>
+<h3>상세 내용 가져오기</h3>
+<pre><code class="language-python">for link in links:
+    news_res = requests.get(link)
+    news_soup = BeautifulSoup(news_res.text, &quot;html.parser&quot;)
+
+    news_elem = news_soup.find(&quot;p&quot;, class_=&quot;sc-kvjbNB&quot;)
+    news_link = news_elem.a.attrs[&quot;href&quot;]
+
+    detail_res = requests.get(news_link)
+    detail_soup = BeautifulSoup(detail_res.text, &quot;html.parser&quot;)
+#    detail_elem = detail_soup.find(&quot;p&quot;, class_=&quot;highLightSearchTarget&quot;)
+    detail_text = detail_soup.find(class_=re.compile(&quot;yjSlinkDirectlink&quot;))
+
+    print(detail_soup.title.text)
+    print(news_link)
+#    print(detail_elem.text)
+    print(detail_text.text if hasattr(detail_text, &quot;text&quot;) else &#39;&#39;, end=&quot;\n\n\n\n&quot;)
+</code></pre>
+<pre><code>政府・日銀が「円安の進行を憂慮」声明　緊密連携で市場注視（毎日新聞） - Yahoo!ニュース
+https://news.yahoo.co.jp/articles/0dafd77a6310cacf4804ef6bcaa1d664a6598938
+　財務省と金融庁、日銀は10日、幹部による情報交換会合（3者会合）を財務省内で開き、為替市場の動向などについて意見交換した。会合後に公表した声明では、円安の進行について「憂慮している」とし、外国為替市場で急速に進む円安をけん制した。
+
+【財政は？新しい資本主義は？「骨太の方針」の概要】
+
+　3者会合で声明をまとめるのは初めて。会合には神田真人財務官、金融庁の中島淳一長官、日銀の内田真一理事らが出席し、為替相場の急速な変動が望ましくないとの認識を改めて確認。政府と日銀が緊密に連携し、緊張感を持って注視していくことでも一致した。
+
+　神田氏は会合後に記者団に対し、政府による為替介入について「必要な場合には適正な対応を取る。あらゆるオプションを念頭に置いている」と述べた。【高田奈実】
+
+
+
+“都民割”再開！　問い合わせが殺到…バスツアー会社は大忙しに（日テレNEWS） - Yahoo!ニュース
+https://news.yahoo.co.jp/articles/cb07e2c6cfaee115e4997b1abe6e2285be0d4fd4
+東京都の観光支援策いわゆる“都民割”が、10日から試験的に再開しました。都内の観光ツアーを扱う「はとバス」では、いつもより忙しい1日となりました。
+
+　　　◇◇◇
+
+10日正午、都民による都内旅行を助成する「もっとTokyo」、いわゆる“都民割”の販売が一斉に始まりました。
+
+都民割では、1人1泊あたり5000円、日帰りでも1人あたり2500円が助成されます。ワクチンの3回目接種を終えている、もしくは、検査結果が陰性の都民が対象です。
+
+はとバスでは、2つの対象商品を用意しています。東京タワーとアフタヌーンクルーズを楽しめる、通常大人5500円のコースは、3000円に割り引きされます。
+
+サンセットクルーズとスカイツリーをまわるコースも、通常から2500円割引の9300円となります。
+
+はとバスでは電話が鳴りやまず、待ち人数は30人近くになり、さらに、ホームページにアクセスが集中し、つながりにくい状態になりました。わずか1時間余りで完売した日程もあったということです。
+
+はとバス広報室　伊藤百那さん
+「販売開始とともに、とても反響をいただきましたので、都民割の再開が追い風となって、徐々に旅行マインドの高まりにつながることを期待」
+
+試験的に再開された都民割は、今回の期間は7月31日までで、都は25万泊分を用意しています。期間中は何度も利用が可能だということです。
+
+
+
+ふるさと納税換金サービス「キャシュふる」終了　総務相の苦言を受け（産経新聞） - Yahoo!ニュース
+https://news.yahoo.co.jp/articles/ddfb6fa5af259feaea94400a0bc89a1431a65380
+ふるさと納税をした人に現金を還元する仲介サービス「キャシュふる」を運営するＤＥＰＡＲＴＵＲＥ（東京都新宿区）は１０日夕、同社公式サイトでサービスを終了したと発表した。８日の開始からわずか２日での終了となった。１０日に金子恭之総務相が同社のサービスについて苦言を呈したことを受けて終了を決めたという。
+
+【写真】「キャシュふる」サービス終了のお知らせ
+
+金子氏は同日の閣議後記者会見で「制度の趣旨から大きく外れており、総務省の担当部局に対応の検討を指示した」と述べるなどサービスを問題視する考えを強調した。
+
+同社はサイトで「総務省、自治体の皆さまをはじめ、関係各所の皆さまにご迷惑をおかけし、誠に申し訳ありませんでした」とコメントした。
+
+
+
+ファミマ「Famiポート」全店舗で順次撤去予定、8月までに　「新型マルチコピー機」に機能統合（J-CASTニュース） - Yahoo!ニュース
+https://news.yahoo.co.jp/articles/d0cc4220ecb5d7c8b32e8b9f28177dc447264c9e
+　大手コンビニチェーン・ファミリーマート（東京都港区）が、チケットサービスや代金支払いなどの機能を持つマルチメディア端末「Famiポート」を2022年8月までに全店舗で順次撤去する予定であることが分かった。J-CASTニュースの取材に同社が明らかにした。
+
+【画像】8月までに撤去されるFamiポート
+
+　同社は公式サイトで21年12月1日、Famiポートの機能を新型マルチコピー機に移行する予定だと発表し、目的は各機能の使いやすさの向上だとしていた。
+
+■「6月～8月までの間で、順次撤去を予定しております」
+
+　ファミリーマートの21年12月1日の発表によると、新型マルチコピー機には15インチのカラー液晶タッチパネルを搭載し、操作画面の角度調整もできる。斜めからのディスプレーのぞき見を防止するプライバシーフィルターも導入するとしていた。
+
+　同発表内で、新型マルチコピー機は「Famiポート」の機能を移行する予定があると書かれている。それまでFamiポートではチケットサービス、マルチコピー機ではコピーや画像プリントサービスが利用されていたとし、「2つのサービスが一体化により、ワンストップでのご利用が可能となり、店舗内における分かりやすさ、各機能の使いやすさ向上に繋げてまいります」と説明している。22年春頃から順次統合予定だとしていた。
+
+　ツイッターでは22年5月下旬頃から、Famiポートのサービスがマルチコピー機に移行したと店内の端末で案内されていたとする報告が、写真つきで度々あがっていた。Famiポートは今後どうなる予定なのか。
+
+　取材に対し、同社広報課の担当者は6月9日、Famiポートは「マルチコピー機の入れ替えが完了した店舗から、6月～8月までの間で、順次撤去を予定しております」と明かした。全国に展開している全ての店舗で、Famiポートが新型マルチコピー機に移行する予定だとしており、完全に移行するのは7月末を予定している。
+
+　Famiポートは00年12月から展開しており、予定通り撤去が完了すれば22年間の歴史に幕が下りることとなる。
+
+
+
+「会社たたむしかない…」取引業者も困惑　古い生コンクリートを混ぜ込み“不正生コン”約70棟に使用か【news23】（TBS NEWS DIG Powered by JNN） - Yahoo!ニュース
+https://news.yahoo.co.jp/articles/db70fc4c6c43b09d059fde08b226ab100a4bcb5f
+神奈川県川崎市の生コンクリート製造会社が余った生コンクリートに新しいものを混ぜて出荷し、およそ70棟の建物で使われていた疑いがあることがわかりました。この会社の生コンを使った施工業者が私たちの取材に応じ、困惑した胸の内を明かしました。
+
+【写真を見る】「会社たたむしかない…」取引業者も困惑　古い生コンクリートを混ぜ込み“不正生コン”約70棟に使用か【news23】
+
+
+
+サッカー代表 - 日本vs.ガーナ -テキスト速報 - スポーツナビ
+https://soccer.yahoo.co.jp/japan/game/live/2022061001/on
+
+
+
+
+【MLB】大谷翔平は「凄まじかった」　鬼気迫る逆転弾＆4勝目…ネビン監督代行最敬礼（Full-Count） - Yahoo!ニュース
+https://news.yahoo.co.jp/articles/54eacaa997f834534b92948768c351fc57612af7
+■エンゼルス 5ー2 Rソックス（日本時間10日・アナハイム）
+
+　エンゼルスの大谷翔平投手が9日（日本時間10日）、泥沼の14連敗をリアル二刀流で止めた。本拠地でのレッドソックス戦に「2番・投手兼DH」で投打同時出場。5回に起死回生の逆転12号2ランを放つと、投げても7回1失点で4勝目。チームは長いトンネルを抜け、フィル・ネビン監督代行は試合後「みんな大きな息を吐いていたよ。みんなにとってつらかった」と胸を撫で下ろした。
+
+【実際の映像】大谷翔平は「自分で何とかしてしまう」　“起死回生”の逆転弾に敵軍放送局も唖然
+
+　まさにワンマンショーだった。マウンドでは初回から全開。2回に折れたバットが頭部付近を通過する冷や汗場面もあったが、動じず。3回2死三塁ではデバースを今季最速となる101.0マイル（約162.5キロ）で空振り三振を奪って雄叫びをあげた。今季最多の100球を投げ、7回4安打6奪三振2四球で1失点の快投だった。
+
+　そしてバットで試合を決めた。1点を先制された直後の5回1死一塁で、右腕ピベッタの高めフォーシームを捉えて逆転の12号2ラン。2打席連発した5月29日（同30日）の本拠地・ブルージェイズ戦以来10試合45打席ぶりで、6月は初アーチとなった。ダイヤモンド一周ではガッツポーズ。投打同時出場での一発は昨年9月10日（同11日）の敵地・アストロズ戦以来通算4本目で今季初だった。
+
+　2打席連続三振からの一撃に、ネビン監督代行は「三振したが、その後の打席は凄まじかった」と強調。ピンチで見せた101マイルには「彼は別のギアを持っている。球速が少し上がる。別のギアを持っていて、時にそれを見つけていた」と唸った。
+
+　報道陣から腰の状態に関して問われると「彼のマウンドの存在感、立ち振る舞い、投げた後のリアクション、ショウヘイは良い状態に見えた」とも。リアル二刀流の“ひとり舞台”に、最敬礼していた。
+
+
+
+EXILE・黒木啓司、10月末で芸能界引退「体力の限界感じた」　17年間在籍のLDHに感謝【コメント全文】（オリコン） - Yahoo!ニュース
+https://news.yahoo.co.jp/articles/151b6333ddce6969118164cb99a291782d9906b8
+　ダンス＆ボーカルグループ・EXILEの黒木啓司（42）が10日、10月末をもってLDH JAPANを退社し、芸能界を引退することを、ホームページとモバイルサイトで発表した。
+
+【写真】洋菓子にもよく合う！黒木啓司プロデュースのガラス皿
+
+　LDHによると「以前より、今後の活動や将来を見据えて話し合っておりましたが、パフォーマンスに掛ける本人の想いやステージを降りることへの決意、自身の将来像などへの考えを尊重し、EXILE20周年という節目でアーティスト活動を終了することになりました」としている。
+
+　黒木は、2009年2月25日にJ Soul Brothersとして、メジャーデビューアルバム『J Soul Brothers』でメジャーデビューし、3月1日にEXILEにパフォーマーとして加入。昨年12月にかねてより交際していた実業家・モデルの宮崎麗果さんとの結婚を発表した。
+
+■黒木啓司コメント全文
+いつも温かい応援ありがとうございます。
+
+突然ではございますが私、黒木啓司は7月からスタートするEXILEのドームツアー『EXILE LIVE TOUR 2022 &quot;POWER OF WISH&quot;』をもちまして、EXILE及びLDH JAPANから卒業するとともに、芸能界を引退することをご報告いたします。
+
+僕がデビューする前から約17年間お世話になったLDHには、本当に感謝の気持ちでいっぱいです。あの時、HIROさんはじめ、EXILEオリジナルメンバーの皆さん、スタッフの皆さんが僕を受け入れてくださったことで、たくさんの夢を叶えることができました。
+そして、大勢のファンの皆様に出会えたことが自分にとって何よりの財産になっています。
+
+引退の時期に関しては、自分の中で数年前から考えていました。パフォーマーとして活動させていただく中で、常に自身のベストをファンの皆様に届けることに命をかけてきましたが、最近では年齢や体力の限界を感じるようになっていました。今後、自分が思うベストパフォーマンスを届けることができなくなる前に、EXILE20周年という節目を機に引退することを決意いたしました。
+
+そして、お芝居やバラエティなどさまざまな分野のお仕事に挑戦させていただきましたが、芸能人である前に僕はEXILEのパフォーマーであり、そこに対する自分なりの情熱とプライドがあるが故に、パフォーマーを引退するなら全てのステージから降りることがファンの皆様、そして自分に対するケジメだと感じました。
+
+引退後は家族をしっかりと支えながら、新たな道で社会に貢献できるように精進していきますので、温かく見守っていただけたら幸いです。
+
+発表のタイミングもいろいろ考えましたが、応援してくださる皆様には事前にしっかり自分の想いを伝えるべきだと思い、きちんとお別れできる最後のステージであるドームツアー前に発表させていただきました。
+
+次のツアーが最後になってしまいますが、残りの時間を皆様と一緒に楽しみ、一瞬一瞬を胸に焼き付けながら、感謝の気持ちでパフォーマンスをお届けしたいと思いますので、応援していただけたらうれしいです。
+
+2022年　6月10日
+黒木啓司</code></pre>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

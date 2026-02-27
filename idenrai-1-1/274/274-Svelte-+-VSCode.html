@@ -1,0 +1,67 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Svelte + VSCode</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Svelte + VSCode</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/Environment Setting</p>
+                                    <p class="date">2023-07-30 13:27:08</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h1>VSCode에서의 Svelte 자동 Formatting 설정</h1>
+<h2>Extention</h2>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode">Svelte for VS Code</a></p>
+<p><code>.vscode/extentions.json</code> 에 <code>recommendation</code> 설정을 해 두자.</p>
+<pre><code class="language-json">{
+  &quot;recommendations&quot;: [
+    &quot;svelte.svelte-vscode&quot;,
+    &quot;DavidAnson.vscode-markdownlint&quot;,
+    &quot;bradlc.vscode-tailwindcss&quot;,
+    &quot;esbenp.prettier-vscode&quot;,
+    &quot;dbaeumer.vscode-eslint&quot;
+  ]
+}</code></pre>
+<h2>자동 Formatting 설정</h2>
+<p>이하를 VS Code Settings(Cmd + ,)에 추가하기만 하면 끝.<br><code>.vscode/settings.json</code> 에도 넣어두자.</p>
+<pre><code class="language-json">{
+  &quot;editor.formatOnSave&quot;: true,
+  &quot;[svelte]&quot;: {&quot;editor.defaultFormatter&quot;: &quot;svelte.svelte-vscode&quot;}
+}</code></pre>
+<h2>Prettier</h2>
+<p>좀 더 커스터마이즈 하고 싶은 경우, <code>.prettierrc</code>를 추가.<br>내 경우는 아래와 같이 설정했다.</p>
+<pre><code class="language-json">{
+    &quot;semi&quot;: false,
+    &quot;singleQuote&quot;: true,
+    &quot;printWidth&quot;: 120
+}</code></pre>
+
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            #Prettier #Svelte 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

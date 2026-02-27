@@ -1,0 +1,41 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>자주 사용하는 Git Command</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">자주 사용하는 Git Command</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/Git</p>
+                                    <p class="date">2017-04-11 14:58:21</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>@markdown</p><p><br /></p><p>#### 초보자를 위한 Git 초기설정 세트</p><p><br /></p><p>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ git init</p><p>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;$ git add -A</p><p>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ git config --global user.email &lt;Your Email&gt;</p><p>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ git config --global user.name &lt;Your Name&gt;</p><p>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ git commit -m &lt;Your Commit Message&gt;</p><p>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;$ git remote add origin &lt;Your Repository URL&gt;</p><p>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ git push --set-upstream origin master</p><p><br /></p><p>#### Init</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git init</p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git add -A &amp;&amp; git commit -m [commit comment]</p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git remote add origin [Your Repository URL]</p><p><br /></p><p>#### Add ・ Commit ・ Push</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git add . -A</p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git commit -m [commit comment]</p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git push -u origin master</p><p><br /></p><p>#### Pull</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git pull</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; -- 또는</p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git pull origin [branchname]</p><p><br /></p><p>#### Clone</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git clone [Repository URL]</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; -- Branch 지정시</p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git clone -b [branchname] [Repository URL]</p><p><br /></p><p>#### Checkout</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git checkout [branchname]</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; -- 확인</p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git branch</p><p><br /></p><p>#### New Branch &amp; Merge</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; -- 새로운 branch 작성 및 체크아웃</p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git branch [new branchname]</p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git checkout [new branchname]</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; -- 한 방에 하고싶은 경우</p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git checkout -b [new branchname]</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; -- 새로운 branch의 작업이 끝나고 기존 branch로 이동</p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git checkout [base branchname]</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; -- 기존 branch에 새로운 branch를 merge</p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git merge [new branchname]</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; -- 새로운 branch 삭제</p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git branch -d [new branchname]</p><p><br /></p><p>#### New Branch &amp; Rebase &amp; Merge</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; -- main_branch에서 new branch 작성 및 checkout</p><p>&nbsp; &nbsp; &nbsp; &nbsp; git checkout -b new_branch</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; -- new_branch에서의 작업 완료 후 commit까지 실행</p><p>&nbsp; &nbsp; &nbsp; &nbsp; git add .</p><p>&nbsp; &nbsp; &nbsp; &nbsp; git commit -m "msg"</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; -- main_branch의 변경사항 취득</p><p>&nbsp; &nbsp; &nbsp; &nbsp; git checkout main_branch</p><p>&nbsp; &nbsp; &nbsp; &nbsp; git pull origin main_branch</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; -- rebase를 통해 main_branch의 변경사항을 new_branch에 도입</p><p>&nbsp; &nbsp; &nbsp; &nbsp; git checkout new_branch</p><p>&nbsp; &nbsp; &nbsp; &nbsp; git rebase -i main_branch</p><p>&nbsp; &nbsp; &nbsp; &nbsp; - git add .</p><p>&nbsp; &nbsp; &nbsp; &nbsp; - git rebase --continue</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; -- new_branch push</p><p>&nbsp; &nbsp; &nbsp; &nbsp; git push origin new_branch</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; -- new_branch에 과거 push를 한번 한 상태에서 다시 수정 후 rebase까지 한&nbsp;경우</p><p>&nbsp; &nbsp; &nbsp; &nbsp; git push origin new_branch -f</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; -- main_branch에 new_branch를 merge</p><p>&nbsp; &nbsp; &nbsp; &nbsp; git checkout main_branch</p><p>&nbsp; &nbsp; &nbsp; &nbsp; git merge new_branch</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; git branch -d new_branch</p><p>&nbsp; &nbsp; &nbsp; &nbsp; git push origin new_branch</p><p><br /></p><p><br /></p><p>#### 그외</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; -- 상태확인</p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git status</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; -- Upstream 설정</p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git push --set-upstream origin [branchname]</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; -- 개판난 소스를 버리고 최근 버전으로 돌아가기</p><p>&nbsp; &nbsp; &nbsp; &nbsp; $ git reset --hard</p><div><br /></div><p><br /></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

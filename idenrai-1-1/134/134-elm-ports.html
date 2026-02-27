@@ -1,0 +1,41 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>elm ports</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">elm ports</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/elm</p>
+                                    <p class="date">2017-05-23 12:15:48</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>@markdown</p><p><br /></p><p>### Ports : elm - javascript</p><p><br /></p><p>elm에서 Bootstrap을 이용해 DataTables를 만드는 중.</p><p>Row에 놓은 Detail Button을 Click시,</p><p>1. ShowDetailModal Message로 Modal의 State를 현재 Click한 Row의 Data로 갱신하고</p><p>2. Bootstrap의 data-toggle로 DetailModal을 열고자 했다.</p><p><br /></p><p>그런데 여기서 한가지 변수가 발생했다.</p><p>Button Click의 경우 Modal만 열고 끝나야 하는데, Bubble로 인해, Row Click Event가 함께 가동되는 것.</p><p>Row Click Event는 선택된 Row의 State인 Selected를 True로 만들고, Row의 색깔을 바꾼다.</p><p>이로 인해 Detail Modal Button Click시 Row의 색깔이 바뀌는 불상사가 발생.</p><p><br /></p><p>이를 막기 위해 onClick Event를 `Html.Events.onWithOptions` 으로 변환하고, Option은 다음과 같이 설정하였다.</p><p><br /></p><p>```</p><p>&nbsp; &nbsp; viewButton : Quest -&gt; DataTables.HtmlDetails WantedMsg</p><p>&nbsp; &nbsp; viewButton quest =</p><p>&nbsp; &nbsp; &nbsp; &nbsp; DataTables.HtmlDetails []</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ div</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ class "btn btn-success btn-md"</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; , attribute "data-toggle" "modal"</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; , attribute "data-target" "#detailModal"</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; , onRowClick (ShowDetailModal quest)</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ]</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ span [] [ text "detail" ]</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ]</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ]</p><p><br /></p><p><br /></p><p>&nbsp; &nbsp; noBubble : Options</p><p>&nbsp; &nbsp; noBubble =</p><p>&nbsp; &nbsp; &nbsp; &nbsp; { stopPropagation = True</p><p>&nbsp; &nbsp; &nbsp; &nbsp; , preventDefault = True</p><p>&nbsp; &nbsp; &nbsp; &nbsp; }</p><p><br /></p><p><br /></p><p>&nbsp; &nbsp; onRowClick : msg -&gt; Attribute msg</p><p>&nbsp; &nbsp; onRowClick message =</p><p>&nbsp; &nbsp; &nbsp; &nbsp; onWithOptions "click" noBubble (Json.succeed message)</p><p>```</p><p><br /></p><p>이를 통해 Button Click Event가 Row Click Event로 Bubble되는 현상은 막을 수 있었으나,</p><p>이제는 Bootstrap의 data-toggle이 먹히지 않아 Modal이 열리지 않게 되었다.</p><p><br /></p><p>이 상황에서 elm을 가지고 Modal을 열려면 Modal State를 정의해 On/Off하는 방법밖에 떠오르지 않는데,</p><p>이를 이용하면 Bootstrap Modal의 동작을 기대하긴 힘들어진다.</p><p><br /></p><p>그래서 생각해 낸 것이 ports를 이용해 javascript에서 jQuery로 Bootstrap Modal을 여는 것.</p><p>코드는 다음과 같다.</p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p>**Main.elm**</p><p><br /></p><p>- &nbsp; main에서 subscriptions을 사용할 것.</p><p><br /></p><p>```</p><p>&nbsp; &nbsp; subscriptions : Model -&gt; Sub Msg</p><p>&nbsp; &nbsp; subscriptions model =</p><p>&nbsp; &nbsp; &nbsp; &nbsp; Sub.none</p><p><br /></p><p><br /></p><p><br /></p><p>&nbsp; &nbsp; -- MAIN</p><p><br /></p><p><br /></p><p>&nbsp; &nbsp; main : Program Never Model Msg</p><p>&nbsp; &nbsp; main =</p><p>&nbsp; &nbsp; &nbsp; &nbsp; Navigation.program OnLocationChange</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; { init = init</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; , view = view</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; , update = update</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; , subscriptions = subscriptions</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</p><p>```</p><p><br /></p><p>**index.js**</p><p><br /></p><p>- &nbsp; 사용할 script를 ports에 선언</p><p><br /></p><p>```</p><p>&nbsp; &nbsp; // node_modules</p><p>&nbsp; &nbsp; var $ = jQuery = require( 'jquery/dist/jquery.js' ); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // &lt;--- remove if jQuery not needed</p><p>&nbsp; &nbsp; require( 'bootstrap-sass/assets/javascripts/bootstrap.js' ); &nbsp; // &lt;--- remove if Bootstrap's JS not needed</p><p>&nbsp; &nbsp; require( './styles/main.scss' );</p><p><br /></p><p>&nbsp; &nbsp; var Elm = require( '../elm/Main' );</p><p>&nbsp; &nbsp; const app = Elm.Main.embed( document.getElementById( 'main' ) );</p><p><br /></p><p>&nbsp; &nbsp; // Port</p><p><br /></p><p>&nbsp; &nbsp; // Bootstrap Modal Open</p><p>&nbsp; &nbsp; app.ports.openModal.subscribe((target) =&gt; {</p><p>&nbsp; &nbsp; &nbsp; &nbsp; $(target).modal('show')</p><p>&nbsp; &nbsp; });</p><p>```</p><p><br /></p><p><br /></p><p>**Datatables.elm**</p><p><br /></p><p>```</p><p>&nbsp; &nbsp; -- ports를 사용할 module은 port module로 정의해야 함</p><p>&nbsp; &nbsp; port module Components.CustomTables.WantedTable exposing (..)</p><p><br /></p><p>&nbsp; &nbsp; -- port 선언</p><p>&nbsp; &nbsp; port openModal : String -&gt; Cmd msg</p><p><br /></p><p><br /></p><p>&nbsp; &nbsp; -- update에서 Cmd에 port를 가져옴</p><p>&nbsp; &nbsp; update : WantedMsg -&gt; Wanted -&gt; ( Wanted, Cmd WantedMsg )</p><p>&nbsp; &nbsp; update message model =</p><p>&nbsp; &nbsp; &nbsp; &nbsp; case message of</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; NoOp -&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ( model, Cmd.none )</p><p><br /></p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ShowDetailModal quest -&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ({ model | modalStatus = quest }</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ! [ openModal "#detailModal" ]</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )</p><p>```</p><p><br /></p><p>이상의 작업을 통해 index.js의 ports에 target id인 "#detailModal"를 전달, modal('show')를 가동할 수 있었다.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

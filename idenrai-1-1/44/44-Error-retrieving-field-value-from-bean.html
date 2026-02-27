@@ -1,0 +1,41 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Error retrieving field value from bean</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Error retrieving field value from bean</h2>
+                                <div class="box-info">
+                                    <p class="category">Tech/iReport</p>
+                                    <p class="date">2015-12-16 12:28:48</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p>2015-12-16 12:20:08,726 ERROR - :Error retrieving field value from bean : cdKaisha</p><p>net.sf.jasperreports.engine.JRException: Error retrieving field value from bean : cdKaisha</p><p><span class="Apple-tab-span" style="white-space:pre">	</span>at net.sf.jasperreports.engine.data.JRAbstractBeanDataSource.getBeanProperty(JRAbstractBeanDataSource.java:123)</p><p><span class="Apple-tab-span" style="white-space:pre">	</span>at net.sf.jasperreports.engine.data.JRAbstractBeanDataSource.getFieldValue(JRAbstractBeanDataSource.java:96)</p><p><span class="Apple-tab-span" style="white-space:pre">	</span>at net.sf.jasperreports.engine.data.JRBeanCollectionDataSource.getFieldValue(JRBeanCollectionDataSource.java:100)</p><p><span class="Apple-tab-span" style="white-space:pre">	</span>at net.sf.jasperreports.engine.fill.JRFillDataset.setOldValues(JRFillDataset.java:1331)</p><p><span class="Apple-tab-span" style="white-space:pre">	</span>at net.sf.jasperreports.engine.fill.JRFillDataset.next(JRFillDataset.java:1232)</p><p><span class="Apple-tab-span" style="white-space:pre">	</span>at net.sf.jasperreports.engine.fill.JRFillDataset.next(JRFillDataset.java:1208)</p><p><span class="Apple-tab-span" style="white-space:pre">	</span>at net.sf.jasperreports.engine.fill.JRBaseFiller.next(JRBaseFiller.java:1554)...</p><p><br /></p><p>cdKaisha가 없다는 말이 떠서,</p><p>일단 jrxml파일의 오탈자를 확인하였으나 문제 없었음.</p><p>ReportForm에도 정확하게 cdKaisha가 적혀 있었고...</p><p><br /></p><p>문제는 ReportForm에서 <b>Getter를 추가하지 않은 것 때문</b>이었음.</p><p><br /></p><p>PT까지 끝내고 나서 한달쯤 후에 회사 코드와 영업소 코드를 넣어&nbsp;수정을 하다 보니,</p><p>ReportForm의 Getter 추가까지는 생각이 미치지 않았던 것.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

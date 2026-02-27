@@ -24,3 +24,6 @@ _site/
 .jekyll-cache/
 .jekyll-metadata
 Gemfile.lock
+
+# tistory backup (local reference only, not for deployment)
+idenrai-1-1/

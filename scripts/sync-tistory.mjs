@@ -51,12 +51,22 @@ turndown.addRule("clean-ke", {
   },
 });
 
-// --- URL → 파일명 슬러그 생성 ---
-function urlToSlug(url) {
-  // https://idenrai.tistory.com/302 → "tistory-302"
-  const match = url.match(/\/(\d+)$/);
-  if (match) return `tistory-${match[1]}`;
-  return url.replace(/[^a-z0-9]+/gi, "-").toLowerCase();
+// --- title → 파일명용 슬러그 ---
+function titleToSlug(title) {
+  return title
+    .trim()
+    .replace(/[\s\u3000]+/g, "-")
+    .replace(/[<>:"/\\|?*]/g, "")
+    .replace(/[#%&{}[\]^`~!@$();,]/g, "")
+    .replace(/\.{2,}/g, ".")
+    .replace(/-{2,}/g, "-")
+    .replace(/^[-.]|[-.]$/g, "");
+}
+
+// --- title + date → 파일명 ---
+function makeFileName(title, date) {
+  const slug = titleToSlug(title);
+  return date ? `${date}-${slug}.md` : `${slug}.md`;
 }
 
 // --- 날짜 파싱 ---
@@ -110,22 +120,23 @@ async function main() {
   let skipped = 0;
 
   for (const item of feed.items) {
-    const slug = urlToSlug(item.link || item.guid || "");
-    const filePath = path.join(OUTPUT_DIR, `${slug}.md`);
+    const date = parseDate(item.pubDate);
+    const rawTitle = item.title || "";
+    const fileName = makeFileName(rawTitle, date);
+    const filePath = path.join(OUTPUT_DIR, fileName);
 
     // 이미 존재하면 건너뜀
     try {
       await fs.access(filePath);
-      console.log(`⏭️  건너뜀 (이미 존재): ${slug}`);
+      console.log(`⏭️  건너뜀 (이미 존재): ${fileName}`);
       skipped++;
       continue;
     } catch {
       // 파일 없음 → 생성
     }
 
-    const date = parseDate(item.pubDate);
     const tags = parseCategories(item);
-    const title = (item.title || "").replace(/"/g, '\\"');
+    const title = rawTitle.replace(/"/g, '\\"');
     const description = (item.contentSnippet || "")
       .replace(/\n/g, " ")
       .replace(/"/g, '\\"')
@@ -150,7 +161,7 @@ async function main() {
     const fileContent = `${frontmatter}\n\n${bodyMarkdown}\n`;
 
     await fs.writeFile(filePath, fileContent, "utf-8");
-    console.log(`✅ 생성: ${slug}.md  [${date}] ${item.title}`);
+    console.log(`✅ 생성: ${fileName}  [${date}] ${item.title}`);
     created++;
   }
 

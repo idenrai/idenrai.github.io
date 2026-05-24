@@ -7,7 +7,6 @@ tistory_url: "https://idenrai.tistory.com/202"
 
 node.js 툴에서 excel파일을 json으로 불러와, 데이터를 만들어야 했다. 일단 원본이 되는 엑셀 파일은 다음과 같다.
 
-
 이걸 [**convert-excel-to-json**](https://www.npmjs.com/package/convert-excel-to-json)으로 불러와서 재구성한다. 코드는 다음과 같다.
 
 ```

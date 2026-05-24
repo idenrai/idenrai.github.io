@@ -66,4 +66,4 @@ alert("A 클래스 존재안함");
 <input type="button" value="클래스 체크" onClick="chkCls();">
 ```
 
-출처 : **http://fruitdev.tistory.com/138**
+출처 : **<http://fruitdev.tistory.com/138>**

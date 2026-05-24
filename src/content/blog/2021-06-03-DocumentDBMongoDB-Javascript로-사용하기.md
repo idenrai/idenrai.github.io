@@ -261,9 +261,9 @@ SearchData();
 당연한 거지만 실행은 아래와 같이 하면 된다.
 
 ```
-$ node ./src/CreateCollection.js
-$ node ./src/InsertData.js
-$ node ./src/SearchData.js
+node ./src/CreateCollection.js
+node ./src/InsertData.js
+node ./src/SearchData.js
 ```
 
 다른것도 더 해보고 싶다면 아래를 참조.
@@ -276,4 +276,4 @@ MongoDB Node Driver — Node.js
 
 docs.mongodb.com
 
-](https://docs.mongodb.com/drivers/node/)
+](<https://docs.mongodb.com/drivers/node/>)

@@ -11,7 +11,7 @@ jQueryUI 버튼을 하나 따서 쓰는데
 
 오류 내용은
 
-Mixed Content: The page at 'https://--------------' was loaded over HTTPS, but requested an insecure stylesheet 'http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css'. This request has been blocked; the content must be served over HTTPS.
+Mixed Content: The page at 'https://--------------' was loaded over HTTPS, but requested an insecure stylesheet '<http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css>'. This request has been blocked; the content must be served over HTTPS.
 
 이런 내용이었다.
 

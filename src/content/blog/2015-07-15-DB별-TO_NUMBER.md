@@ -29,4 +29,4 @@ tistory_url: "https://idenrai.tistory.com/20"
 
 **CAST('10' AS INTEGER)**
 
-출처 : http://extremeblue.tistory.com/35
+출처 : <http://extremeblue.tistory.com/35>

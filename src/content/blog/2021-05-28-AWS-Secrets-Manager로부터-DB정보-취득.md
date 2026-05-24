@@ -7,7 +7,6 @@ tistory_url: "https://idenrai.tistory.com/242"
 
 AWS DocumentDB의 정보 보관을 위해 AWS Secrets Manager를 사용하게 되었다. SecretsManager의 정보 자체는 Lambda의 환경변수로 아래와 같이 설정하면 된다.
 
-
 현재 Lambda를 Serverless를 써서 올리기로 하고 그냥 다 코드 자체는 로컬에서 작성하고 있기 때문에, 사실 테스트를 하려면 그냥 env같은거 만들어서 정보 다 넣어두고 쓰면 되지만서도, Secrets Manager를 한번은 테스트 하고 싶으니까 Credential까지 넣어서 한번 적어 봤다.
 
 ```

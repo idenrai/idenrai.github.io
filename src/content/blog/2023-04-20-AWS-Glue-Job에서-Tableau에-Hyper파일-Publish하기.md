@@ -13,9 +13,9 @@ Glue Jobs에서 Tableau로 데이터 연계 방법을 검증
 
 AWS Glue Jobs에서 S3의 엑셀 파일을 불러와 Tableau의 데이터 타입인 Hyper로 바꿔서 Tableau에 Publish해 보았다. 위의 내용을 3개의 파트로 나누어 검증.
 
--   S3의 엑셀 파일을 Pandas DataFrame으로 받아오기
--   PandasDF로 Hyper파일 만들기
--   Hyper파일을 Tableau Server에 보내기
+- S3의 엑셀 파일을 Pandas DataFrame으로 받아오기
+- PandasDF로 Hyper파일 만들기
+- Hyper파일을 Tableau Server에 보내기
 
 ## 외부 라이브러리 Import
 
@@ -61,8 +61,8 @@ for sheet_name, pandas_df in sheets_dict.items():
 
 여기부터 조금 짜증나기 시작. 일단 방법은 크게 두가지 존재.
 
--   [Tableau Hyper API (공식)](https://help.tableau.com/current/api/hyper_api/en-us/index.html)
--   [pantab](https://github.com/innobi/pantab)
+- [Tableau Hyper API (공식)](https://help.tableau.com/current/api/hyper_api/en-us/index.html)
+- [pantab](https://github.com/innobi/pantab)
 
 pantab 쪽이 쓰긴 편할 것 같은데, 아직 star가 100도 안되는 미성숙한(?) 녀석이라 불안정할 것이 우려됨. 결국 그냥 Tableau 공식인 Tableau Hyper API를 쓰기로 했다. 보안 관계상, 여기는 더미 데이터프레임을 사용.
 

@@ -42,7 +42,7 @@ pipeline {
                     LAST_STARTED = env.STAGE_NAME
                     // 아래와 같이 환경변수 사용 가능. GIT_BRANCH나 BUILD_URL은 기본 제공
                     sh "bash ${env.BATCH_DIR}/test.sh ${env.GIT_BRANCH} ${env.COMMIT_AUTHOR} ${env.COMMIT_MSG} ${env.BUILD_URL}"
-				}
+    }
             }
         }
     }

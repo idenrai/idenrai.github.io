@@ -31,7 +31,7 @@ scaffolded site templet 중 yesod-postgre로 개발환경을 구죽하는 예문
 
 \### Haskell Stackのインストール
 
-\- \*\*\[Download Haskell Stack\](https://haskell-lang.org/get-started#why-not-haskell-platform)\*\*
+\- \*\*\[Download Haskell Stack\](<https://haskell-lang.org/get-started#why-not-haskell-platform)\*\>*
 
 \- OSを選び、ダウンロード（windowsだと普通にダウンロード、macOSやLinuxだとwget・curlを使ってダウンロードできる）
 
@@ -41,7 +41,7 @@ scaffolded site templet 중 yesod-postgre로 개발환경을 구죽하는 예문
 
 \`\`\`Haskell
 
-#!/usr/bin/env stack
+# !/usr/bin/env stack
 
 \-- stack --install-ghc runghc
 
@@ -95,7 +95,7 @@ stack build
 
 \### Yesodでのデータベース接続設定
 
-\- \[ここ\](http://blog.livedoor.jp/rtabaladi\_58/archives/58083990.html)ではプロジェクト名に合わせてユーザやDBを作成すると書いてあるが、実際は\`\`\`config/settings.yml\`\`\`でDBのsettingが普通にできる
+\- \[ここ\](<http://blog.livedoor.jp/rtabaladi\_58/archives/58083990.html)ではプロジェクト名に合わせてユーザやDBを作成すると書いてあるが、実際は\`\`\`config/settings.yml\`\`\`でDBのsettingが普通にできる>
 
 \`\`\`Text
 
@@ -133,14 +133,14 @@ database: yesod\_test
 
 \- テストも実行してみたいなら、\`\`\`stack test\`\`\`で、設定した\`\`\`yesod\_test\`\`\`DBにテーブルができたらOK
 
-\- \[http://localhost:3000/\](http://localhost:3000/) に接続し、Comment作成やユーザ登録などでDBが更新されるかを確認する。
+\- \[<http://localhost:3000/\>](<http://localhost:3000/>) に接続し、Comment作成やユーザ登録などでDBが更新されるかを確認する。
 
-\- ここまで設定したら、他の作業はsqliteでのと同じなので \*\*\[ここ\](http://qiita.com/erin/items/55e0109e4be6b3257bef)\*\* などを参考し、次の実装をしてもOK
+\- ここまで設定したら、他の作業はsqliteでのと同じなので \*\*\[ここ\](<http://qiita.com/erin/items/55e0109e4be6b3257bef)\*\>* などを参考し、次の実装をしてもOK
 
 \## 参考
 
-\- \[Yesod のインストールとサンプルプログラムの実行\](http://qiita.com/waddlaw/items/e47552cb26c1d58ece0b)
+\- \[Yesod のインストールとサンプルプログラムの実行\](<http://qiita.com/waddlaw/items/e47552cb26c1d58ece0b>)
 
-\- \[YesodでpostgreSQLを使う Haskell stack\](http://blog.livedoor.jp/rtabaladi\_58/archives/58083990.html)
+\- \[YesodでpostgreSQLを使う Haskell stack\](<http://blog.livedoor.jp/rtabaladi\_58/archives/58083990.html>)
 
-\- \[Yesod 1.4でのCRUD処理およびメール送信（stackによる開発環境の構築からketerによるデプロイまで）\](http://qiita.com/erin/items/55e0109e4be6b3257bef)
+\- \[Yesod 1.4でのCRUD処理およびメール送信（stackによる開発環境の構築からketerによるデプロイまで）\](<http://qiita.com/erin/items/55e0109e4be6b3257bef>)

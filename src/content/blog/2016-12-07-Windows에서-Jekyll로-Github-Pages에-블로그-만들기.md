@@ -31,7 +31,7 @@ $ bundle exec jekyll serve
 
 5-1. 확인
 
-http://localhost:4000/
+<http://localhost:4000/>
 
 **6\. Github Pages 연결**
 

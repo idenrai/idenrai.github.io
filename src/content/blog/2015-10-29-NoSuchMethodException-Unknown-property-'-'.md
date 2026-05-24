@@ -53,7 +53,7 @@ iReport가 멋대로
 
 이에 대한 해결책은 다음과 같다.
 
--   **Remove the empty field descriptions from the JRXML.** 이와 같이 fieldDescription 항목을 아예 없애거나
--   **Set the field descriptions to match the bean property names.** fieldDescription을 field name과 동일하게 맞추거나
+- **Remove the empty field descriptions from the JRXML.** 이와 같이 fieldDescription 항목을 아예 없애거나
+- **Set the field descriptions to match the bean property names.** fieldDescription을 field name과 동일하게 맞추거나
 
--   **Pass false as isUseFieldDescription when creating the bean data source, e.g. new JRBeanCollectionDataSource(data, false).** 아예 DataSource를 넘길 때, FieldDescription을 쓰지 않겠다고 설정하는 것이다. `**[JRBeanCollectionDataSource](http://jasperreports.sourceforge.net/api/net/sf/jasperreports/engine/data/JRBeanCollectionDataSource.html#JRBeanCollectionDataSource\(java.util.Collection,%20boolean\))**(java.util.Collection beanCollection, boolean isUseFieldDescription)`
+- **Pass false as isUseFieldDescription when creating the bean data source, e.g. new JRBeanCollectionDataSource(data, false).** 아예 DataSource를 넘길 때, FieldDescription을 쓰지 않겠다고 설정하는 것이다. `**[JRBeanCollectionDataSource](http://jasperreports.sourceforge.net/api/net/sf/jasperreports/engine/data/JRBeanCollectionDataSource.html#JRBeanCollectionDataSource\(java.util.Collection,%20boolean\))**(java.util.Collection beanCollection, boolean isUseFieldDescription)`

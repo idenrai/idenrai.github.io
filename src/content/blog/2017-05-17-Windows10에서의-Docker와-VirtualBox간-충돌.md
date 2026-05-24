@@ -35,6 +35,6 @@ Interface: IConsole {872da645-4a9b-1727-bee2-5585105b9eed}
 
 Docker를 깔면서 Hyper-V가 자동으로 켜져서 64비트 VirtualBox를 실행 불가능하게 된 것 같다.
 
-자세한 이유는 \[이곳\](http://yeongeon.tistory.com/entry/A-crash-docker-with-virtualBox)을 참조하도록 하고...
+자세한 이유는 \[이곳\](<http://yeongeon.tistory.com/entry/A-crash-docker-with-virtualBox)을> 참조하도록 하고...
 
-\[이 방법\](http://www.fixedbyvonnie.com/2014/11/virtualbox-showing-32-bit-guest-versions-64-bit-host-os/#.WRwMimjyhPZ)으로 Windows Features에서 Hyper-V를 끄고 나니 되더라.
+\[이 방법\](<http://www.fixedbyvonnie.com/2014/11/virtualbox-showing-32-bit-guest-versions-64-bit-host-os/#.WRwMimjyhPZ)으로> Windows Features에서 Hyper-V를 끄고 나니 되더라.

@@ -35,7 +35,7 @@ Select scopes는 gist에만 체크하도록 한다.
 
 생성된 gist의 url에서 Gist id를 획득한다.
 
-https://gist.github.com/\[유저명\]/\[Gist id\]
+<https://gist.github.com/\[유저명\]/\[Gist> id\]
 
 **4\. sync-settings에 Token과 Gist id 입력**
 

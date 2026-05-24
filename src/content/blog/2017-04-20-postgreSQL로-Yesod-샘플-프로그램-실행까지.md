@@ -19,7 +19,7 @@ tistory_url: "https://idenrai.tistory.com/123"
 
 \### Haskell Stack Install
 
-\- \*\*\[Download Haskell Stack\](https://haskell-lang.org/get-started#why-not-haskell-platform)\*\*
+\- \*\*\[Download Haskell Stack\](<https://haskell-lang.org/get-started#why-not-haskell-platform)\*\>*
 
 \- OS를 고르고 다운로드 (windows라면 평범하게 다운로드, macOS나 Linux라면 wget, curl을 사용해서 다운로드 가능)
 
@@ -29,7 +29,7 @@ tistory_url: "https://idenrai.tistory.com/123"
 
 \`\`\`Haskell
 
-#!/usr/bin/env stack
+# !/usr/bin/env stack
 
 \-- stack --install-ghc runghc
 
@@ -85,7 +85,7 @@ DB명 : yesod
 
 \### Yesod에서 데이터베이스 연결 설정
 
-\- \[이 글\](http://blog.livedoor.jp/rtabaladi\_58/archives/58083990.html)에서는 프로젝트명에 맞추어 유저명이나 DB명을 작성하라고 적고 있지만, 실제로는 \`\`\`config/settings.yml\`\`\`에서 간단하게 DB 설정 가능
+\- \[이 글\](<http://blog.livedoor.jp/rtabaladi\_58/archives/58083990.html)에서는> 프로젝트명에 맞추어 유저명이나 DB명을 작성하라고 적고 있지만, 실제로는 \`\`\`config/settings.yml\`\`\`에서 간단하게 DB 설정 가능
 
 \`\`\`Text
 
@@ -123,14 +123,14 @@ database: yesod\_test
 
 \- 테스트도 실행해 보고 싶다면, \`\`\`stack test\`\`\`를 입력하여, \`\`\`yesod\_test\`\`\`에서 설정한 DB에 테이블이 생성된다면 OK
 
-\- \[http://localhost:3000/\](http://localhost:3000/) 에 접속, Comment 작성이나 유저 등록 등을 실행하여, DB가 갱신되는지 확인
+\- \[<http://localhost:3000/\>](<http://localhost:3000/>) 에 접속, Comment 작성이나 유저 등록 등을 실행하여, DB가 갱신되는지 확인
 
-\- 여기까지 설정했다면, 다른 작업은 sqlite에서와 동일하므로, \*\*\[이곳\](http://qiita.com/erin/items/55e0109e4be6b3257bef)\*\* 등을 참조하여 다음 단계로 넘어가도록 하자
+\- 여기까지 설정했다면, 다른 작업은 sqlite에서와 동일하므로, \*\*\[이곳\](<http://qiita.com/erin/items/55e0109e4be6b3257bef)\*\>* 등을 참조하여 다음 단계로 넘어가도록 하자
 
 \## 참조
 
-\- \[Yesod のインストールとサンプルプログラムの実行\](http://qiita.com/waddlaw/items/e47552cb26c1d58ece0b)
+\- \[Yesod のインストールとサンプルプログラムの実行\](<http://qiita.com/waddlaw/items/e47552cb26c1d58ece0b>)
 
-\- \[YesodでpostgreSQLを使う Haskell stack\](http://blog.livedoor.jp/rtabaladi\_58/archives/58083990.html)
+\- \[YesodでpostgreSQLを使う Haskell stack\](<http://blog.livedoor.jp/rtabaladi\_58/archives/58083990.html>)
 
-\- \[Yesod 1.4でのCRUD処理およびメール送信（stackによる開発環境の構築からketerによるデプロイまで）\](http://qiita.com/erin/items/55e0109e4be6b3257bef)
+\- \[Yesod 1.4でのCRUD処理およびメール送信（stackによる開発環境の構築からketerによるデプロイまで）\](<http://qiita.com/erin/items/55e0109e4be6b3257bef>)

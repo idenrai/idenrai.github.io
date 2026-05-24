@@ -17,7 +17,7 @@ antd provides plenty of UI components to enrich your web applications, and we wi
 
 ant.design
 
-](https://ant.design/components/overview/)
+](<https://ant.design/components/overview/>)
 
 이번엔 테이블 구현을 위해 사용하였다.
 
@@ -33,7 +33,7 @@ Table - Ant Design
 
 ant.design
 
-](https://ant.design/components/table/#components-table-demo-dynamic-settings)
+](<https://ant.design/components/table/#components-table-demo-dynamic-settings>)
 
 다만 내 경우는 기본 디자인 말고 아래와 같은 느낌으로 커스텀 스핀을 사용하고 싶더라.
 
@@ -47,7 +47,7 @@ Alert message title Further details about the context of this alert.
 
 ant.design
 
-](https://ant.design/components/spin/#components-spin-demo-custom-indicator)
+](<https://ant.design/components/spin/#components-spin-demo-custom-indicator>)
 
 뭐 구현방법은 대충 아래와 같다.
 

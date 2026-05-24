@@ -15,7 +15,7 @@ I have json files in S3 containing array of objects in each file, like shown bel
 
 stackoverflow.com
 
-](https://stackoverflow.com/questions/62558325/how-to-create-aws-glue-dynamicframe-from-json-with-array-of-objects)
+](<https://stackoverflow.com/questions/62558325/how-to-create-aws-glue-dynamicframe-from-json-with-array-of-objects>)
 
 [https://qiita.com/takkii1010/items/0ce1c834d3a73496ccef](https://qiita.com/takkii1010/items/0ce1c834d3a73496ccef)
 
@@ -27,4 +27,4 @@ JSONPath 使い方まとめ - Qiita
 
 qiita.com
 
-](https://qiita.com/takkii1010/items/0ce1c834d3a73496ccef)
+](<https://qiita.com/takkii1010/items/0ce1c834d3a73496ccef>)

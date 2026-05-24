@@ -46,7 +46,6 @@ function makeGraph(graph, aim, sum, scale) {
 // グラフの値を
 ```
 
-
 만일 위의 처리를 하지 않고, Range를 넘는 값을 그대로 집어넣을 경우,
 
 가장 높은 값을 기준으로 한 그래프가 만들어지게 된다.

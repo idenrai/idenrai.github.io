@@ -109,16 +109,16 @@ BeautifulSoup(해석 대상의 HTML/XML, 이용할 Parser)
 
 ### Beautiful Soup의 정보 추출 방법
 
--   HTML계층을 이동시켜, HTML태그에 해당가는 부분을 검색
--   find, find\_all 등의 메소드를 통해, HTML태그에 해당하는 부분 검색
--   select 메소드를 통해 CSS셀렉터 특정 등
+- HTML계층을 이동시켜, HTML태그에 해당가는 부분을 검색
+- find, find\_all 등의 메소드를 통해, HTML태그에 해당하는 부분 검색
+- select 메소드를 통해 CSS셀렉터 특정 등
 
 ### Parser
 
--   "html.parser" Python HTML Parser : 추가 라이브러리 필요없음
--   "lxml" lxml HTML Parser : HTML 고속처리 가능
--   "xml" lxml XML Parser : XML 고속처리 가능
--   "html5lib" html5lib : HTML5 처리 가능
+- "html.parser" Python HTML Parser : 추가 라이브러리 필요없음
+- "lxml" lxml HTML Parser : HTML 고속처리 가능
+- "xml" lxml XML Parser : XML 고속처리 가능
+- "html5lib" html5lib : HTML5 처리 가능
 
 lxml 설치 `pip install lxml`
 
@@ -192,8 +192,8 @@ print(type(soup.title))
 
 ### find(), find\_all()
 
--   find(검색할 HTML태그) : 최초의 1요소
--   find\_all(검색할 HTML태그) : 모든 요소
+- find(검색할 HTML태그) : 최초의 1요소
+- find\_all(검색할 HTML태그) : 모든 요소
 
 ```
 print(soup.find_all("ul"))

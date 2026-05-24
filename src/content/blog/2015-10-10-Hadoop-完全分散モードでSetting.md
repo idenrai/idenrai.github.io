@@ -157,9 +157,9 @@ Markdownで作成。
 
 \- 下準備
 
-\- \[Oracle VM Virtualbox\](https://www.virtualbox.org/wiki/Downloads)
+\- \[Oracle VM Virtualbox\](<https://www.virtualbox.org/wiki/Downloads>)
 
-\- \[CentOS\](https://www.centos.org/download/)
+\- \[CentOS\](<https://www.centos.org/download/>)
 
 \- VM生成
 

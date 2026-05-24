@@ -49,7 +49,6 @@ tistory_url: "https://idenrai.tistory.com/39"
 
 \- 해당 입력창에서 javascript용 코드 입력 후 확인
 
-
 **3) 신기하니까 js파일로 한번 더 테스트 (서버에서 돌리기)**
 
 \- app.js 작성 (Python과 동일하게, UTF-8로 인코딩)
@@ -66,10 +65,9 @@ res.end('Hello World\\nHello node.js!');
 
 }).listen(1337,"127.0.0.1");
 
-console.log("Server running at http://127.0.0.1:1337/");
+console.log("Server running at <http://127.0.0.1:1337/>");
 
 \- node로 app.js를 돌리고, 지정했던 IP인 127.0.0.1:1337에서 확인
-
 
 **3\. Visual Studio 2013 설치 및 설정**
 
@@ -106,4 +104,3 @@ console.log("Server running at http://127.0.0.1:1337/");
 \- **[minimap](https://atom.io/packages/minimap), [minimap-find-and-replace](https://atom.io/packages/minimap-find-and-replace)** : 미니맵 표시
 
 \- [**atom-minify**](https://atom.io/packages/atom-minify) : JS, CSS 최소화 (ctrl+shift+m 또는 Minify on save설정)
-

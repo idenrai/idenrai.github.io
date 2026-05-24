@@ -16,8 +16,8 @@ tistory_url: "https://idenrai.tistory.com/259"
 이하 커맨드 사용
 
 ```
-$ pip install --upgrade pip
-$ pip install jupyter
+pip install --upgrade pip
+pip install jupyter
 ```
 
 MacOS의 경우는 pip 대신 pip3으로.
@@ -32,7 +32,7 @@ Consider using the `--user` option or check the permissions.
 에러메시지에도 친절히 적어준 것처럼, user를 붙여주자.
 
 ```
-$ pip install --upgrade pip --user
+pip install --upgrade pip --user
 ```
 
 ## Jupyter Notebook 실행
@@ -40,14 +40,11 @@ $ pip install --upgrade pip --user
 기동을 원하는 위치에서 이하 커맨드 입력
 
 ```
-$ jupyter notebook
+jupyter notebook
 ```
 
 그럼 알아서 실행된다.
 
-
 테스트삼아 대충 이런거 하나 만들어서 저장해 두고...
 
-
 폴더 열어보면 이래 저장되는 것을 확인할 수 있다.
-

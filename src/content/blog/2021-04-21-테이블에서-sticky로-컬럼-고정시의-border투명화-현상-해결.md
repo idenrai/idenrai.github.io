@@ -23,8 +23,6 @@ border는 class로 부여, position을 sticky로 하고, 고정하고 싶은 lef
 
 대략 이런 식으로...
 
-
-
 분명 흰색으로 border를 설정해 놓았건만 위와 같은 식이다.
 
 이를 해결한 방법은 다음과 같다.
@@ -34,6 +32,5 @@ Table에 borderCollapse를 separate로 지정하고,
 그로 인해 border가 굵어지는 것을 방지하기 위해 borderSpacing을 0으로 지정.
 
 결과물은 이러하다.
-
 
 선이 조금 굵어졌으나, 허용 범위 내라고 생각된다.

@@ -41,7 +41,7 @@ jre-7u79-windows-x64.tar.gz
 
 （二回圧縮したものだから、二回展開すること）
 
-#Windowの基本の展開では解凍できないので、7zなどの解凍プログラムを利用すること。
+# Windowの基本の展開では解凍できないので、7zなどの解凍プログラムを利用すること。
 
 そうすると、jre1.7.0\_79フォルダがでる。
 
@@ -51,7 +51,7 @@ Ex) C:\\Program Files\\Jaspersoft\\iReport-5.5.0
 
 その後、iReportフォルダのetcフォルダに入って、ireport.confをテキストエディタで開く。
 
-#jdkhome="@@@@@@@"の下に
+# jdkhome="@@@@@@@"の下に
 
 jdkhome=".\\jre1.7.0\_79"
 

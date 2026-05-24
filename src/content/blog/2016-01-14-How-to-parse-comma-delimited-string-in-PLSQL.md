@@ -53,7 +53,6 @@ Colored by Color Scripter
 
 이다.
 
-
 실제 커서를 돌릴 때의 코드는 다음과 같다.
 
 ```

@@ -15,7 +15,6 @@ RDS에서 데이터 검색 후 Lambda에서 데이터를 기존 준비된 엑셀
 
 근데 exceljs를 사용해서 export를 해 보니, 조건부서식이 다 작살나더라.
 
-
 내가 이 조건부서식 만들려고 얼마나 개고생을 했는데...
 
 처음엔 전송방법에 문제가 있나 싶어 Header를 이리저리 바꿔보았는데, 결과는 다 똑같았다.
@@ -36,7 +35,7 @@ exceljs의 문제더라.
 
 github.com
 
-](https://github.com/exceljs/exceljs/issues/1305)
+](<https://github.com/exceljs/exceljs/issues/1305>)
 
 근데 좀 더 찾아보니, 이미 올해 4월에 아래 Commit으로 해결이 되어 있더라.
 
@@ -50,7 +49,7 @@ Summary I'm using a template for styling, and filling out data with ExcelJS. Whe
 
 github.com
 
-](https://github.com/exceljs/exceljs/pull/1574)
+](<https://github.com/exceljs/exceljs/pull/1574>)
 
 이미 해결책이 나왔고, Master Branch에 Merge도 되었는데, NPM에 공개된 최신 버전에는 아직 안들어가있는거다.
 

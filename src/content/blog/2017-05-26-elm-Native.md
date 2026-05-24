@@ -67,7 +67,7 @@ Native로 사용할 js는 \`elm-package.json\`에서 설정한 \`source-director
 
 이는 \`elm-package.json\`에서 설정한 \`repository\`를 따라간다.
 
-\`repository": "https://github.com/demo/elm-webpack.git,\`
+\`repository": "<https://github.com/demo/elm-webpack.git,\`>
 
 \`\_유저명$프로젝트명$Native\_함수명\`
 

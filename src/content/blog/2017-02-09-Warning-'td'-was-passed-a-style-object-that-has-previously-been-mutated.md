@@ -9,7 +9,6 @@ tistory_url: "https://idenrai.tistory.com/116"
 
 꼭 한번씩 이런 warning이 뜨더라.
 
-
 받아온 style props가 mutated당했다는 내용.
 
 뭐 여기서 이미 눈치챈 사람도 있겠지만서도...

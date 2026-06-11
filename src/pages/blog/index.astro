@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import PageLayout from '../../layouts/PageLayout.astro';
 import { formatDate } from '../../utils/date';
 
-const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
+const allPosts = (await getCollection('blog', ({ data }) => !data.draft && data.date <= new Date()))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 // tags[0] = 대분류, tags[1] = 소분류

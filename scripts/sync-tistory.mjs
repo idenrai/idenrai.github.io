@@ -70,7 +70,7 @@ turndown.addRule("clean-ke", {
   },
 });
 
-/** RSS 피드 URL 생성 */ 날짜 파싱 ---
+// --- 날짜 파싱 ---
 function parseDate(dateStr) {
   try {
     return new Date(dateStr).toISOString().split("T")[0];

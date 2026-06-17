@@ -37,6 +37,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Sync Tistory Posts
+        run: npm run sync-tistory https://idenrai.tistory.com/rss
+
+      - name: Commit synced posts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/content/blog/
+          # 변경사항(새 글)이 있을 때만 커밋하고 푸시
+          git diff --staged --quiet || (git commit -m "sync: fetch latest posts from tistory" && git push)
+
       - name: Build site
         run: npm run build
         env:

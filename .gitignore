@@ -27,3 +27,7 @@ Gemfile.lock
 
 # tistory backup (local reference only, not for deployment)
 idenrai-1-1/
+
+# Python Cache
+__pycache__/
+*.py[cod]

@@ -14,7 +14,7 @@
   }
 
   body {
-    @apply bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300;
+    @apply bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 transition-colors duration-300;
   }
 
   ::selection {
@@ -38,25 +38,25 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-accent-600 hover:bg-accent-700 text-white font-medium text-sm transition-colors duration-200;
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-sm bg-accent-600 hover:bg-accent-700 text-white font-medium text-sm transition-all duration-200 border border-transparent;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 font-medium text-sm transition-colors duration-200;
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-sm border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 font-medium text-sm transition-all duration-200 bg-transparent;
   }
 
   .tag-badge {
-    @apply inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-accent-100 text-accent-800 dark:bg-accent-900/40 dark:text-accent-300;
+    @apply inline-block px-2.5 py-0.5 rounded-sm text-xs font-mono border border-accent-200 dark:border-accent-900/50 bg-accent-50 text-accent-700 dark:bg-accent-900/20 dark:text-accent-400;
   }
 
   .card {
-    @apply rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 transition-all duration-200 hover:shadow-lg hover:shadow-gray-100 dark:hover:shadow-gray-900;
+    @apply rounded-sm border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 p-6 transition-all duration-200 hover:border-accent-500 dark:hover:border-accent-500 hover:shadow-[4px_4px_0px_0px_rgba(37,99,235,0.1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(37,99,235,0.2)];
   }
 }
 
 /* 코드 블록 스타일 */
 pre.astro-code {
-  @apply rounded-xl p-5 overflow-x-auto my-6 text-sm;
+  @apply rounded-sm p-5 overflow-x-auto my-6 text-sm border border-zinc-200 dark:border-zinc-800;
 }
 
 /* 앵커 헤딩 */

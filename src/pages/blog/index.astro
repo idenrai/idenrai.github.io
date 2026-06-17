@@ -15,8 +15,8 @@ const mainCats = [...new Set(allPosts.map((p) => p.data.tags[0]).filter(Boolean)
 
     <div class="flex items-end justify-between mb-8">
       <div>
-        <h1 class="text-3xl font-extrabold text-gray-900 dark:text-gray-50 mb-2">블로그</h1>
-        <p class="text-gray-500 dark:text-gray-500 text-sm">
+        <h1 class="text-3xl font-display font-bold text-zinc-900 dark:text-zinc-50 mb-2">블로그</h1>
+        <p class="text-zinc-500 dark:text-zinc-400 text-sm font-mono">
           총 <span id="post-count">{allPosts.length}</span>개의 글
         </p>
       </div>
@@ -26,7 +26,7 @@ const mainCats = [...new Set(allPosts.map((p) => p.data.tags[0]).filter(Boolean)
     <div class="flex flex-wrap gap-2 mb-3" id="main-cats">
       <button
         data-main=""
-        class="cat-btn cat-main active px-3 py-1.5 rounded-lg text-sm font-medium transition-colors bg-accent-600 text-white"
+        class="cat-btn cat-main active px-3 py-1.5 rounded-sm text-sm font-display font-medium transition-colors bg-accent-600 text-white border border-transparent"
       >
         전체 ({allPosts.length})
       </button>
@@ -35,7 +35,7 @@ const mainCats = [...new Set(allPosts.map((p) => p.data.tags[0]).filter(Boolean)
         return (
           <button
             data-main={cat}
-            class="cat-btn cat-main px-3 py-1.5 rounded-lg text-sm font-medium transition-colors bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700"
+            class="cat-btn cat-main px-3 py-1.5 rounded-sm text-sm font-display font-medium transition-colors border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900"
           >
             {cat} ({count})
           </button>
@@ -55,7 +55,7 @@ const mainCats = [...new Set(allPosts.map((p) => p.data.tags[0]).filter(Boolean)
         const subCat = post.data.tags[1] ?? '';
         return (
           <article
-            class="post-item card group"
+            class="post-item card group relative"
             data-main={mainCat}
             data-sub={subCat}
           >
@@ -64,15 +64,15 @@ const mainCats = [...new Set(allPosts.map((p) => p.data.tags[0]).filter(Boolean)
                 {mainCat && <span class="tag-badge">{mainCat}</span>}
                 {subCat && <span class="tag-badge opacity-75">{subCat}</span>}
               </div>
-              <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors leading-snug mb-2">
+              <h2 class="text-lg font-display font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors leading-snug mb-2">
                 {post.data.title}
               </h2>
               {post.data.description && (
-                <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2 mb-4">
+                <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed line-clamp-2 mb-4">
                   {post.data.description}
                 </p>
               )}
-              <time datetime={post.data.date.toISOString()} class="text-xs text-gray-400 dark:text-gray-600">
+              <time datetime={post.data.date.toISOString()} class="text-xs font-mono text-zinc-500 dark:text-zinc-500">
                 {formatDate(post.data.date)}
               </time>
             </a>
@@ -82,9 +82,9 @@ const mainCats = [...new Set(allPosts.map((p) => p.data.tags[0]).filter(Boolean)
     </div>
 
     <!-- 결과 없음 -->
-    <div id="empty-state" class="hidden text-center py-20 text-gray-400 dark:text-gray-600">
+    <div id="empty-state" class="hidden text-center py-20 text-zinc-500 dark:text-zinc-400">
       <p class="text-4xl mb-4">🔍</p>
-      <p>해당 카테고리의 포스트가 없습니다.</p>
+      <p class="font-display">해당 카테고리의 포스트가 없습니다.</p>
     </div>
 
   </div>
@@ -117,12 +117,12 @@ const mainCats = [...new Set(allPosts.map((p) => p.data.tags[0]).filter(Boolean)
 
     const allCount = posts.filter(p => p.dataset.main === main).length;
     subCatsEl.innerHTML = `
-      <button data-sub="" class="cat-btn cat-sub active px-2.5 py-1 rounded-md text-xs font-medium transition-colors bg-accent-100 dark:bg-accent-900/40 text-accent-800 dark:text-accent-300">
+      <button data-sub="" class="cat-btn cat-sub active px-2.5 py-1 rounded-sm text-xs font-mono font-medium transition-colors bg-accent-100 dark:bg-accent-900/40 text-accent-800 dark:text-accent-300 border border-transparent">
         전체 (${allCount})
       </button>
       ${subs.map(sub => {
         const count = posts.filter(p => p.dataset.main === main && p.dataset.sub === sub).length;
-        return `<button data-sub="${sub}" class="cat-btn cat-sub px-2.5 py-1 rounded-md text-xs font-medium transition-colors bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700">${sub} (${count})</button>`;
+        return `<button data-sub="${sub}" class="cat-btn cat-sub px-2.5 py-1 rounded-sm text-xs font-mono font-medium transition-colors border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900">${sub} (${count})</button>`;
       }).join('')}
     `;
 
@@ -142,10 +142,10 @@ const mainCats = [...new Set(allPosts.map((p) => p.data.tags[0]).filter(Boolean)
   function updateMainActive() {
     document.querySelectorAll<HTMLButtonElement>('.cat-main').forEach(btn => {
       const isActive = btn.dataset.main === selectedMain;
-      btn.className = `cat-btn cat-main px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+      btn.className = `cat-btn cat-main px-3 py-1.5 rounded-sm text-sm font-display font-medium transition-colors ${
         isActive
-          ? 'bg-accent-600 text-white'
-          : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+          ? 'bg-accent-600 text-white border border-transparent'
+          : 'border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900'
       }`;
     });
   }
@@ -153,10 +153,10 @@ const mainCats = [...new Set(allPosts.map((p) => p.data.tags[0]).filter(Boolean)
   function updateSubActive() {
     subCatsEl.querySelectorAll<HTMLButtonElement>('.cat-sub').forEach(btn => {
       const isActive = btn.dataset.sub === selectedSub;
-      btn.className = `cat-btn cat-sub px-2.5 py-1 rounded-md text-xs font-medium transition-colors ${
+      btn.className = `cat-btn cat-sub px-2.5 py-1 rounded-sm text-xs font-mono font-medium transition-colors ${
         isActive
-          ? 'bg-accent-100 dark:bg-accent-900/40 text-accent-800 dark:text-accent-300'
-          : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+          ? 'bg-accent-100 dark:bg-accent-900/40 text-accent-800 dark:text-accent-300 border border-transparent'
+          : 'border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900'
       }`;
     });
   }
